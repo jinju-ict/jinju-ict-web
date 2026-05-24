@@ -6,6 +6,9 @@ import { Section } from "@/components/site/section";
 import { SAJU } from "@/lib/saju";
 
 export function SajuSection() {
+  const subScreens: readonly string[] = (SAJU as { screens?: readonly string[] })
+    .screens ?? [];
+
   return (
     <Section
       id="saju"
@@ -21,16 +24,16 @@ export function SajuSection() {
             {SAJU.features.map((f, i) => (
               <li
                 key={f.title}
-                className="rounded-2xl border border-border/60 bg-card/40 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-border hover:bg-card/70"
+                className="rounded-sm border-2 border-border bg-card p-5 shadow-sm transition-colors duration-150 hover:border-foreground"
               >
                 <div className="mb-3 flex items-center gap-3">
                   <span
                     aria-hidden="true"
-                    className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-border/60 bg-background/70 text-[11px] font-semibold text-primary"
+                    className="inline-flex h-7 w-7 items-center justify-center rounded-sm border-2 border-border bg-muted text-[11px] font-semibold text-foreground"
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <p className="text-base font-semibold tracking-tight">
+                  <p className="text-base font-bold tracking-tight text-foreground">
                     {f.title}
                   </p>
                 </div>
@@ -45,55 +48,47 @@ export function SajuSection() {
             <Button
               asChild
               size="lg"
-              className="group/cta h-12 rounded-full px-6 text-base shadow-lg shadow-primary/20 transition-all hover:shadow-xl hover:shadow-primary/30"
+              className="h-12 rounded-sm border-2 border-primary bg-primary px-6 text-base text-primary-foreground shadow-sm transition-colors duration-150 hover:border-foreground hover:bg-foreground"
             >
               <Link href="#contact">
                 <Sparkles aria-hidden="true" />
                 출시 알림 신청
-                <ArrowRight
-                  aria-hidden="true"
-                  className="transition-transform group-hover/cta:translate-x-0.5"
-                />
+                <ArrowRight aria-hidden="true" />
               </Link>
             </Button>
             <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-              <span className="inline-flex items-center gap-1.5">
+              <span className="inline-flex items-center gap-1.5 text-foreground">
                 <Apple className="h-4 w-4" aria-hidden="true" />
                 iOS
               </span>
               <span aria-hidden="true" className="text-border">
                 ·
               </span>
-              <span className="inline-flex items-center gap-1.5">
+              <span className="inline-flex items-center gap-1.5 text-foreground">
                 <Smartphone className="h-4 w-4" aria-hidden="true" />
                 Android
               </span>
               <span aria-hidden="true" className="text-border">
                 ·
               </span>
-              <span className="rounded-full border border-border/60 bg-card/50 px-2.5 py-0.5 text-xs font-medium backdrop-blur-sm">
+              <span className="rounded-sm border-2 border-border bg-muted px-2.5 py-0.5 text-xs font-semibold text-foreground">
                 {SAJU.status}
               </span>
             </div>
           </div>
         </div>
 
-        {/* 우: 모바일 mockup */}
-        <div className="relative mx-auto w-full max-w-[300px]">
-          {/* Backdrop glow */}
-          <div
-            aria-hidden="true"
-            className="absolute -inset-16 bg-gradient-to-br from-primary/30 via-accent/20 to-fuchsia-500/20 blur-3xl"
-          />
-          {/* Device frame */}
-          <div className="relative aspect-[9/19] rounded-[2.5rem] border border-border/80 bg-card p-2.5 shadow-2xl shadow-primary/20 transition-transform duration-500 hover:-rotate-1 hover:scale-[1.02]">
+        {/* 우: 모바일 mockup + sub-thumbnails */}
+        <div className="mx-auto flex w-full max-w-[300px] flex-col items-center gap-4">
+          {/* Device frame (회색 보더, glow 제거) */}
+          <div className="relative aspect-[9/19] w-full rounded-md border-2 border-border bg-card p-2.5 shadow-sm">
             {/* Notch / dynamic island */}
             <div
               aria-hidden="true"
-              className="absolute top-3 left-1/2 z-20 h-5 w-24 -translate-x-1/2 rounded-full bg-background"
+              className="absolute top-3 left-1/2 z-20 h-5 w-24 -translate-x-1/2 rounded-sm bg-background"
             />
             {/* Inner screen */}
-            <div className="relative h-full w-full overflow-hidden rounded-[2rem] bg-background">
+            <div className="relative h-full w-full overflow-hidden rounded-sm bg-background">
               <Image
                 src={SAJU.hero}
                 alt={`${SAJU.appName} 앱 화면 (가제)`}
@@ -103,11 +98,35 @@ export function SajuSection() {
                 priority={false}
               />
             </div>
+            {/* Coming Soon chip */}
+            <div className="pointer-events-none absolute -right-2 -bottom-2 rounded-sm border-2 border-border bg-card px-3 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-foreground shadow-sm">
+              Coming Soon
+            </div>
           </div>
-          {/* Floating chip */}
-          <div className="pointer-events-none absolute -right-2 -bottom-2 rotate-3 rounded-full border border-border/60 bg-background/90 px-3 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-primary backdrop-blur-md sm:right-0 sm:-bottom-4 sm:rotate-6">
-            Coming Soon
-          </div>
+
+          {/* Sub thumbnails — SAJU.screens 가 있으면 1~2장 */}
+          {subScreens.length > 0 && (
+            <ul
+              role="list"
+              className="grid w-full grid-cols-2 gap-3"
+            >
+              {subScreens.slice(0, 2).map((src, idx) => (
+                <li
+                  key={src}
+                  className="relative aspect-[9/16] w-full overflow-hidden rounded-sm border-2 border-border bg-card shadow-sm"
+                >
+                  <Image
+                    src={src}
+                    alt={`${SAJU.appName} 보조 화면 ${idx + 1}`}
+                    fill
+                    className="object-contain"
+                    sizes="(min-width: 1024px) 144px, 40vw"
+                    priority={false}
+                  />
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </Section>
