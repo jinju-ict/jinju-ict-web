@@ -2,7 +2,7 @@
  * 사이트 전역 메타 상수 — metadata / robots / sitemap / OG 가 공유.
  */
 
-export const SITE_NAME = "진주 ICT";
+export const SITE_NAME = "진주 정보통신개발";
 
 export const SITE_TAGLINE = "AI 정예 개발사";
 
@@ -10,7 +10,7 @@ export const SITE_DESCRIPTION =
   "AI 전문가들이 모인 정예 개발사. 자체 서비스를 주력으로 만들면서 협업·외주 의뢰도 폭넓게 수행합니다.";
 
 export const SITE_KEYWORDS = [
-  "진주 ICT",
+  "진주 정보통신개발",
   "AI 개발사",
   "AI 에이전트",
   "AI 모델 개발",

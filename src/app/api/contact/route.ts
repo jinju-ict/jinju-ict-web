@@ -85,7 +85,7 @@ export async function POST(req: Request) {
   const { name, company, contact, message } = parsed.data;
 
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_INBOX_TO ?? "dlwlstjq410@gmail.com";
+  const to = process.env.CONTACT_INBOX_TO ?? "teo.baek@outlook.com";
   const from = process.env.CONTACT_INBOX_FROM ?? "onboarding@resend.dev";
 
   if (!apiKey) {
@@ -117,10 +117,10 @@ export async function POST(req: Request) {
 
   try {
     const result = await resend.emails.send({
-      from: `진주 ICT 협업 문의 <${from}>`,
+      from: `진주 정보통신개발 협업 문의 <${from}>`,
       to: [to],
       ...(isEmail ? { replyTo: contact } : {}),
-      subject: `[진주 ICT 문의] ${name}${company ? ` · ${company}` : ""}`,
+      subject: `[진주 정보통신개발 문의] ${name}${company ? ` · ${company}` : ""}`,
       text: textBody,
     });
 

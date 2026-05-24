@@ -1,5 +1,5 @@
 /**
- * 사주 서비스 메타 — 진주 ICT 의 첫 자체 프로덕트 (현재 준비중).
+ * 사주 서비스 메타 — 진주 정보통신개발 의 첫 자체 프로덕트 (현재 준비중).
  *
  * 출처: `/Users/goldenplanet/jinsup_space/saju` 의 README + planning_docs.
  * 정식 앱명은 가제 — 동결 후 대표님이 직접 갱신할 수 있는 자리.

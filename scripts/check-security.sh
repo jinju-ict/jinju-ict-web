@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# 진주 ICT 사이트 — 보안 룰 자가 검증 (CLAUDE.md §5)
+# 진주 정보통신개발 사이트 — 보안 룰 자가 검증 (CLAUDE.md §5)
 #
 # 사이트 빌드 산출물(src/, public/)에 다음 금지 단어가 포함되면 fail:
 #   - 골든플래닛           : gp_claw 의 실제 클라이언트 회사명

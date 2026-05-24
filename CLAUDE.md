@@ -22,7 +22,7 @@ onboarded_at: 2026-05-24T04:35:39Z
 
 ### 1. 비전
 
-**진주 ICT** — AI 전문가들이 모인 개발사. AI 기술 기반으로 **자체 서비스를 주력으로 만들면서, 협업·외주 의뢰도 폭넓게 수행**한다. 첫 자체 프로덕트로 사주 서비스를 준비 중.
+**진주 정보통신개발** — AI 전문가들이 모인 개발사. AI 기술 기반으로 **자체 서비스를 주력으로 만들면서, 협업·외주 의뢰도 폭넓게 수행**한다. 첫 자체 프로덕트로 사주 서비스를 준비 중.
 
 이 사이트(`jinju-ict-web`)는 **회사 소개(주) + 사주 서비스 입구(부)** 를 겸하는 단일 페이지 랜딩이다.
 
@@ -36,7 +36,7 @@ onboarded_at: 2026-05-24T04:35:39Z
 
 단일 페이지 랜딩의 섹션 구성:
 
-1. **Hero / 회사 소개** — 회사명(진주 ICT) + 슬로건(ralph 합성) + AI 전문성 어필 메시지
+1. **Hero / 회사 소개** — 회사명(진주 정보통신개발) + 슬로건(ralph 합성) + AI 전문성 어필 메시지
 2. **팀 소개** — Nova 식 팀원 카드 2명
    - 기획자: 다양한 서비스 기획 + 창업 경험 + 뛰어난 PM. AI 전문
    - 개발자: AI 에이전트 / AI 모델 개발 / 백엔드 / 앱 개발. AI 전문
@@ -45,11 +45,11 @@ onboarded_at: 2026-05-24T04:35:39Z
 3. **사주 서비스 입구** — 첫 자체 프로덕트. 앱 미배포 → "Coming Soon" CTA. 콘텐츠/스크린샷은 `/Users/goldenplanet/jinsup_space/saju` 에서 cp
 4. **포트폴리오** — 8개 프로젝트를 카드/그리드로 노출
    - 분류·정체·스택·전문가 느낌 카피·보안 룰은 `specs/portfolio-research.md` 에 정리 완료
-   - 진주 ICT 자체 (3): TtokTtok, shortdub, king_of_law
+   - 진주 정보통신개발 자체 (3): TtokTtok, shortdub, king_of_law
    - 외부 클라이언트 의뢰 (3): Andy, gp_claw, ai_news_scraping
    - 자체 개발 인프라 (2): js-ralph, js-super → "자체 하네스 / 에이전틱 엔지니어링 방식 보유, 개발 속도 빠르고 탄탄" 추상 메시지로
    - 스크린샷·로고는 ralph 가 각 프로젝트 폴더 까서 자동 cp (`public/portfolio/` 권장)
-5. **협업·문의 폼** — 이름 / 회사(선택) / 연락처 / 문의 내용. 외주·협업·기타 문의를 통합 수신. 라벨/카피에서 "SI" 단어 단독 노출 지양 — "협업 / 프로젝트 문의" 같은 포괄 용어 사용. 수신은 이메일(`dlwlstjq410@gmail.com`)
+5. **협업·문의 폼** — 이름 / 회사(선택) / 연락처 / 문의 내용. 외주·협업·기타 문의를 통합 수신. 라벨/카피에서 "SI" 단어 단독 노출 지양 — "협업 / 프로젝트 문의" 같은 포괄 용어 사용. 수신은 이메일(`teo.baek@outlook.com`)
 
 ### 4. 성공 정의
 
@@ -73,7 +73,7 @@ ralph 는 매 iteration 끝에서 "Nova 와 동등하거나 그 이상의 시각
 
 | 항목 | 출처 / 처리 |
 |------|------------|
-| 협업·문의 수신 이메일 | `dlwlstjq410@gmail.com` (확정) |
+| 협업·문의 수신 이메일 | `teo.baek@outlook.com` (확정) |
 | 폼 전송 인프라 | **Resend** 채택 (무료 3000/월, Vercel 1-clic 통합). env: `RESEND_API_KEY` / `CONTACT_INBOX_TO` / `CONTACT_INBOX_FROM`. 도메인 검증 전 발신 fallback `onboarding@resend.dev` |
 | 사주 앱 자산 (스크린샷 / 슬로건 / 기능) | `/Users/goldenplanet/jinsup_space/saju` 폴더 자동 탐색 후 `public/saju/` 로 cp |
 | 사주 앱 다운로드 링크 | 미배포 → "Coming Soon" CTA, URL 자리만 마련 |

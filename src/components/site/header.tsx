@@ -34,14 +34,14 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6 sm:px-8">
         <Link
           href="#top"
-          aria-label="진주 ICT 홈"
+          aria-label="진주 정보통신개발 홈"
           className="group flex items-center gap-2.5"
         >
           <span
             aria-hidden="true"
             className="inline-block h-8 w-8 rounded-lg bg-gradient-to-br from-primary via-primary to-accent ring-1 ring-inset ring-white/10 transition-transform duration-300 group-hover:scale-110"
           />
-          <span className="text-base font-bold tracking-tight">진주 ICT</span>
+          <span className="text-base font-bold tracking-tight">Jinju ICT</span>
         </Link>
 
         <nav aria-label="섹션 네비게이션">
