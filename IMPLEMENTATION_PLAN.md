@@ -60,8 +60,8 @@
 
 ### Phase 7 — 정성: Nova 급 디테일
 
-- [ ] 다크 모드 — 기본 다크 (Nova 톤), light mode 토글은 도입 X (정성 우선이면 일관된 다크가 더 강함, 단 필요시 추후)
-- [ ] 스크롤 애니메이션 — framer-motion 또는 native CSS Intersection Observer 로 섹션 진입 시 부드러운 페이드/슬라이드
+- [x] 다크 모드 — html.dark 강제 + globals.css color-scheme:dark + Toaster theme="dark" 이미 적용 (iteration 5/22). 추가 명시화: layout.tsx 에 `export const viewport: Viewport = { themeColor: "#0a0915", colorScheme: "dark" }` — 모바일 브라우저 상단 색 일관.
+- [x] 스크롤 애니메이션 — native CSS Intersection Observer 채택 (framer-motion 무거움 1MB+ 회피). `src/hooks/use-in-view.ts` (한 번 노출 후 disconnect, threshold 0.12, rootMargin -10%) + `src/components/site/in-view-fade.tsx` (opacity + translate3d, 700ms cubic-bezier, delay/distance/duration 옵션). Section 의 `fadeOnScroll` prop (default true) 으로 header + children 자동 InViewFade 감싸기 — Hero 등 자체 mount 애니메이션 있는 곳은 fadeOnScroll=false. IntersectionObserver 미지원 환경 fallback (eslint-disable 명시).
 - [ ] 마이크로 인터랙션 — 카드 호버 (lift + 그림자 변화), 버튼 active feedback, focus ring (a11y 준수)
 - [ ] 타이포 계층 정립 — H1~H6 + body + caption 일관 적용
 - [ ] 반응형 검증 — 360 / 768 / 1024 / 1440 / 1920 폭에서 깨지지 않음

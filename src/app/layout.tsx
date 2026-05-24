@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Noto_Sans_KR } from "next/font/google";
 import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
@@ -28,6 +28,11 @@ export const metadata: Metadata = {
   title: "진주 ICT — AI 정예 개발사",
   description:
     "AI 전문가들이 모인 정예 개발사. 자체 서비스를 주력으로 만들면서 협업·외주 의뢰도 폭넓게 수행합니다.",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0a0915", // 다크 배경 톤과 일치 (모바일 브라우저 상단 색)
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
