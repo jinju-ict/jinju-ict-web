@@ -25,7 +25,7 @@
 
 - [x] Hero 섹션 — `src/components/site/hero.tsx` 신규. eyebrow chip (Sparkles + "AI 정예 개발사 · 진주 ICT") + h1 "AI 가 일하는 방식이 곧 우리의 일하는 방식입니다." + lead "자체 서비스로 시작해, 협업·외주까지..." + CTA 2개 (#saju primary, #contact outline) + 하단 강점 chip 2개. min-h-[88vh] + 라디얼 그라데이션 ambience 2개 (primary 18% + accent 14%). page.tsx 의 hero placeholder 를 Hero 컴포넌트로 교체.
 - [x] Hero 시각 — native CSS keyframes 채택 (framer-motion 도입은 Phase 7 스크롤 task 로 연기). globals.css 에 `@utility animate-fade-in-up / float-slow / float-reverse / pulse-soft` 정의 + `prefers-reduced-motion` 자동 차단. Hero 에 그라데이션 blob 2개 (primary 22% blur 부유 + accent 18% reverse), 미세 그리드 오버레이 (radial mask), 텍스트 5단 stagger (0/120/240/360/480ms), CTA 호버 shadow + 화살표 슬라이드, h1 핵심 "AI 가 일하는 방식" 부분 gradient-text (foreground → primary), Sparkles pulse-soft.
-- [ ] 회사 소개 보조 섹션 — "왜 우리인가" (AI 전문성 / 빠르고 탄탄한 자체 개발 인프라 / 자체 서비스 + 협업 모두 수행)
+- [x] 회사 소개 보조 섹션 — `src/components/site/about.tsx` (id="about") 신규. 3 pillar 카드 (BrainCircuit "AI 전문성" / Workflow "자체 개발 인프라" / Layers "자체 서비스 + 협업, 균형"). lg 3 col grid, sm 2 col, mobile 1 col. 호버 시 lift + glow gradient 컬러 등장 + 아이콘 배경/색 전환. 카드별 glow 색 (primary / accent / mixed) 차별. page.tsx 의 about Section placeholder 를 About 컴포넌트로 교체. → **Phase 2 (Hero / 회사 소개) 전체 완료 (3/3)**.
 
 ### Phase 3 — 콘텐츠: 팀 소개
 
