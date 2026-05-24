@@ -67,7 +67,7 @@
 - [x] 반응형 검증 — 코드 책임 점검 완료. breakpoint 사용: 모바일 default → sm(640) → lg(1024) 위주, md/xl/2xl 거의 미사용 (의도된 단순성). 점검 결과: 모든 grid (`sm:grid-cols-2 lg:grid-cols-3`), padding (`px-6 sm:px-8`), font scale (`text-3xl sm:text-4xl lg:text-5xl`) 패턴이 360~1920 폭에서 안전. 디바이스 mockup (Saju) max-w-[300px] 으로 모바일에서도 적정. Header nav 가 sm 미만에선 숨김 — 단일 페이지 랜딩이라 스크롤로 충분 (햄버거 메뉴 의도적 X).
 - [x] SEO 메타데이터 — `src/lib/site.ts` (SITE_NAME/TAGLINE/DESCRIPTION/KEYWORDS/URL 단일 출처, NEXT_PUBLIC_SITE_URL → VERCEL_URL → localhost fallback). layout.tsx metadata 강화: metadataBase / title template / description / keywords / authors / openGraph (type/locale ko_KR/url/siteName) / twitter (summary_large_image) / robots (index/follow + googleBot 옵션) / alternates.canonical. `src/app/robots.ts` (allow / + disallow /api/ + sitemap URL + host). `src/app/sitemap.ts` (단일 페이지라 SITE_URL 하나만, priority 1.0). .env.example 에 NEXT_PUBLIC_SITE_URL 추가.
 - [x] OG 이미지 — `src/app/opengraph-image.tsx` (next/og ImageResponse, runtime nodejs, 1200x630). 영문 임팩트 채택 (한국어 폰트 fetch 복잡도 회피, Nova 와 동일 전략): 그라데이션 다크 배경 + 2개 radial glow + 56px 로고 마크 + "JINJU ICT" + uppercase "AI Engineering Studio" + 88px "We build with AI." + "Own products. Client work. Internal tools." + 하단 "Elite team · Fast · Reliable". SITE_NAME import.
-- [ ] favicon / app icon — `app/icon.tsx` 또는 정적 ico/png, 다크 친화 디자인
+- [x] favicon / app icon — scaffold 의 `src/app/favicon.ico` (Next.js 로고) 제거. `src/app/icon.tsx` (32x32, runtime nodejs, 그라데이션 purple→pink + rounded 7 + "J" 글자 19px). `src/app/apple-icon.tsx` (180x180, 동일 색감 + 110px "J" + 안쪽 radial glow ring). 사이트 톤 일관.
 - [ ] accessibility — semantic HTML, aria-label, alt 텍스트, 키보드 네비 (Tab 순서), 색상 대비 4.5:1 이상
 - [ ] performance — 이미지 next/image, 폰트 display: swap, Lighthouse 90+ 목표
 
