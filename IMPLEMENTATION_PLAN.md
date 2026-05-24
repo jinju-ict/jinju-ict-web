@@ -52,7 +52,7 @@
 ### Phase 6 — 콘텐츠: 협업·문의 폼
 
 - [x] React Hook Form + Zod 설치 + 스키마 정의 — `pnpm add react-hook-form@7.76 zod@4.4 @hookform/resolvers@5.4`. `src/lib/contact-schema.ts` 신규: `contactSchema` (name 1~50, company 0~80 optional, contact 1~120, message 10~2000) + honeypot `website` (refine 으로 빈 string 만 허용, "BOT_DETECTED" 차단). `ContactInput` type 도 export — 서버 라우트와 클라이언트 폼 공유.
-- [ ] 문의 폼 UI — shadcn Form + Input + Textarea + Label + 검증 에러 메시지 (한국어)
+- [x] 문의 폼 UI — `src/components/site/contact-form.tsx` (client, RHF + zodResolver(contactSchema)) + `src/components/site/contact-section.tsx` (Section 래퍼). Field 헬퍼 (label / required * / error / hint), Input/Textarea 사용, honeypot (hidden + tabIndex=-1 + autocomplete=off), submit 시 toast.success/error (sonner). sonner.tsx 의 theme 을 "dark" 고정 + next-themes 의존 제거 (강제 다크 정책 일관). layout.tsx 에 `<Toaster position="bottom-right" />` 추가. page.tsx 의 contact placeholder 를 ContactSection 으로 교체. Zod 4 + @hookform/resolvers 5 internal API 충돌 → zod 3.25 로 다운그레이드 (우리 스키마는 v4 specific 기능 미사용).
 - [ ] 폼 전송 인프라 결정 — Vercel + Resend 우선 검토 (무료 tier 3000건/월), 안 되면 Formspree 무료 50건/월, 안 되면 mailto: fallback. 결정 후 환경변수 자리 마련
 - [ ] 폼 제출 API Route (`app/api/contact/route.ts`) — 선택된 인프라로 `dlwlstjq410@gmail.com` 수신
 - [ ] 폼 성공/실패 토스트 (sonner) + 폼 reset
