@@ -75,23 +75,19 @@ export function ProcessSection() {
         {STEPS.map(({ step, name, summary, icon: Icon, details }) => (
           <Card
             key={step}
-            className="group/step relative flex h-full flex-col overflow-hidden border-white/10 bg-white/[0.03] backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-white/[0.05]"
+            className="relative flex h-full flex-col rounded-sm border-2 border-border border-t-4 border-t-foreground bg-card shadow-sm transition-colors duration-150 hover:border-foreground"
           >
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 transition-opacity duration-500 group-hover/step:opacity-100"
-            />
             <CardHeader className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="font-mono text-xs tracking-[0.18em] text-muted-foreground">
+                <span className="font-mono text-xs tracking-[0.12em] text-muted-foreground">
                   {step}
                 </span>
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/12 text-primary transition-colors duration-300 group-hover/step:border-primary/50 group-hover/step:bg-primary/20">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-sm border-2 border-border bg-muted text-foreground">
                   <Icon className="h-4.5 w-4.5" aria-hidden="true" />
                 </span>
               </div>
               <div className="space-y-2">
-                <CardTitle className="text-lg font-semibold tracking-tight">
+                <CardTitle className="text-lg font-bold tracking-tight text-foreground">
                   {name}
                 </CardTitle>
                 <p className="text-sm leading-relaxed text-muted-foreground">
@@ -105,7 +101,7 @@ export function ProcessSection() {
                   <li key={detail} className="flex gap-2">
                     <span
                       aria-hidden="true"
-                      className="mt-2 h-1 w-1 flex-none rounded-full bg-primary/60"
+                      className="mt-2 h-1 w-1 flex-none rounded-full bg-foreground"
                     />
                     <span>{detail}</span>
                   </li>

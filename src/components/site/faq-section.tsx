@@ -63,7 +63,7 @@ const FAQ_ITEMS: readonly FaqItem[] = [
         </p>
         <p>
           동일한 워크플로우 위에서 여러 작업이 병렬로 진행되더라도 결과물이 한 사람이 만든 듯한
-          밀도를 유지하도록 설계되어 있습니다. 진주 정보통신개발의 모든 프로젝트가 이 하네스 위에서
+          밀도를 유지하도록 설계되어 있습니다. 진주 정보통신의 모든 프로젝트가 이 하네스 위에서
           돌아갑니다.
         </p>
       </>
@@ -131,28 +131,24 @@ export function FaqSection() {
       id="faq"
       eyebrow="FAQ"
       title="자주 묻는 질문"
-      lead="외주 · 협업 · 자체 서비스 · 채용까지, 진주 정보통신개발에 자주 들어오는 질문을 모았습니다. 더 궁금한 내용은 Contact 폼으로 편하게 보내주세요."
+      lead="외주 · 협업 · 자체 서비스 · 채용까지, 진주 정보통신에 자주 들어오는 질문을 모았습니다. 더 궁금한 내용은 Contact 폼으로 편하게 보내주세요."
       align="center"
     >
       <div className="mx-auto w-full max-w-3xl">
-        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"
-          />
+        <div className="relative overflow-hidden rounded-sm border-2 border-border bg-card shadow-sm">
           <Accordion
             type="single"
             collapsible
             defaultValue={FAQ_ITEMS[0]?.id}
-            className="divide-y divide-white/5"
+            className="divide-y-2 divide-border"
           >
             {FAQ_ITEMS.map(({ id, question, answer }) => (
               <AccordionItem
                 key={id}
                 value={id}
-                className="group/faq border-b-0 px-5 sm:px-7 transition-colors duration-300 hover:bg-white/[0.02] data-[state=open]:bg-white/[0.025]"
+                className="border-b-0 px-5 sm:px-7 transition-colors duration-150 hover:bg-muted data-[state=open]:bg-muted"
               >
-                <AccordionTrigger className="py-5 text-base font-semibold tracking-tight text-foreground hover:no-underline sm:text-lg [&>svg]:text-primary/70 [&>svg]:transition-colors group-hover/faq:[&>svg]:text-primary">
+                <AccordionTrigger className="py-5 text-base font-bold tracking-tight text-foreground hover:no-underline sm:text-lg [&>svg]:text-foreground">
                   {question}
                 </AccordionTrigger>
                 <AccordionContent className="pb-6 text-sm leading-relaxed text-muted-foreground sm:text-[15px]">

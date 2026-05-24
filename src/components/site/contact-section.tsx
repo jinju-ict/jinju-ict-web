@@ -11,7 +11,9 @@ export function ContactSection() {
       align="center"
     >
       <div className="mx-auto max-w-2xl">
-        <ContactForm />
+        <div className="rounded-sm border-2 border-border bg-card p-6 shadow-sm sm:p-8">
+          <ContactForm />
+        </div>
       </div>
     </Section>
   );

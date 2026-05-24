@@ -80,18 +80,14 @@ export function CareersSection() {
         {POSITIONS.map(({ slug, icon: Icon, role, oneLiner, looking, doing, environment }) => (
           <Card
             key={slug}
-            className="group/career relative flex h-full flex-col overflow-hidden border-border/60 bg-card/40 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-border hover:bg-card/70 hover:shadow-xl hover:shadow-primary/5"
+            className="relative flex h-full flex-col rounded-sm border-2 border-border bg-card shadow-sm transition-colors duration-150 hover:border-foreground"
           >
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full bg-gradient-to-br from-primary/20 to-accent/0 opacity-0 blur-3xl transition-opacity duration-500 group-hover/career:opacity-100"
-            />
             <CardHeader className="space-y-4">
-              <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border/60 bg-background/60 text-primary transition-colors duration-300 group-hover/career:border-primary/40 group-hover/career:text-accent">
+              <div className="inline-flex h-11 w-11 items-center justify-center rounded-sm border-2 border-border bg-muted text-foreground">
                 <Icon className="h-5 w-5" aria-hidden="true" />
               </div>
               <div className="space-y-2">
-                <CardTitle className="text-xl font-semibold tracking-tight">
+                <CardTitle className="text-xl font-bold tracking-tight text-foreground">
                   {role}
                 </CardTitle>
                 <p className="text-sm leading-relaxed text-muted-foreground">
@@ -102,19 +98,19 @@ export function CareersSection() {
             <CardContent className="flex flex-1 flex-col gap-4">
               <ul className="space-y-3 text-sm leading-relaxed">
                 <li className="flex flex-col gap-1">
-                  <span className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-primary">
+                  <span className="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-foreground">
                     찾는 분
                   </span>
                   <span className="text-muted-foreground">{looking}</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <span className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-primary">
+                  <span className="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-foreground">
                     함께하는 일
                   </span>
                   <span className="text-muted-foreground">{doing}</span>
                 </li>
                 <li className="flex flex-col gap-1">
-                  <span className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-primary">
+                  <span className="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-foreground">
                     환경
                   </span>
                   <span className="text-muted-foreground">{environment}</span>
@@ -125,12 +121,12 @@ export function CareersSection() {
                   asChild
                   variant="ghost"
                   size="sm"
-                  className="-ml-2 text-primary hover:bg-primary/10 hover:text-primary"
+                  className="-ml-2 rounded-sm text-foreground hover:bg-muted hover:text-foreground"
                 >
                   <Link href="#contact" aria-label={`${role} 지원하기`}>
                     지원하기
                     <ArrowRight
-                      className="ml-1 h-3.5 w-3.5 transition-transform duration-300 group-hover/career:translate-x-0.5"
+                      className="ml-1 h-3.5 w-3.5"
                       aria-hidden="true"
                     />
                   </Link>
@@ -142,25 +138,17 @@ export function CareersSection() {
       </div>
 
       <div className="mt-12 sm:mt-16">
-        <Card className="group/open relative overflow-hidden border-border/60 bg-card/40 backdrop-blur-sm transition-all duration-300 hover:border-border hover:bg-card/60">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/[0.06] via-transparent to-accent/[0.04] opacity-0 transition-opacity duration-500 group-hover/open:opacity-100"
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-gradient-to-br from-primary/15 to-transparent blur-3xl"
-          />
-          <CardContent className="relative flex flex-col gap-6 px-6 py-8 sm:px-10 sm:py-10 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+        <Card className="relative rounded-sm border-2 border-border bg-card shadow-sm transition-colors duration-150 hover:border-foreground">
+          <CardContent className="flex flex-col gap-6 px-6 py-8 sm:px-10 sm:py-10 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
             <div className="flex items-start gap-4 lg:flex-1">
-              <div className="hidden h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-border/60 bg-background/60 text-primary sm:inline-flex">
+              <div className="hidden h-12 w-12 shrink-0 items-center justify-center rounded-sm border-2 border-border bg-muted text-foreground sm:inline-flex">
                 <Compass className="h-5 w-5" aria-hidden="true" />
               </div>
               <div className="space-y-2">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-foreground">
                   Open Application
                 </p>
-                <h3 className="text-balance text-xl font-semibold tracking-tight sm:text-2xl">
+                <h3 className="text-balance text-xl font-bold tracking-tight text-foreground sm:text-2xl">
                   정해진 포지션 외에도 의미 있는 합류는 모두 검토합니다
                 </h3>
                 <p className="text-balance text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -169,7 +157,11 @@ export function CareersSection() {
               </div>
             </div>
             <div className="shrink-0">
-              <Button asChild size="lg" className="h-11 px-5 text-sm">
+              <Button
+                asChild
+                size="lg"
+                className="h-11 rounded-sm border-2 border-primary bg-primary px-5 text-sm text-primary-foreground hover:border-foreground hover:bg-foreground"
+              >
                 <Link href="#contact">
                   한 줄 자기소개 보내기
                   <ArrowRight className="ml-1.5 h-4 w-4" aria-hidden="true" />

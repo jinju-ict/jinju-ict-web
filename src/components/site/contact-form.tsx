@@ -30,10 +30,10 @@ function Field({
 }: FieldProps) {
   return (
     <div className="space-y-2">
-      <Label htmlFor={htmlFor} className="text-sm font-medium">
+      <Label htmlFor={htmlFor} className="text-sm font-semibold text-foreground">
         {label}
         {required && (
-          <span aria-hidden="true" className="ml-1 text-primary">
+          <span aria-hidden="true" className="ml-1 text-foreground">
             *
           </span>
         )}
@@ -115,7 +115,12 @@ export function ContactForm() {
           error={errors.name?.message}
           required
         >
-          <Input id="name" placeholder="홍길동" {...register("name")} />
+          <Input
+            id="name"
+            placeholder="홍길동"
+            className="rounded-sm border-2 border-border bg-card focus-visible:border-foreground focus-visible:ring-0"
+            {...register("name")}
+          />
         </Field>
         <Field
           label="회사 (선택)"
@@ -124,7 +129,8 @@ export function ContactForm() {
         >
           <Input
             id="company"
-            placeholder="진주 정보통신개발"
+            placeholder="진주 정보통신"
+            className="rounded-sm border-2 border-border bg-card focus-visible:border-foreground focus-visible:ring-0"
             {...register("company")}
           />
         </Field>
@@ -140,6 +146,7 @@ export function ContactForm() {
         <Input
           id="contact"
           placeholder="email@example.com"
+          className="rounded-sm border-2 border-border bg-card focus-visible:border-foreground focus-visible:ring-0"
           {...register("contact")}
         />
       </Field>
@@ -155,6 +162,7 @@ export function ContactForm() {
           id="message"
           rows={7}
           placeholder="안녕하세요, ..."
+          className="rounded-sm border-2 border-border bg-card focus-visible:border-foreground focus-visible:ring-0"
           {...register("message")}
         />
       </Field>
@@ -167,7 +175,7 @@ export function ContactForm() {
           type="submit"
           size="lg"
           disabled={isSubmitting}
-          className="h-12 rounded-full px-6 text-base shadow-lg shadow-primary/20 transition-all hover:shadow-xl hover:shadow-primary/30 disabled:opacity-70"
+          className="h-12 rounded-sm border-2 border-primary bg-primary px-6 text-base text-primary-foreground shadow-sm transition-colors duration-150 hover:border-foreground hover:bg-foreground disabled:opacity-70"
         >
           {isSubmitting ? (
             <>
