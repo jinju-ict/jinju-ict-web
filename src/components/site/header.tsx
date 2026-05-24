@@ -6,10 +6,12 @@ import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
   { href: "#about", label: "소개" },
+  { href: "#process", label: "Process" },
   { href: "#team", label: "팀" },
   { href: "#portfolio", label: "포트폴리오" },
   { href: "#saju", label: "사주" },
-  { href: "#contact", label: "문의" },
+  { href: "#careers", label: "Careers" },
+  { href: "#faq", label: "FAQ" },
 ] as const;
 
 export function SiteHeader() {
