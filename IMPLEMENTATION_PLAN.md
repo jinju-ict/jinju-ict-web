@@ -46,8 +46,8 @@
 ### Phase 5 — 콘텐츠: 사주 서비스 입구
 
 - [x] saju 폴더 탐색 + cp — `public/saju/hero.png` (saju/image.png, 911x1447 세로 모바일 비율 — mockup 에 적합). `src/lib/saju.ts` 신규: SAJU 객체 (appName "사주" 가제 / tagline "외계인 관찰자가 들려주는 친근한 K-사주" / description (B612 컨셉) / status="준비중" / platforms iOS·Android / features 4종 (사주·운세·상담·궁합)). appNameNote 로 동결 후 갱신 필요 자리 명시.
-- [ ] 사주 섹션 컴포넌트 — 앱 소개 카피 + 핵심 기능 3개 + "Coming Soon" CTA (다운로드 링크는 placeholder, 출시 알림 받기 mailto: 또는 폼 연동)
-- [ ] 사주 앱 모바일 mockup 스타일 시각화 (프레임 + 스크린샷 또는 그라데이션 placeholder)
+- [x] 사주 섹션 컴포넌트 — `src/components/site/saju-section.tsx` (id="saju", align="center") 신규. eyebrow "자체 서비스 · 준비중" + title SAJU.tagline + lead SAJU.description + 2-col grid (lg) — 좌측 4 feature 카드 (번호 chip + 제목 + 설명) + CTA "출시 알림 신청" (#contact 앵커, Sparkles+ArrowRight) + 플랫폼 line (Apple iOS · Smartphone Android · status chip).
+- [x] 사주 앱 모바일 mockup — 우측 컬럼: 9:19 aspect 디바이스 프레임 (rounded-[2.5rem] + border + bg-card + shadow primary glow), 노치(dynamic island, 24x5 rounded-full bg-background), 내부 스크린 (rounded-[2rem] + Image fill object-contain), 뒤에 -inset-16 그라데이션 backdrop glow, 우하단 회전 "Coming Soon" floating chip. 호버 -rotate-1 + scale-1.02.
 
 ### Phase 6 — 콘텐츠: 협업·문의 폼
 
