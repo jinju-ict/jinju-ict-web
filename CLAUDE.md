@@ -74,7 +74,7 @@ ralph 는 매 iteration 끝에서 "Nova 와 동등하거나 그 이상의 시각
 | 항목 | 출처 / 처리 |
 |------|------------|
 | 협업·문의 수신 이메일 | `dlwlstjq410@gmail.com` (확정) |
-| 폼 전송 인프라 | 첫 iteration 에서 ralph 가 결정 (Vercel + Resend / Formspree / mailto fallback 중 1택 — 정성 + 무료/저비용 우선) |
+| 폼 전송 인프라 | **Resend** 채택 (무료 3000/월, Vercel 1-clic 통합). env: `RESEND_API_KEY` / `CONTACT_INBOX_TO` / `CONTACT_INBOX_FROM`. 도메인 검증 전 발신 fallback `onboarding@resend.dev` |
 | 사주 앱 자산 (스크린샷 / 슬로건 / 기능) | `/Users/goldenplanet/jinsup_space/saju` 폴더 자동 탐색 후 `public/saju/` 로 cp |
 | 사주 앱 다운로드 링크 | 미배포 → "Coming Soon" CTA, URL 자리만 마련 |
 | 포트폴리오 스크린샷 / 로고 / 아이콘 | 각 프로젝트 폴더에서 ralph 자동 수집 후 `public/portfolio/` 로 cp. 없으면 자동 합성 (placeholder + 색감 토큰) |
