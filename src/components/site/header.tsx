@@ -5,12 +5,12 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
-  { href: "#about", label: "소개" },
-  { href: "#process", label: "방식" },
-  { href: "#team", label: "팀" },
-  { href: "#portfolio", label: "솔루션" },
-  { href: "#saju", label: "사주" },
-  { href: "#careers", label: "채용" },
+  { href: "/#about", label: "소개" },
+  { href: "/#process", label: "방식" },
+  { href: "/#team", label: "팀" },
+  { href: "/#portfolio", label: "솔루션" },
+  { href: "/#saju", label: "사주" },
+  { href: "/#careers", label: "채용" },
 ] as const;
 
 export function SiteHeader() {
@@ -34,7 +34,7 @@ export function SiteHeader() {
     >
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6 sm:px-8">
         <Link
-          href="#top"
+          href="/"
           aria-label="진주 정보통신 홈"
           className="group flex items-center gap-2.5"
         >
@@ -64,12 +64,12 @@ export function SiteHeader() {
           </ul>
         </nav>
 
-        <a
-          href="#contact"
+        <Link
+          href="/#contact"
           className="hidden rounded-sm border-2 border-foreground bg-background px-3.5 py-1.5 text-sm font-semibold text-foreground transition-colors duration-150 hover:bg-foreground hover:text-background sm:inline-flex"
         >
           문의하기
-        </a>
+        </Link>
       </div>
     </header>
   );
