@@ -45,7 +45,7 @@
 
 ### Phase 5 — 콘텐츠: 사주 서비스 입구
 
-- [ ] `/Users/goldenplanet/jinsup_space/saju` 폴더 탐색 후 사주 앱 콘텐츠 (슬로건/기능 소개/스크린샷/image.png 등) 를 `public/saju/` + `lib/saju.ts` 로 cp·정리
+- [x] saju 폴더 탐색 + cp — `public/saju/hero.png` (saju/image.png, 911x1447 세로 모바일 비율 — mockup 에 적합). `src/lib/saju.ts` 신규: SAJU 객체 (appName "사주" 가제 / tagline "외계인 관찰자가 들려주는 친근한 K-사주" / description (B612 컨셉) / status="준비중" / platforms iOS·Android / features 4종 (사주·운세·상담·궁합)). appNameNote 로 동결 후 갱신 필요 자리 명시.
 - [ ] 사주 섹션 컴포넌트 — 앱 소개 카피 + 핵심 기능 3개 + "Coming Soon" CTA (다운로드 링크는 placeholder, 출시 알림 받기 mailto: 또는 폼 연동)
 - [ ] 사주 앱 모바일 mockup 스타일 시각화 (프레임 + 스크린샷 또는 그라데이션 placeholder)
 
