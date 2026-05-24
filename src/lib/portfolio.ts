@@ -15,6 +15,16 @@
 
 export type PortfolioCategory = "owned" | "client" | "internal";
 
+export type ProjectIconName =
+  | "MessageCircleHeart"
+  | "Video"
+  | "Scale"
+  | "Smartphone"
+  | "Briefcase"
+  | "Newspaper"
+  | "Workflow"
+  | "ShieldCheck";
+
 export type Project = {
   slug: string;
   title: string;
@@ -26,8 +36,10 @@ export type Project = {
   features: readonly string[];
   /** 카드 썸네일 그라데이션 — 자산 미수집 상태에서도 정성 유지 */
   accent: string;
+  /** lucide-react 아이콘 이름 — placeholder 렌더링에 사용 (PortfolioCard 의 ICON_MAP 참조) */
+  icon: ProjectIconName;
   comingSoon?: boolean;
-  /** 자산 자동 수집 스크립트가 채울 자리 (다음 task) */
+  /** 자산 자동 수집 스크립트가 채울 자리 */
   thumbnail?: string;
 };
 
@@ -47,6 +59,7 @@ export const PROJECTS: readonly Project[] = [
       "사람처럼 짧게 끊어 보내는 카톡 스타일 분할 발화",
     ],
     accent: "from-fuchsia-500/45 via-purple-500/30 to-violet-500/40",
+    icon: "MessageCircleHeart",
     comingSoon: true,
   },
   {
@@ -72,6 +85,7 @@ export const PROJECTS: readonly Project[] = [
       "무료 tier cron 우회로 운영비 절감",
     ],
     accent: "from-cyan-400/45 via-sky-500/30 to-blue-500/40",
+    icon: "Video",
   },
   {
     slug: "king-of-law",
@@ -88,6 +102,7 @@ export const PROJECTS: readonly Project[] = [
       "정성 수준의 시각적 임팩트와 직관적 상호작용",
     ],
     accent: "from-amber-400/45 via-orange-500/30 to-rose-500/40",
+    icon: "Scale",
   },
   {
     slug: "andy",
@@ -112,6 +127,7 @@ export const PROJECTS: readonly Project[] = [
       "권한 계층 L1(표준) → L2(접근성) → L3(ADB) 점진 확장",
     ],
     accent: "from-emerald-400/45 via-teal-500/30 to-cyan-500/40",
+    icon: "Smartphone",
   },
   {
     slug: "office-agent",
@@ -135,6 +151,7 @@ export const PROJECTS: readonly Project[] = [
       "스트리밍 Markdown 렌더링과 파일 카드 UX",
     ],
     accent: "from-slate-400/40 via-indigo-500/30 to-blue-600/40",
+    icon: "Briefcase",
   },
   {
     slug: "ai-news-daily",
@@ -159,6 +176,7 @@ export const PROJECTS: readonly Project[] = [
       "심플 admin — 자동 스크래핑 토글 / 구독자 관리",
     ],
     accent: "from-rose-400/45 via-pink-500/30 to-fuchsia-500/40",
+    icon: "Newspaper",
   },
   {
     slug: "dev-harness",
@@ -175,6 +193,7 @@ export const PROJECTS: readonly Project[] = [
       "기존 프로젝트 위에 overlay 설치 모드 지원",
     ],
     accent: "from-violet-500/45 via-purple-500/30 to-indigo-500/40",
+    icon: "Workflow",
   },
   {
     slug: "dev-safety",
@@ -196,6 +215,7 @@ export const PROJECTS: readonly Project[] = [
       "서브에이전트 wave-parallel — 독립 task 동시 처리",
     ],
     accent: "from-primary/45 via-accent/30 to-fuchsia-500/40",
+    icon: "ShieldCheck",
   },
 ] as const;
 

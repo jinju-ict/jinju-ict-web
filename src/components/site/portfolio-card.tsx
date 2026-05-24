@@ -1,4 +1,15 @@
 import Image from "next/image";
+import {
+  Briefcase,
+  MessageCircleHeart,
+  Newspaper,
+  Scale,
+  ShieldCheck,
+  Smartphone,
+  Video,
+  Workflow,
+  type LucideIcon,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -7,8 +18,19 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import type { Project } from "@/lib/portfolio";
+import type { Project, ProjectIconName } from "@/lib/portfolio";
 import { PORTFOLIO_ASSETS } from "@/lib/portfolio-assets";
+
+const ICON_MAP: Record<ProjectIconName, LucideIcon> = {
+  MessageCircleHeart,
+  Video,
+  Scale,
+  Smartphone,
+  Briefcase,
+  Newspaper,
+  Workflow,
+  ShieldCheck,
+};
 
 interface PortfolioCardProps {
   project: Project;
@@ -20,6 +42,7 @@ export function PortfolioCard({ project }: PortfolioCardProps) {
   const visibleStack = project.stack.slice(0, 5);
   const overflowStack = project.stack.length - visibleStack.length;
   const thumbnailSrc = project.thumbnail ?? PORTFOLIO_ASSETS[project.slug];
+  const Icon = ICON_MAP[project.icon];
 
   return (
     <Card className="group/proj relative flex h-full flex-col overflow-hidden border-border/60 bg-card/40 p-0 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-border hover:bg-card/70 hover:shadow-xl hover:shadow-primary/5">
@@ -59,11 +82,36 @@ export function PortfolioCard({ project }: PortfolioCardProps) {
             />
           </div>
         ) : (
-          <div className="absolute inset-0 z-10 flex items-center justify-center">
-            <span className="select-none text-5xl font-bold tracking-tight text-white/95 mix-blend-overlay drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)]">
-              {initials}
-            </span>
-          </div>
+          <>
+            {/* Floating dots — placeholder 시각 디테일 */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute top-[18%] left-[14%] h-1.5 w-1.5 rounded-full bg-white/60 blur-[1px]"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute top-[28%] right-[18%] h-2 w-2 rounded-full bg-white/40 blur-[2px]"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-[22%] left-[22%] h-2.5 w-2.5 rounded-full bg-white/35 blur-[3px]"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute bottom-[18%] right-[14%] h-1 w-1 rounded-full bg-white/70"
+            />
+            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/20 bg-white/10 text-white/95 backdrop-blur-[3px] transition-transform duration-500 group-hover/proj:scale-110 group-hover/proj:rotate-[-4deg]">
+                <Icon
+                  aria-hidden="true"
+                  className="h-7 w-7 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]"
+                />
+              </div>
+              <span className="select-none text-[10.5px] font-semibold uppercase tracking-[0.22em] text-white/80 mix-blend-overlay">
+                {initials}
+              </span>
+            </div>
+          </>
         )}
 
         {project.comingSoon && (
