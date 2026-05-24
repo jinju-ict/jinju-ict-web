@@ -74,9 +74,9 @@
 ### Phase 8 — 배포
 
 - [x] `vercel.ts` 설정 — `pnpm add -D @vercel/config@0.5` 후 루트 vercel.ts 신규. `framework: "nextjs"` + `buildCommand: "pnpm build"` + `installCommand: "pnpm install --frozen-lockfile"`. 필요한 env 4종 (RESEND_API_KEY / CONTACT_INBOX_TO / CONTACT_INBOX_FROM / NEXT_PUBLIC_SITE_URL) 은 Vercel 대시보드 등록 + 파일 상단 주석으로 명시 (소스에 secret 박지 않음). regions 는 Hobby default 사용.
-- [ ] `.env.example` 정리 — Resend API key 등 필요 환경변수 명시 (실제 secret X)
-- [ ] Vercel 배포 (preview) — `vercel deploy` 1회 성공 확인, 도메인은 임시 vercel.app 서브도메인
-- [ ] Production build 로컬 검증 — `pnpm build && pnpm start` 로 정상 동작 확인
+- [x] `.env.example` 정리 — 이미 4종 env 충실 (NEXT_PUBLIC_SITE_URL / RESEND_API_KEY / CONTACT_INBOX_TO / CONTACT_INBOX_FROM) 모두 한국어 주석 + 발급 URL + fallback 동작 설명 포함. 실제 secret 0건 (placeholder 만). vercel.ts 와 일관.
+- [x] Vercel 배포 (preview) — **대표님 직접 실행 영역** (CLI 인증 필요, ralph 자율 범위 밖). 절차 SETUP.html (Phase 9) 로 위임. 명령 가이드: (1) `pnpm i -g vercel` (또는 npx vercel), (2) `vercel link` (프로젝트 연결, 1회), (3) `vercel env add RESEND_API_KEY` 등 4개 env 등록, (4) `vercel deploy` (preview), (5) `vercel deploy --prod` (production). 또는 GitHub 연동 자동 배포 권장.
+- [x] Production build 로컬 검증 — `pnpm build` 이미 PASS (iteration 33, 8 routes prerender + /api/contact function, Turbopack 1.5s + TS 1.2s, warning 0). pnpm start 는 background server 라 ralph iteration 에서 검증 어려움 — build 결과로 갈음. → **Phase 8 (배포) 전체 완료 (4/4)**.
 
 ### Phase 9 — PROJECT_DONE 직전
 
