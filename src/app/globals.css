@@ -3,81 +3,57 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ---------- Design tokens — 진주 ICT (다크 우선, 보라/남색 primary, 퍼플 accent) ---------- */
+/* ---------- Design tokens — 진주 정보통신개발 (Stripe-style 묵직 미드나잇 다크) ---------- */
+/* T1 major-rework: light/dark 동일 톤 — 강제 다크 사이트. shadcn 호환 위해 :root 와 .dark 모두 정의 */
 
-:root {
-  --radius: 0.65rem;
-
-  /* Light fallback (강제 다크 사이트이므로 실제로는 쓰이지 않음 — shadcn 호환을 위해 정의) */
-  --background: oklch(0.99 0.002 270);
-  --foreground: oklch(0.18 0.015 270);
-
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.015 270);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.015 270);
-
-  --primary: oklch(0.5 0.22 285);
-  --primary-foreground: oklch(0.985 0 0);
-
-  --secondary: oklch(0.96 0.01 270);
-  --secondary-foreground: oklch(0.2 0.015 270);
-
-  --muted: oklch(0.96 0.005 270);
-  --muted-foreground: oklch(0.5 0.015 270);
-
-  --accent: oklch(0.65 0.22 320);
-  --accent-foreground: oklch(0.985 0 0);
-
-  --destructive: oklch(0.6 0.24 25);
-  --destructive-foreground: oklch(0.985 0 0);
-
-  --border: oklch(0.9 0.008 270);
-  --input: oklch(0.92 0.008 270);
-  --ring: oklch(0.5 0.22 285);
-
-  --chart-1: oklch(0.65 0.22 285);
-  --chart-2: oklch(0.7 0.2 320);
-  --chart-3: oklch(0.6 0.18 230);
-  --chart-4: oklch(0.75 0.18 195);
-  --chart-5: oklch(0.55 0.2 265);
-}
-
+:root,
 .dark {
-  /* 진주 ICT 다크 톤 — 검정에 보라 hint, primary 와 accent 가 살아있도록 채도 ↑ */
-  --background: oklch(0.13 0.015 275);
-  --foreground: oklch(0.97 0.003 270);
+  /* Stripe-style 묵직한 미드나잇 다크 */
+  --background: oklch(0.14 0.015 260);          /* #0B0D14 deep midnight */
+  --foreground: oklch(0.93 0.005 260);          /* #E7E9EE */
+  --card: oklch(0.18 0.018 260);                /* #11141B */
+  --card-foreground: oklch(0.93 0.005 260);
+  --popover: oklch(0.18 0.018 260);
+  --popover-foreground: oklch(0.93 0.005 260);
 
-  --card: oklch(0.17 0.018 275);
-  --card-foreground: oklch(0.97 0.003 270);
+  --primary: oklch(0.55 0.20 270);              /* #4F5BD5 절제된 인디고 */
+  --primary-foreground: oklch(0.98 0 0);
+  --accent: oklch(0.55 0.18 285);               /* #6B5BD8 약한 보라 */
+  --accent-foreground: oklch(0.98 0 0);
 
-  --popover: oklch(0.16 0.018 275);
-  --popover-foreground: oklch(0.97 0.003 270);
+  /* secondary — muted 와 동일 표면 톤으로 정렬 (shadcn 호환) */
+  --secondary: oklch(0.22 0.015 260);
+  --secondary-foreground: oklch(0.93 0.005 260);
 
-  --primary: oklch(0.62 0.22 285);
-  --primary-foreground: oklch(0.99 0 0);
+  --muted: oklch(0.22 0.015 260);               /* #1A1D27 */
+  --muted-foreground: oklch(0.68 0.01 260);     /* #9CA3AF */
 
-  --secondary: oklch(0.22 0.018 275);
-  --secondary-foreground: oklch(0.97 0.003 270);
+  --border: oklch(0.25 0.012 260);              /* #1F242E */
+  --input: oklch(0.22 0.015 260);
+  --ring: oklch(0.55 0.20 270);
 
-  --muted: oklch(0.2 0.015 275);
-  --muted-foreground: oklch(0.7 0.025 280);
+  /* destructive 유지 */
+  --destructive: oklch(0.62 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
 
-  --accent: oklch(0.7 0.2 320);
-  --accent-foreground: oklch(0.99 0 0);
+  /* sidebar 토큰 (shadcn 기본) — 메인 톤과 동기화 */
+  --sidebar: oklch(0.16 0.015 260);
+  --sidebar-foreground: oklch(0.93 0.005 260);
+  --sidebar-primary: oklch(0.55 0.20 270);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.22 0.015 260);
+  --sidebar-accent-foreground: oklch(0.93 0.005 260);
+  --sidebar-border: oklch(0.25 0.012 260);
+  --sidebar-ring: oklch(0.55 0.20 270);
 
-  --destructive: oklch(0.65 0.24 25);
-  --destructive-foreground: oklch(0.99 0 0);
+  /* chart 토큰 — 인디고/보라 계열로 통일 (Stripe 톤 일관성) */
+  --chart-1: oklch(0.55 0.20 270);
+  --chart-2: oklch(0.55 0.18 285);
+  --chart-3: oklch(0.60 0.15 250);
+  --chart-4: oklch(0.65 0.12 230);
+  --chart-5: oklch(0.50 0.18 290);
 
-  --border: oklch(0.27 0.018 275);
-  --input: oklch(0.24 0.018 275);
-  --ring: oklch(0.62 0.22 285);
-
-  --chart-1: oklch(0.65 0.22 285);
-  --chart-2: oklch(0.7 0.2 320);
-  --chart-3: oklch(0.6 0.18 230);
-  --chart-4: oklch(0.75 0.18 195);
-  --chart-5: oklch(0.55 0.2 265);
+  --radius: 0.625rem;
 }
 
 /* ---------- Theme bridge (Tailwind 4 inline tokens) ---------- */
@@ -107,6 +83,14 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -135,7 +119,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
-  /* Fixed ambient gradient — 페이지 전체에 subtle 톤 일관성 (각 섹션의 자체 blob 위에 가산) */
+  /* Fixed ambient gradient — 절제된 단일 radial + 미세 grid mask (보라 blob 2개 → 1개로 축소) */
   body::before {
     content: "";
     position: fixed;
@@ -143,12 +127,25 @@
     pointer-events: none;
     z-index: -1;
     background:
-      radial-gradient(ellipse 70% 45% at 50% -5%, color-mix(in oklch, var(--primary) 9%, transparent), transparent 65%),
-      radial-gradient(ellipse 55% 35% at 12% 105%, color-mix(in oklch, var(--accent) 6%, transparent), transparent 65%);
+      radial-gradient(ellipse 65% 40% at 50% -5%, color-mix(in oklch, var(--primary) 7%, transparent), transparent 60%);
+  }
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image:
+      linear-gradient(to right, color-mix(in oklch, var(--foreground) 3%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklch, var(--foreground) 3%, transparent) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 75%);
+    opacity: 0.5;
   }
   /* Selection */
   ::selection {
-    background: oklch(0.62 0.22 285 / 0.35);
+    background: oklch(0.55 0.20 270 / 0.35);
     color: var(--foreground);
   }
   /* Focus ring 강화 (a11y) */
@@ -158,7 +155,7 @@
   }
 }
 
-/* ---------- Motion utilities (native CSS — framer-motion 도입 전) ---------- */
+/* ---------- Motion utilities (native CSS — 절제된 진폭, fade-in-up 유지) ---------- */
 
 @keyframes fade-in-up {
   from {
@@ -171,35 +168,38 @@
   }
 }
 
+/* float-slow — 진폭 50% 축소 (4% → 2%, scale 1.06 → 1.03) */
 @keyframes float-slow {
   0%,
   100% {
     transform: translate3d(0, 0, 0) scale(1);
   }
   50% {
-    transform: translate3d(4%, -3%, 0) scale(1.06);
+    transform: translate3d(2%, -1.5%, 0) scale(1.03);
   }
 }
 
+/* float-reverse — 진폭 50% 축소 */
 @keyframes float-reverse {
   0%,
   100% {
     transform: translate3d(0, 0, 0) scale(1);
   }
   50% {
-    transform: translate3d(-4%, 4%, 0) scale(0.95);
+    transform: translate3d(-2%, 2%, 0) scale(0.975);
   }
 }
 
+/* pulse-soft — 진폭 50% 축소 (opacity range, scale 1.12 → 1.06) */
 @keyframes pulse-soft {
   0%,
   100% {
-    opacity: 0.85;
+    opacity: 0.92;
     transform: scale(1);
   }
   50% {
     opacity: 1;
-    transform: scale(1.12);
+    transform: scale(1.06);
   }
 }
 
@@ -208,15 +208,33 @@
 }
 
 @utility animate-float-slow {
-  animation: float-slow 14s ease-in-out infinite;
+  animation: float-slow 18s ease-in-out infinite;
 }
 
 @utility animate-float-reverse {
-  animation: float-reverse 18s ease-in-out infinite;
+  animation: float-reverse 22s ease-in-out infinite;
 }
 
 @utility animate-pulse-soft {
-  animation: pulse-soft 3s ease-in-out infinite;
+  animation: pulse-soft 4s ease-in-out infinite;
+}
+
+/* ---------- Glass surface utilities (T1 디자인 원칙 — 글래스 카드 표준) ---------- */
+
+@utility glass-card {
+  background-color: color-mix(in oklch, white 3%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid color-mix(in oklch, white 10%, transparent);
+}
+
+@utility surface-gradient {
+  background-image: linear-gradient(
+    to bottom right,
+    oklch(0.18 0.018 260),
+    oklch(0.16 0.015 260),
+    oklch(0.14 0.015 260)
+  );
 }
 
 @media (prefers-reduced-motion: no-preference) {
