@@ -13,7 +13,7 @@
 
 ### Phase 1 — 인프라 (scaffold + 검증 활성화)
 
-- [ ] Next.js 15 App Router + TypeScript + Tailwind CSS 프로젝트 scaffold (`pnpm create next-app`, src/ 구조, App Router, ESLint, Tailwind, import alias `@/*`)
+- [x] Next.js 16 App Router + TypeScript + Tailwind CSS 프로젝트 scaffold (`pnpm create next-app`, src/ 구조, App Router, ESLint, Tailwind, import alias `@/*`) — *Next.js 16.2.6 / React 19.2.4 / Tailwind 4.3.0 / TypeScript 5.9.3 / ESLint 9 flat. pnpm-workspace.yaml 의 `allowBuilds` 로 sharp/unrs-resolver 빌드 승인. typecheck + lint exit 0 확인.*
 - [ ] AGENTS.md 채움 — Node 20+ / pnpm 9+ / 검증 명령(lint, typecheck, build) 활성화 + 로컬에서 1회 exit 0 확인
 - [ ] shadcn/ui 초기화 (`pnpm dlx shadcn@latest init`) + 기본 컴포넌트 설치 (Button, Card, Input, Textarea, Label, Toast/Sonner, Separator, Badge)
 - [ ] Tailwind 디자인 토큰 정의 — Nova 톤 참고 (다크 우선, primary 보라/남색, accent 퍼플), CSS variables 로 운영, globals.css 정리

@@ -89,11 +89,11 @@ ralph 는 매 iteration 끝에서 "Nova 와 동등하거나 그 이상의 시각
 
 ### 8. 기술 스택
 
-**Next.js 15 App Router + TypeScript + Tailwind CSS + shadcn/ui** 채택.
+**Next.js 16 App Router + TypeScript + Tailwind CSS + shadcn/ui** 채택.
 
 | 영역 | 채택 | 이유 |
 |------|------|------|
-| 프레임워크 | Next.js 15 (App Router) | Nova 가 Next.js 15 App Router 라 동일 정성 재현에 가장 가까운 출발점. Vercel 1-clic 배포. |
+| 프레임워크 | Next.js 16 (App Router) | Nova 가 Next.js 16 App Router 라 동일 정성 재현에 가장 가까운 출발점. Vercel 1-clic 배포. |
 | 언어 | TypeScript | 단일 페이지지만 컴포넌트 props 안전성 + IDE 보조 |
 | 스타일링 | Tailwind CSS | Nova 동일. 정성 디테일 빠른 반복에 유리 |
 | UI 컴포넌트 | shadcn/ui | 카드/폼/다이얼로그 등 기본 컴포넌트 빠르게. 디자인 커스터마이즈 자유 |

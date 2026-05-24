@@ -30,3 +30,21 @@ node_modules/
 
 # ralph-loop runtime state (per-machine)
 .claude/*.local.md
+
+# Next.js
+/.next/
+/out/
+/build/
+next-env.d.ts
+*.tsbuildinfo
+
+# Vercel
+.vercel
+
+# pnpm
+.pnp
+.pnp.*
+
+# misc
+*.pem
+coverage/
