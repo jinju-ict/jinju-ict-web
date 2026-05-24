@@ -8,34 +8,23 @@ export function Hero() {
       id="hero"
       className="relative flex min-h-[88vh] items-center overflow-hidden"
     >
-      {/* Background ambience — 부유하는 그라데이션 blob 2개 */}
+      {/* Background ambience — 절제된 radial 그라데이션 1개 */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 animate-float-slow"
+        className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2"
         style={{
           width: "min(1100px, 130vw)",
           height: "min(1100px, 130vw)",
           background:
-            "radial-gradient(circle at center, color-mix(in oklch, var(--primary) 22%, transparent) 0%, transparent 55%)",
-          filter: "blur(40px)",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-40 right-[-20%] animate-float-reverse"
-        style={{
-          width: "min(700px, 80vw)",
-          height: "min(700px, 80vw)",
-          background:
-            "radial-gradient(circle at center, color-mix(in oklch, var(--accent) 18%, transparent) 0%, transparent 60%)",
-          filter: "blur(40px)",
+            "radial-gradient(circle at center, color-mix(in oklch, var(--primary) 18%, transparent) 0%, transparent 58%)",
+          filter: "blur(48px)",
         }}
       />
 
       {/* Grid pattern subtle overlay (정성 디테일) */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        className="pointer-events-none absolute inset-0 opacity-[0.035]"
         style={{
           backgroundImage:
             "linear-gradient(var(--foreground) 1px, transparent 1px), linear-gradient(to right, var(--foreground) 1px, transparent 1px)",
@@ -47,35 +36,34 @@ export function Hero() {
 
       <div className="relative mx-auto w-full max-w-5xl px-6 py-32 text-center sm:px-8 sm:py-40">
         <div
-          className="inline-flex animate-fade-in-up items-center gap-2 rounded-full border border-border/60 bg-card/50 px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur-md"
+          className="inline-flex animate-fade-in-up items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.08] px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur-md"
           style={{ animationDelay: "0ms" }}
         >
           <Sparkles
-            className="h-3.5 w-3.5 animate-pulse-soft text-primary"
+            className="h-3.5 w-3.5 text-primary"
             aria-hidden="true"
           />
-          AI 정예 개발사 · 진주 ICT
+          AI 정예 개발사 · 진주 정보통신개발
         </div>
 
         <h1
-          className="mt-7 animate-fade-in-up text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl"
+          className="mt-7 animate-fade-in-up text-balance text-4xl font-semibold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
           style={{ animationDelay: "120ms" }}
         >
-          <span className="bg-gradient-to-br from-foreground via-foreground to-primary bg-clip-text text-transparent">
-            AI 가 일하는 방식
-          </span>
-          이 곧
+          AI 가 일하는 방식이 곧
           <br className="hidden sm:block" />{" "}
-          우리의 일하는 방식입니다.
+          <span className="text-primary/90">우리의 일하는 방식</span>입니다.
         </h1>
 
         <p
           className="mx-auto mt-7 max-w-2xl animate-fade-in-up text-balance text-base leading-relaxed text-muted-foreground sm:text-lg"
           style={{ animationDelay: "240ms" }}
         >
-          자체 서비스로 시작해, 협업·외주까지.
+          Claude · Gemini · Grok 등 멀티 모델을 production 으로 운영해 온 정예 팀이,
           <br className="hidden sm:block" />
-          가치 있는 무엇이든 정예의 속도로 만듭니다.
+          자체 에이전틱 워크플로우로 비전부터 배포·운영까지 단일 흐름에 묶습니다.
+          <br className="hidden sm:block" />
+          자체 서비스 라인업과 협업·외주 의뢰 모두 정성·속도·안정성을 동시에 충족합니다.
         </p>
 
         <div
@@ -101,6 +89,14 @@ export function Hero() {
             variant="outline"
             className="h-12 rounded-full px-7 text-base"
           >
+            <Link href="#portfolio">포트폴리오 보기</Link>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            variant="ghost"
+            className="h-12 rounded-full px-7 text-base"
+          >
             <Link href="#contact">프로젝트 문의</Link>
           </Button>
         </div>
@@ -114,14 +110,21 @@ export function Hero() {
               aria-hidden="true"
               className="h-1.5 w-1.5 rounded-full bg-primary"
             />
-            AI 에이전트 · AI 모델 · 백엔드 · 앱
+            Claude · Gemini production 경험
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <span
+              aria-hidden="true"
+              className="h-1.5 w-1.5 rounded-full bg-primary/70"
+            />
+            자체 에이전틱 워크플로우
           </span>
           <span className="inline-flex items-center gap-2">
             <span
               aria-hidden="true"
               className="h-1.5 w-1.5 rounded-full bg-accent"
             />
-            자체 하네스로 빠른 개발 속도
+            보안 · 운영 leveled experience
           </span>
         </div>
       </div>
