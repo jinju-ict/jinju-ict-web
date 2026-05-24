@@ -1,5 +1,5 @@
 /**
- * 포트폴리오 데이터 — `specs/portfolio-research.md` 정형화.
+ * 솔루션 데이터 — `specs/portfolio-research.md` 정형화.
  *
  * 보안 룰: 정확한 금지 단어 리스트는 `scripts/check-security.sh` 가 단일 출처.
  * 카피·메타데이터에 추상화 룰 적용:
@@ -8,7 +8,7 @@
  *   - Andy 만 상호명 노출 허용 (대표님 명시)
  *
  * 카테고리:
- *   - owned: 진주 정보통신개발 자체 서비스
+ *   - owned: 진주 정보통신 자체 서비스
  *   - client: 외부 클라이언트 의뢰 (회사명 룰 적용)
  *   - internal: 사내 개발 인프라 (도구명 추상화)
  */

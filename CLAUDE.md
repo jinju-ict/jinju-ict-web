@@ -22,7 +22,7 @@ onboarded_at: 2026-05-24T04:35:39Z
 
 ### 1. 비전
 
-**진주 정보통신개발** — AI 전문가들이 모인 개발사. AI 기술 기반으로 **자체 서비스를 주력으로 만들면서, 협업·외주 의뢰도 폭넓게 수행**한다. 첫 자체 프로덕트로 사주 서비스를 준비 중.
+**진주 정보통신** — AI 전문가들이 모인 개발사. AI 기술 기반으로 **자체 서비스를 주력으로 만들면서, 협업·외주 의뢰도 폭넓게 수행**한다. 첫 자체 프로덕트로 사주 서비스를 준비 중.
 
 이 사이트(`jinju-ict-web`)는 **회사 소개(주) + 사주 서비스 입구(부)** 를 겸하는 단일 페이지 랜딩이다.
 
@@ -36,16 +36,16 @@ onboarded_at: 2026-05-24T04:35:39Z
 
 단일 페이지 랜딩의 섹션 구성:
 
-1. **Hero / 회사 소개** — 회사명(진주 정보통신개발) + 슬로건(ralph 합성) + AI 전문성 어필 메시지
+1. **Hero / 회사 소개** — 회사명(진주 정보통신) + 슬로건(ralph 합성) + AI 전문성 어필 메시지
 2. **팀 소개** — Nova 식 팀원 카드 2명
    - 기획자: 다양한 서비스 기획 + 창업 경험 + 뛰어난 PM. AI 전문
    - 개발자: AI 에이전트 / AI 모델 개발 / 백엔드 / 앱 개발. AI 전문
    - 한 줄 소개·사진은 ralph 가 위 톤으로 합성 (placeholder), 동결 후 대표님이 직접 갱신
    - **나이 / 인원수 "2명" 표현 금지** — "소수 정예" 같은 추상 표현으로
 3. **사주 서비스 입구** — 첫 자체 프로덕트. 앱 미배포 → "Coming Soon" CTA. 콘텐츠/스크린샷은 `/Users/goldenplanet/jinsup_space/saju` 에서 cp
-4. **포트폴리오** — 8개 프로젝트를 카드/그리드로 노출
+4. **솔루션** — 8개 프로젝트를 카드/그리드로 노출
    - 분류·정체·스택·전문가 느낌 카피·보안 룰은 `specs/portfolio-research.md` 에 정리 완료
-   - 진주 정보통신개발 자체 (3): TtokTtok, shortdub, king_of_law
+   - 진주 정보통신 자체 (3): TtokTtok, shortdub, king_of_law
    - 외부 클라이언트 의뢰 (3): Andy, gp_claw, ai_news_scraping
    - 자체 개발 인프라 (2): js-ralph, js-super → "자체 하네스 / 에이전틱 엔지니어링 방식 보유, 개발 속도 빠르고 탄탄" 추상 메시지로
    - 스크린샷·로고는 ralph 가 각 프로젝트 폴더 까서 자동 cp (`public/portfolio/` 권장)
@@ -64,7 +64,7 @@ ralph 는 매 iteration 끝에서 "Nova 와 동등하거나 그 이상의 시각
 - 다국어 (한국어만)
 - 블로그 / 뉴스 / CMS (운영 부담)
 - 사주 결과 실제 계산 로직 (앱 책임, 웹은 입구만)
-- **포트폴리오 보안 룰 위반** — `specs/portfolio-research.md` 의 노출 룰 절대 위반 금지:
+- **솔루션 보안 룰 위반** — `specs/portfolio-research.md` 의 노출 룰 절대 위반 금지:
   - gp_claw 의 진짜 클라이언트 회사명
   - ai_news_scraping 의 진짜 클라이언트 회사명
   - js-ralph / js-super 의 원본 OSS 서비스명
@@ -77,7 +77,7 @@ ralph 는 매 iteration 끝에서 "Nova 와 동등하거나 그 이상의 시각
 | 폼 전송 인프라 | **Resend** 채택 (무료 3000/월, Vercel 1-clic 통합). env: `RESEND_API_KEY` / `CONTACT_INBOX_TO` / `CONTACT_INBOX_FROM`. 도메인 검증 전 발신 fallback `onboarding@resend.dev` |
 | 사주 앱 자산 (스크린샷 / 슬로건 / 기능) | `/Users/goldenplanet/jinsup_space/saju` 폴더 자동 탐색 후 `public/saju/` 로 cp |
 | 사주 앱 다운로드 링크 | 미배포 → "Coming Soon" CTA, URL 자리만 마련 |
-| 포트폴리오 스크린샷 / 로고 / 아이콘 | 각 프로젝트 폴더에서 ralph 자동 수집 후 `public/portfolio/` 로 cp. 없으면 자동 합성 (placeholder + 색감 토큰) |
+| 솔루션 스크린샷 / 로고 / 아이콘 | 각 프로젝트 폴더에서 ralph 자동 수집 후 `public/portfolio/` 로 cp. 없으면 자동 합성 (placeholder + 색감 토큰) |
 | 팀 프로필 사진 / 실제 한 줄 소개 | ralph 가 Nova 식 placeholder (이니셜 + 그라데이션 + 직무 라벨) 로 자리잡기. 동결 후 대표님이 직접 갱신 |
 | 분석 / 트래킹 | 도입 X (정성 기준만 본다는 §4 결정에 따라) |
 

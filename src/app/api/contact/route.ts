@@ -117,10 +117,10 @@ export async function POST(req: Request) {
 
   try {
     const result = await resend.emails.send({
-      from: `진주 정보통신개발 협업 문의 <${from}>`,
+      from: `진주 정보통신 협업 문의 <${from}>`,
       to: [to],
       ...(isEmail ? { replyTo: contact } : {}),
-      subject: `[진주 정보통신개발 문의] ${name}${company ? ` · ${company}` : ""}`,
+      subject: `[진주 정보통신 문의] ${name}${company ? ` · ${company}` : ""}`,
       text: textBody,
     });
 

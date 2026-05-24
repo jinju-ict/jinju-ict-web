@@ -23,7 +23,7 @@
 
 ### Phase 2 — 콘텐츠: Hero / 회사 소개
 
-- [x] Hero 섹션 — `src/components/site/hero.tsx` 신규. eyebrow chip (Sparkles + "AI 정예 개발사 · 진주 정보통신개발") + h1 "AI 가 일하는 방식이 곧 우리의 일하는 방식입니다." + lead "자체 서비스로 시작해, 협업·외주까지..." + CTA 2개 (#saju primary, #contact outline) + 하단 강점 chip 2개. min-h-[88vh] + 라디얼 그라데이션 ambience 2개 (primary 18% + accent 14%). page.tsx 의 hero placeholder 를 Hero 컴포넌트로 교체.
+- [x] Hero 섹션 — `src/components/site/hero.tsx` 신규. eyebrow chip (Sparkles + "AI 정예 개발사 · 진주 정보통신") + h1 "AI 가 일하는 방식이 곧 우리의 일하는 방식입니다." + lead "자체 서비스로 시작해, 협업·외주까지..." + CTA 2개 (#saju primary, #contact outline) + 하단 강점 chip 2개. min-h-[88vh] + 라디얼 그라데이션 ambience 2개 (primary 18% + accent 14%). page.tsx 의 hero placeholder 를 Hero 컴포넌트로 교체.
 - [x] Hero 시각 — native CSS keyframes 채택 (framer-motion 도입은 Phase 7 스크롤 task 로 연기). globals.css 에 `@utility animate-fade-in-up / float-slow / float-reverse / pulse-soft` 정의 + `prefers-reduced-motion` 자동 차단. Hero 에 그라데이션 blob 2개 (primary 22% blur 부유 + accent 18% reverse), 미세 그리드 오버레이 (radial mask), 텍스트 5단 stagger (0/120/240/360/480ms), CTA 호버 shadow + 화살표 슬라이드, h1 핵심 "AI 가 일하는 방식" 부분 gradient-text (foreground → primary), Sparkles pulse-soft.
 - [x] 회사 소개 보조 섹션 — `src/components/site/about.tsx` (id="about") 신규. 3 pillar 카드 (BrainCircuit "AI 전문성" / Workflow "자체 개발 인프라" / Layers "자체 서비스 + 협업, 균형"). lg 3 col grid, sm 2 col, mobile 1 col. 호버 시 lift + glow gradient 컬러 등장 + 아이콘 배경/색 전환. 카드별 glow 색 (primary / accent / mixed) 차별. page.tsx 의 about Section placeholder 를 About 컴포넌트로 교체. → **Phase 2 (Hero / 회사 소개) 전체 완료 (3/3)**.
 
@@ -33,15 +33,15 @@
 - [x] 팀 데이터 작성 — `src/lib/team.ts` 의 `TEAM: readonly TeamMember[]`. 2명 항목 (Founder · Product, Founder · Engineering) — 실명/사진은 placeholder, 인원수 "N명" 표현/나이 모두 미노출. 동결 후 대표님이 직접 갱신할 자리임을 파일 상단 주석으로 명시.
 - [x] 팀 섹션 레이아웃 — `src/components/site/team-section.tsx` (id="team", align="center") 신규. eyebrow "팀" + title "소수 정예, 모든 레이어를 책임집니다" + lead. TEAM 데이터를 sm 2 col grid (max-w-4xl) 로 TeamCard 렌더. page.tsx 의 team placeholder 를 TeamSection 으로 교체. → **Phase 3 (팀 소개) 전체 완료 (3/3)**.
 
-### Phase 4 — 콘텐츠: 포트폴리오 (8개 프로젝트)
+### Phase 4 — 콘텐츠: 솔루션 (8개 프로젝트)
 
-- [x] 포트폴리오 데이터 모듈 — `src/lib/portfolio.ts` 의 `PROJECTS: readonly Project[]` (8개) + `CATEGORY_ORDER`. Type: slug / title / category (owned|client|internal) / categoryLabel / oneLiner / description / stack[] / features[] / accent (tailwind gradient) / comingSoon / thumbnail (다음 task 채움). 파일 상단 주석에 보안 룰 4종 명시 (gp_claw·ai_news_scraping 클라이언트명 X / js-ralph·js-super 원본 OSS명 X / Andy 상호명 OK). title 추상화: gp_claw→"사내 AI 사무 비서", ai_news_scraping→"AI News Daily", js-ralph→"자율 개발 하네스", js-super→"개발 안전 워크플로우".
-- [x] **포트폴리오 보안 룰 자가 검증** — `scripts/check-security.sh` (단일 출처: 금지 단어 패턴 + 검사 대상 src/+public/) + `pnpm check:security` script + AGENTS.md 필수 검증 명령 3번째로 편입. 첫 실행에서 portfolio.ts 주석에 박혀있던 금지 단어 발견 → 주석 추상화 정정. 이제 매 iteration 자동 게이트 작동. baseline 0건 확정.
-- [x] 포트폴리오 카드 컴포넌트 — `src/components/site/portfolio-card.tsx` 신규. props: `{ project: Project }`. 16:10 aspect 썸네일 영역 (gradient + grid pattern radial mask + inner glow + 이니셜 합성 placeholder, project.thumbnail 있으면 next/image 로 교체 — 다음 task) + "Coming Soon" Badge (project.comingSoon=true 일 때) + categoryLabel uppercase eyebrow + title + oneLiner + stack chip (5개 + overflow "+N"). 카드 호버: lift + 썸네일 scale-1.04. p-0 으로 Header 분리.
-- [x] 포트폴리오 자산 자동 수집 스크립트 — `scripts/collect-portfolio-assets.sh` (macOS bash 3.2 호환, parallel arrays). 각 프로젝트 폴더에서 후보 디렉토리·패턴 (logo/icon/screenshot/preview/image/png/jpg/svg) 탐색 후 `public/portfolio/<slug>/thumbnail.<ext>` 로 표준명 cp. 파일명 금지 단어 검사 + **internal + 의심 client 항목은 SKIP_SECURITY 마커로 명시 차단** (사내 도구·외부 회사 자산 노출 위험). Andy 만 cp 성공. 결과: `src/lib/portfolio-assets.ts` 자동 생성 (Auto-generated manifest), PortfolioCard 에서 `PORTFOLIO_ASSETS[slug]` lookup → 자산 있으면 240x240 contain + drop-shadow, 없으면 이니셜 placeholder. package.json scripts 의 `collect:assets` 로 등록.
+- [x] 솔루션 데이터 모듈 — `src/lib/portfolio.ts` 의 `PROJECTS: readonly Project[]` (8개) + `CATEGORY_ORDER`. Type: slug / title / category (owned|client|internal) / categoryLabel / oneLiner / description / stack[] / features[] / accent (tailwind gradient) / comingSoon / thumbnail (다음 task 채움). 파일 상단 주석에 보안 룰 4종 명시 (gp_claw·ai_news_scraping 클라이언트명 X / js-ralph·js-super 원본 OSS명 X / Andy 상호명 OK). title 추상화: gp_claw→"사내 AI 사무 비서", ai_news_scraping→"AI News Daily", js-ralph→"자율 개발 하네스", js-super→"개발 안전 워크플로우".
+- [x] **솔루션 보안 룰 자가 검증** — `scripts/check-security.sh` (단일 출처: 금지 단어 패턴 + 검사 대상 src/+public/) + `pnpm check:security` script + AGENTS.md 필수 검증 명령 3번째로 편입. 첫 실행에서 portfolio.ts 주석에 박혀있던 금지 단어 발견 → 주석 추상화 정정. 이제 매 iteration 자동 게이트 작동. baseline 0건 확정.
+- [x] 솔루션 카드 컴포넌트 — `src/components/site/portfolio-card.tsx` 신규. props: `{ project: Project }`. 16:10 aspect 썸네일 영역 (gradient + grid pattern radial mask + inner glow + 이니셜 합성 placeholder, project.thumbnail 있으면 next/image 로 교체 — 다음 task) + "Coming Soon" Badge (project.comingSoon=true 일 때) + categoryLabel uppercase eyebrow + title + oneLiner + stack chip (5개 + overflow "+N"). 카드 호버: lift + 썸네일 scale-1.04. p-0 으로 Header 분리.
+- [x] 솔루션 자산 자동 수집 스크립트 — `scripts/collect-portfolio-assets.sh` (macOS bash 3.2 호환, parallel arrays). 각 프로젝트 폴더에서 후보 디렉토리·패턴 (logo/icon/screenshot/preview/image/png/jpg/svg) 탐색 후 `public/portfolio/<slug>/thumbnail.<ext>` 로 표준명 cp. 파일명 금지 단어 검사 + **internal + 의심 client 항목은 SKIP_SECURITY 마커로 명시 차단** (사내 도구·외부 회사 자산 노출 위험). Andy 만 cp 성공. 결과: `src/lib/portfolio-assets.ts` 자동 생성 (Auto-generated manifest), PortfolioCard 에서 `PORTFOLIO_ASSETS[slug]` lookup → 자산 있으면 240x240 contain + drop-shadow, 없으면 이니셜 placeholder. package.json scripts 의 `collect:assets` 로 등록.
 - [x] 자산 없는 프로젝트 placeholder — `Project.icon: ProjectIconName` 필드 추가 (8개 모두 의미있는 lucide 아이콘 매핑: MessageCircleHeart / Video / Scale / Smartphone / Briefcase / Newspaper / Workflow / ShieldCheck). PortfolioCard 의 placeholder 를 보강: 부유 dot 4개 + 64px 둥근 사각 아이콘 컨테이너 (border + bg-white/10 backdrop-blur, hover scale-110 + 미세 rotate) + 이니셜 small uppercase. ICON_MAP 으로 lookup. tree-shaking 보존.
-- [x] 포트폴리오 섹션 레이아웃 — `src/components/site/portfolio-section.tsx` (id="portfolio") 신규. owned / client / internal 그룹별 헤더 (라벨 + 한줄 설명 + count badge + border-b) + 반응형 grid (lg 3 col / sm 2 col / mobile 1 col). 그룹 간 space-y-16~20. page.tsx 의 portfolio placeholder 를 PortfolioSection 으로 교체.
-- [x] Andy 프로젝트 특별 처리 — 별도 코드 분기 불요. Andy 는 이미 (1) ic_launcher.png 실자산 (collect:assets 가 cp), (2) emerald-teal-cyan accent (Android 브랜드 톤), (3) Smartphone 아이콘 fallback 으로 카드 안에서 자연스럽게 차별화됨. 추가 hardcoding 없이 데이터 + 자산만으로 충족. → **Phase 4 (포트폴리오) 전체 완료 (7/7)**.
+- [x] 솔루션 섹션 레이아웃 — `src/components/site/portfolio-section.tsx` (id="portfolio") 신규. owned / client / internal 그룹별 헤더 (라벨 + 한줄 설명 + count badge + border-b) + 반응형 grid (lg 3 col / sm 2 col / mobile 1 col). 그룹 간 space-y-16~20. page.tsx 의 portfolio placeholder 를 PortfolioSection 으로 교체.
+- [x] Andy 프로젝트 특별 처리 — 별도 코드 분기 불요. Andy 는 이미 (1) ic_launcher.png 실자산 (collect:assets 가 cp), (2) emerald-teal-cyan accent (Android 브랜드 톤), (3) Smartphone 아이콘 fallback 으로 카드 안에서 자연스럽게 차별화됨. 추가 hardcoding 없이 데이터 + 자산만으로 충족. → **Phase 4 (솔루션) 전체 완료 (7/7)**.
 
 ### Phase 5 — 콘텐츠: 사주 서비스 입구
 
@@ -54,7 +54,7 @@
 - [x] React Hook Form + Zod 설치 + 스키마 정의 — `pnpm add react-hook-form@7.76 zod@4.4 @hookform/resolvers@5.4`. `src/lib/contact-schema.ts` 신규: `contactSchema` (name 1~50, company 0~80 optional, contact 1~120, message 10~2000) + honeypot `website` (refine 으로 빈 string 만 허용, "BOT_DETECTED" 차단). `ContactInput` type 도 export — 서버 라우트와 클라이언트 폼 공유.
 - [x] 문의 폼 UI — `src/components/site/contact-form.tsx` (client, RHF + zodResolver(contactSchema)) + `src/components/site/contact-section.tsx` (Section 래퍼). Field 헬퍼 (label / required * / error / hint), Input/Textarea 사용, honeypot (hidden + tabIndex=-1 + autocomplete=off), submit 시 toast.success/error (sonner). sonner.tsx 의 theme 을 "dark" 고정 + next-themes 의존 제거 (강제 다크 정책 일관). layout.tsx 에 `<Toaster position="bottom-right" />` 추가. page.tsx 의 contact placeholder 를 ContactSection 으로 교체. Zod 4 + @hookform/resolvers 5 internal API 충돌 → zod 3.25 로 다운그레이드 (우리 스키마는 v4 specific 기능 미사용).
 - [x] 폼 전송 인프라 결정 — **Resend** 채택 (무료 3000/월, Vercel 1-clic 통합, 정성 톤 가장 적합). `.env.example` 신규 (RESEND_API_KEY, CONTACT_INBOX_TO=teo.baek@outlook.com, CONTACT_INBOX_FROM=onboarding@resend.dev 도메인검증전 fallback). CLAUDE.md §6 표의 폼 인프라 라인을 Resend 결정으로 갱신.
-- [x] 폼 제출 API Route — `src/app/api/contact/route.ts` (POST, runtime=nodejs, dynamic=force-dynamic). 서버측 contactSchema 재검증, honeypot 위반 시 200 위장 (감지 어렵게), Resend SDK 6.12 로 발송 (`진주 정보통신개발 협업 문의 <from>` → CONTACT_INBOX_TO). 이메일 형식이면 replyTo 자동 설정. RESEND_API_KEY 미설정 시 503 + console.warn (dev 로그만). Resend 응답 error 시 502.
+- [x] 폼 제출 API Route — `src/app/api/contact/route.ts` (POST, runtime=nodejs, dynamic=force-dynamic). 서버측 contactSchema 재검증, honeypot 위반 시 200 위장 (감지 어렵게), Resend SDK 6.12 로 발송 (`진주 정보통신 협업 문의 <from>` → CONTACT_INBOX_TO). 이메일 형식이면 replyTo 자동 설정. RESEND_API_KEY 미설정 시 503 + console.warn (dev 로그만). Resend 응답 error 시 502.
 - [x] 폼 성공/실패 토스트 (sonner) + 폼 reset — iteration 22 의 ContactForm 에 이미 구현 완료: `toast.success("...")` + `reset()` 성공 시, `toast.error("...")` 실패 시. layout.tsx 의 `<Toaster position="bottom-right" theme="dark" />` 가 모든 페이지에서 작동.
 - [x] honeypot + rate-limit — honeypot 은 iteration 22 (form hidden 필드) + iteration 24 (route 의 BOT_DETECTED 200 위장 분기) 양쪽 구현. rate-limit 은 in-memory per-instance Map (분당 5건/IP, Fluid Compute instance 재사용 활용, 100+ buckets 시 만료 정리). x-forwarded-for / x-real-ip 헤더 fallback. 초과 시 429 + Retry-After 헤더. → **Phase 6 (협업·문의 폼) 전체 완료 (6/6)**.
 
@@ -82,7 +82,7 @@
 
 - [x] 전 섹션 최종 정성 점검 — 코드 기반 review (8개 섹션 모두 자체 호버/glow/lift/stagger 디테일 충분 확인). **보강**: (1) globals.css 의 body::before 에 fixed ambient gradient (top 보라 9% + bottom-left 퍼플 6%, z-index -1) — 각 섹션 자체 blob 위에 가산되어 페이지 전체 톤 일관성 ↑, (2) `html { scroll-behavior: smooth }` (no-preference 미디어 안) — anchor 클릭 시 부드러운 스크롤, prefers-reduced-motion 에선 auto 로 자동 disable.
 - [x] `SETUP.html` 생성 (PROMPT.md §8 형식) — 루트 SETUP.html 단일 파일 (외부 의존 0, inline style, 인쇄 친화 @media print). 6 sections: (1) 환경변수 표 4종, (2) 외부 인프라 표 (Vercel/Resend/GitHub/도메인), (3) 첫 배포 절차 (GitHub 연동 권장 + CLI 대안 + 체크박스 input), (4) 자주 보는 명령 pre, (5) 인수인계 ⚠️ 갱신 영역 5종, (6) 보안 룰 reminder. 색감: light + 그라데이션 마크 (사이트 톤 일관).
-- [x] CLAUDE.md 의 ⚠️ 항목 SETUP.html 인수인계 정리 — SETUP.html §5 의 5 영역으로 정형화: (5-1) 팀 프로필 실명/사진/한줄 갱신, (5-2) 사주 앱 정식 명칭 + 출시 후 다운로드 링크, (5-3) 도메인 + NEXT_PUBLIC_SITE_URL 갱신, (5-4) Resend 도메인 검증 → CONTACT_INBOX_FROM 교체, (5-5) 포트폴리오 자산 보강 (선택, owned 만). → **Phase 9 (마무리) 전체 완료 (3/3)**.
+- [x] CLAUDE.md 의 ⚠️ 항목 SETUP.html 인수인계 정리 — SETUP.html §5 의 5 영역으로 정형화: (5-1) 팀 프로필 실명/사진/한줄 갱신, (5-2) 사주 앱 정식 명칭 + 출시 후 다운로드 링크, (5-3) 도메인 + NEXT_PUBLIC_SITE_URL 갱신, (5-4) Resend 도메인 검증 → CONTACT_INBOX_FROM 교체, (5-5) 솔루션 자산 보강 (선택, owned 만). → **Phase 9 (마무리) 전체 완료 (3/3)**.
 
 ---
 
@@ -94,7 +94,7 @@ Phase 별 결과:
 - **Phase 1 (인프라, 7/7)**: Next.js 16 + Tailwind 4 + shadcn (Nova preset) + 다크 디자인 토큰 + Geist/Noto Sans KR + Header/Footer/Section
 - **Phase 2 (Hero + About, 3/3)**: Hero (gradient + stagger + CTA) + About (3 pillar 카드)
 - **Phase 3 (팀, 3/3)**: TeamCard + 2명 placeholder + Section
-- **Phase 4 (포트폴리오, 7/7)**: lib/portfolio.ts (8 프로젝트) + 보안 룰 자가 검증 자동 게이트 + PortfolioCard + 자산 자동 수집 (Andy 1건) + placeholder 보강 + 3 그룹 섹션
+- **Phase 4 (솔루션, 7/7)**: lib/portfolio.ts (8 프로젝트) + 보안 룰 자가 검증 자동 게이트 + PortfolioCard + 자산 자동 수집 (Andy 1건) + placeholder 보강 + 3 그룹 섹션
 - **Phase 5 (사주, 3/3)**: lib/saju.ts + SajuSection (4 feature + 모바일 mockup + Coming Soon)
 - **Phase 6 (문의 폼, 6/6)**: contact-schema (Zod 3) + RHF Form + Resend 결정 + /api/contact + toast + honeypot/rate-limit
 - **Phase 7 (정성, 10/10)**: 다크 + scroll fade + 마이크로 인터랙션 + 타이포 + 반응형 + SEO + OG + favicon + a11y + build PASS

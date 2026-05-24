@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# 진주 정보통신개발 사이트 — 포트폴리오 자산 자동 수집 (T4 major-rework)
+# 진주 정보통신 사이트 — 솔루션 자산 자동 수집 (T4 major-rework)
 #
 # 각 프로젝트 폴더에서 스크린샷/로고/아이콘/앱 프리뷰 자동 탐색 후
 # public/portfolio/<slug>/{thumbnail,screen-1,screen-2,...}.<ext> 로 cp.
