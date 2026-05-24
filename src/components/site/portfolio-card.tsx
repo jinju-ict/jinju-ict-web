@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   Briefcase,
   MessageCircleHeart,
@@ -45,7 +46,12 @@ export function PortfolioCard({ project }: PortfolioCardProps) {
   const Icon = ICON_MAP[project.icon];
 
   return (
-    <Card className="group/proj relative flex h-full flex-col overflow-hidden border-border/60 bg-card/40 p-0 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-border hover:bg-card/70 hover:shadow-xl hover:shadow-primary/5">
+    <Link
+      href={`/portfolio/${project.slug}`}
+      aria-label={`${project.title} 상세 보기`}
+      className="block h-full cursor-pointer rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+    >
+      <Card className="group/proj relative flex h-full flex-col overflow-hidden border-border/60 bg-card/40 p-0 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-border hover:bg-card/70 hover:shadow-xl hover:shadow-primary/5">
       {/* ---------- Thumbnail (gradient + 이니셜 placeholder) ---------- */}
       <div
         aria-hidden="true"
@@ -159,5 +165,6 @@ export function PortfolioCard({ project }: PortfolioCardProps) {
         </div>
       </CardContent>
     </Card>
+    </Link>
   );
 }
