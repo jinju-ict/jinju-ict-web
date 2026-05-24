@@ -23,7 +23,7 @@
 
 ### Phase 2 — 콘텐츠: Hero / 회사 소개
 
-- [ ] Hero 섹션 — 진주 ICT 슬로건 (AI 정예 개발사, 자체 서비스 + 협업·외주 균형 메시지) + 한 줄 소개 (CLAUDE.md §1 톤) + CTA 2개 (사주 입구 / 문의 폼 앵커)
+- [x] Hero 섹션 — `src/components/site/hero.tsx` 신규. eyebrow chip (Sparkles + "AI 정예 개발사 · 진주 ICT") + h1 "AI 가 일하는 방식이 곧 우리의 일하는 방식입니다." + lead "자체 서비스로 시작해, 협업·외주까지..." + CTA 2개 (#saju primary, #contact outline) + 하단 강점 chip 2개. min-h-[88vh] + 라디얼 그라데이션 ambience 2개 (primary 18% + accent 14%). page.tsx 의 hero placeholder 를 Hero 컴포넌트로 교체.
 - [ ] Hero 시각 — 그라데이션 + 모션 디테일 (framer-motion 또는 native CSS, 가벼운 부유 애니메이션)
 - [ ] 회사 소개 보조 섹션 — "왜 우리인가" (AI 전문성 / 빠르고 탄탄한 자체 개발 인프라 / 자체 서비스 + 협업 모두 수행)
 

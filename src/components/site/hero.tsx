@@ -1,0 +1,90 @@
+import Link from "next/link";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+export function Hero() {
+  return (
+    <section
+      id="hero"
+      className="relative flex min-h-[88vh] items-center overflow-hidden"
+    >
+      {/* Background ambience — 다음 task 에서 본격 모션·그라데이션 */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 50% at 50% -10%, color-mix(in oklch, var(--primary) 18%, transparent), transparent 60%)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 40% at 80% 20%, color-mix(in oklch, var(--accent) 14%, transparent), transparent 65%)",
+          height: "100%",
+        }}
+      />
+
+      <div className="relative mx-auto w-full max-w-5xl px-6 py-32 text-center sm:px-8 sm:py-40">
+        <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/40 px-4 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur-sm">
+          <Sparkles
+            className="h-3.5 w-3.5 text-primary"
+            aria-hidden="true"
+          />
+          AI 정예 개발사 · 진주 ICT
+        </div>
+
+        <h1 className="mt-7 text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
+          AI 가 일하는 방식이 곧
+          <br className="hidden sm:block" /> 우리의 일하는 방식입니다.
+        </h1>
+
+        <p className="mx-auto mt-7 max-w-2xl text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
+          자체 서비스로 시작해, 협업·외주까지.
+          <br className="hidden sm:block" />
+          가치 있는 무엇이든 정예의 속도로 만듭니다.
+        </p>
+
+        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+          <Button
+            asChild
+            size="lg"
+            className="h-12 rounded-full px-7 text-base"
+          >
+            <Link href="#saju">
+              사주 서비스 보기
+              <ArrowRight aria-hidden="true" />
+            </Link>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="h-12 rounded-full px-7 text-base"
+          >
+            <Link href="#contact">프로젝트 문의</Link>
+          </Button>
+        </div>
+
+        <div className="mt-14 flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-xs text-muted-foreground sm:text-sm">
+          <span className="inline-flex items-center gap-2">
+            <span
+              aria-hidden="true"
+              className="h-1.5 w-1.5 rounded-full bg-primary"
+            />
+            AI 에이전트 · AI 모델 · 백엔드 · 앱
+          </span>
+          <span className="inline-flex items-center gap-2">
+            <span
+              aria-hidden="true"
+              className="h-1.5 w-1.5 rounded-full bg-accent"
+            />
+            자체 하네스로 빠른 개발 속도
+          </span>
+        </div>
+      </div>
+    </section>
+  );
+}

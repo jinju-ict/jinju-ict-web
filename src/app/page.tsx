@@ -1,21 +1,10 @@
+import { Hero } from "@/components/site/hero";
 import { Section } from "@/components/site/section";
 
 export default function Home() {
   return (
     <>
-      <Section id="hero" bare className="flex min-h-[60vh] items-center">
-        <div className="mx-auto max-w-3xl py-32 text-center sm:py-40">
-          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-            AI 정예 개발사
-          </p>
-          <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-            진주 ICT
-          </h1>
-          <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
-            (Hero 섹션은 다음 iteration 에서 본격 작성됩니다.)
-          </p>
-        </div>
-      </Section>
+      <Hero />
 
       <Section
         id="about"
