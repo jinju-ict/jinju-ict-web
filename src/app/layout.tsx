@@ -97,8 +97,17 @@ export default function RootLayout({
         id="top"
         className="min-h-full flex flex-col bg-background text-foreground"
       >
+        {/* Skip-link — 키보드 사용자가 nav 건너뛰고 본문 진입 (a11y) */}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground focus:shadow-lg focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
+        >
+          본문으로 건너뛰기
+        </a>
         <SiteHeader />
-        <main className="flex-1 pt-16">{children}</main>
+        <main id="main" className="flex-1 pt-16">
+          {children}
+        </main>
         <SiteFooter />
         <Toaster position="bottom-right" />
       </body>

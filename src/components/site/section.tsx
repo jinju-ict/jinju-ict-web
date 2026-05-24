@@ -27,6 +27,7 @@ export function Section({
   children,
   ...props
 }: SectionProps) {
+  const titleId = id && title ? `${id}-title` : undefined;
   const header = (eyebrow || title || lead) && (
     <header
       className={cn(
@@ -40,7 +41,10 @@ export function Section({
         </p>
       )}
       {title && (
-        <h2 className="text-balance text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+        <h2
+          id={titleId}
+          className="text-balance text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl"
+        >
           {title}
         </h2>
       )}
@@ -55,6 +59,7 @@ export function Section({
   return (
     <section
       id={id}
+      aria-labelledby={titleId}
       className={cn(
         "relative w-full",
         !bare && "py-20 sm:py-28 lg:py-36",
