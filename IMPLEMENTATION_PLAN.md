@@ -73,7 +73,7 @@
 
 ### Phase 8 — 배포
 
-- [ ] `vercel.ts` 설정 (`@vercel/config`) — buildCommand / framework / 환경변수 자리
+- [x] `vercel.ts` 설정 — `pnpm add -D @vercel/config@0.5` 후 루트 vercel.ts 신규. `framework: "nextjs"` + `buildCommand: "pnpm build"` + `installCommand: "pnpm install --frozen-lockfile"`. 필요한 env 4종 (RESEND_API_KEY / CONTACT_INBOX_TO / CONTACT_INBOX_FROM / NEXT_PUBLIC_SITE_URL) 은 Vercel 대시보드 등록 + 파일 상단 주석으로 명시 (소스에 secret 박지 않음). regions 는 Hobby default 사용.
 - [ ] `.env.example` 정리 — Resend API key 등 필요 환경변수 명시 (실제 secret X)
 - [ ] Vercel 배포 (preview) — `vercel deploy` 1회 성공 확인, 도메인은 임시 vercel.app 서브도메인
 - [ ] Production build 로컬 검증 — `pnpm build && pnpm start` 로 정상 동작 확인
