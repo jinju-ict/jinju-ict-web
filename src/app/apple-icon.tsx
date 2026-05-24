@@ -34,7 +34,7 @@ export default function AppleIcon() {
               "radial-gradient(circle at 30% 25%, rgba(255,255,255,0.18) 0%, transparent 60%)",
           }}
         />
-        <div style={{ position: "relative", zIndex: 1 }}>J</div>
+        <div style={{ position: "relative" }}>J</div>
       </div>
     ),
     { ...size },

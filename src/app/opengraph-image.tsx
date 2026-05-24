@@ -59,7 +59,6 @@ export default async function OpenGraphImage() {
             display: "flex",
             alignItems: "center",
             gap: 18,
-            zIndex: 1,
           }}
         >
           <div
@@ -89,7 +88,6 @@ export default async function OpenGraphImage() {
             display: "flex",
             flexDirection: "column",
             gap: 28,
-            zIndex: 1,
           }}
         >
           <div
@@ -136,7 +134,6 @@ export default async function OpenGraphImage() {
             color: "#6b7280",
             fontSize: 22,
             fontWeight: 500,
-            zIndex: 1,
           }}
         >
           <div
