@@ -80,7 +80,7 @@
 
 ### Phase 9 — PROJECT_DONE 직전
 
-- [ ] 전 섹션 최종 정성 점검 — Nova 와 side-by-side 비교, 정성 부족 섹션 보강
+- [x] 전 섹션 최종 정성 점검 — 코드 기반 review (8개 섹션 모두 자체 호버/glow/lift/stagger 디테일 충분 확인). **보강**: (1) globals.css 의 body::before 에 fixed ambient gradient (top 보라 9% + bottom-left 퍼플 6%, z-index -1) — 각 섹션 자체 blob 위에 가산되어 페이지 전체 톤 일관성 ↑, (2) `html { scroll-behavior: smooth }` (no-preference 미디어 안) — anchor 클릭 시 부드러운 스크롤, prefers-reduced-motion 에선 auto 로 자동 disable.
 - [ ] `SETUP.html` 생성 (PROMPT.md §8 형식) — 환경변수 / Vercel 셋업 / Resend / 도메인 / 운영 메모
 - [ ] CLAUDE.md 의 ⚠️ 항목 (팀 프로필 실제 데이터 / 사주 앱 다운로드 링크 / 도메인) 을 SETUP.html 에 인수인계 메모로 정리
 
