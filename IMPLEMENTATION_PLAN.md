@@ -36,7 +36,7 @@
 ### Phase 4 — 콘텐츠: 포트폴리오 (8개 프로젝트)
 
 - [x] 포트폴리오 데이터 모듈 — `src/lib/portfolio.ts` 의 `PROJECTS: readonly Project[]` (8개) + `CATEGORY_ORDER`. Type: slug / title / category (owned|client|internal) / categoryLabel / oneLiner / description / stack[] / features[] / accent (tailwind gradient) / comingSoon / thumbnail (다음 task 채움). 파일 상단 주석에 보안 룰 4종 명시 (gp_claw·ai_news_scraping 클라이언트명 X / js-ralph·js-super 원본 OSS명 X / Andy 상호명 OK). title 추상화: gp_claw→"사내 AI 사무 비서", ai_news_scraping→"AI News Daily", js-ralph→"자율 개발 하네스", js-super→"개발 안전 워크플로우".
-- [ ] **포트폴리오 보안 룰 자가 검증** — 카피·코드·메타데이터에 다음 단어 0건 확인: 골든플래닛, Geoffrey, Huntley, Ralph Wiggum, superpowers, ai_news_scraping 의 실제 클라이언트명. 위반 발견 시 즉시 추상화.
+- [x] **포트폴리오 보안 룰 자가 검증** — `scripts/check-security.sh` (단일 출처: 금지 단어 패턴 + 검사 대상 src/+public/) + `pnpm check:security` script + AGENTS.md 필수 검증 명령 3번째로 편입. 첫 실행에서 portfolio.ts 주석에 박혀있던 금지 단어 발견 → 주석 추상화 정정. 이제 매 iteration 자동 게이트 작동. baseline 0건 확정.
 - [ ] 포트폴리오 카드 컴포넌트 — 썸네일 영역 / 제목 / 카피 / 스택 뱃지 / 카테고리 라벨 (자체·협업·내부인프라)
 - [ ] 포트폴리오 자산 자동 수집 스크립트 — 각 프로젝트 폴더에서 스크린샷/로고/아이콘 후보 파일 (`*.png`, `*.jpg`, `*.svg`, `image.png`, README 내 이미지 등) 탐색 후 `public/portfolio/<slug>/` 로 cp. 보안 룰 위반 파일명은 rename
 - [ ] 자산 없는 프로젝트 placeholder — 그라데이션 + 이니셜 + 스택 색상 토큰 기반 자동 생성

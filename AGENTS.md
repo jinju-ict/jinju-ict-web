@@ -33,6 +33,9 @@ pnpm lint
 
 # 2) typecheck (tsc --noEmit)
 pnpm typecheck
+
+# 3) security (CLAUDE.md §5 보안 룰 — 금지 단어 0건)
+pnpm check:security
 ```
 
 > build (`pnpm build`) 는 매 iteration 돌리지 않는다 — 1~3분 소요. 큰 변경 직후 + PROJECT_DONE 직전에만 돌린다 (아래 "선택 검증").
