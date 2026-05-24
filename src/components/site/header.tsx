@@ -6,12 +6,11 @@ import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
   { href: "#about", label: "소개" },
-  { href: "#process", label: "Process" },
+  { href: "#process", label: "방식" },
   { href: "#team", label: "팀" },
-  { href: "#portfolio", label: "포트폴리오" },
+  { href: "#portfolio", label: "솔루션" },
   { href: "#saju", label: "사주" },
-  { href: "#careers", label: "Careers" },
-  { href: "#faq", label: "FAQ" },
+  { href: "#careers", label: "채용" },
 ] as const;
 
 export function SiteHeader() {
@@ -27,23 +26,23 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-150",
         scrolled
-          ? "border-b border-border/60 bg-background/75 backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent",
+          ? "border-b-2 border-border bg-background"
+          : "border-b-2 border-transparent bg-background",
       )}
     >
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6 sm:px-8">
         <Link
           href="#top"
-          aria-label="진주 정보통신개발 홈"
+          aria-label="진주 정보통신 홈"
           className="group flex items-center gap-2.5"
         >
           <span
             aria-hidden="true"
-            className="inline-block h-8 w-8 rounded-lg bg-gradient-to-br from-primary via-primary to-accent ring-1 ring-inset ring-white/10 transition-transform duration-300 group-hover:scale-110"
+            className="inline-block h-8 w-8 rounded-sm border border-border bg-foreground"
           />
-          <span className="text-base font-bold tracking-tight">Jinju ICT</span>
+          <span className="text-base font-bold tracking-tight text-foreground">진주 정보통신</span>
         </Link>
 
         <nav aria-label="섹션 네비게이션">
@@ -52,12 +51,12 @@ export function SiteHeader() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="group/nav relative text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="group/nav relative text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground"
                 >
                   {item.label}
                   <span
                     aria-hidden="true"
-                    className="absolute -bottom-1.5 left-0 h-px w-0 bg-gradient-to-r from-primary to-accent transition-[width] duration-300 ease-out group-hover/nav:w-full"
+                    className="absolute -bottom-1.5 left-0 h-px w-0 bg-foreground transition-[width] duration-150 ease-out group-hover/nav:w-full"
                   />
                 </Link>
               </li>
@@ -67,7 +66,7 @@ export function SiteHeader() {
 
         <a
           href="#contact"
-          className="hidden rounded-lg border border-border/60 bg-card/40 px-3.5 py-1.5 text-sm font-medium text-foreground/90 transition-colors hover:border-primary hover:text-foreground sm:inline-flex"
+          className="hidden rounded-sm border-2 border-foreground bg-background px-3.5 py-1.5 text-sm font-semibold text-foreground transition-colors duration-150 hover:bg-foreground hover:text-background sm:inline-flex"
         >
           문의하기
         </a>

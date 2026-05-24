@@ -3,7 +3,7 @@ import { PROJECTS } from "@/lib/portfolio";
 import { SITE_NAME } from "@/lib/site";
 
 // 페이지별 OG 메타
-export const alt = `${SITE_NAME} — 포트폴리오 상세`;
+export const alt = `${SITE_NAME} — 솔루션 상세`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const runtime = "nodejs";
@@ -18,23 +18,23 @@ export function generateImageMetadata() {
 }
 
 /**
- * project.accent 의 Tailwind 그라데이션 문자열을 OG 용 raw CSS gradient 로 매핑.
- * accent 는 from-XXX/45 via-YYY/30 to-ZZZ/40 형태라 OG 런타임에서 직접 해석 불가 → 슬러그별 색 페어로 변환.
+ * 슬러그별 그레이톤 페어. 사이트의 화이트 + 회색 + 아재 투박 톤과 일관성 유지.
+ * from = darkest, via = mid, to = light-mid (모두 채도 거의 0).
  *
- * 폴백: 슬러그 매칭 실패 시 사이트 기본 indigo 톤.
+ * 폴백: 슬러그 매칭 실패 시 기본 미디엄 그레이.
  */
 function gradientFor(slug: string): { from: string; via: string; to: string } {
   const map: Record<string, { from: string; via: string; to: string }> = {
-    ttoktok: { from: "#d946ef", via: "#a855f7", to: "#8b5cf6" },
-    shortdub: { from: "#22d3ee", via: "#0ea5e9", to: "#3b82f6" },
-    "king-of-law": { from: "#fbbf24", via: "#f97316", to: "#f43f5e" },
-    andy: { from: "#34d399", via: "#14b8a6", to: "#06b6d4" },
-    "office-agent": { from: "#94a3b8", via: "#6366f1", to: "#2563eb" },
-    "ai-news-daily": { from: "#fb7185", via: "#ec4899", to: "#d946ef" },
-    "dev-harness": { from: "#8b5cf6", via: "#a855f7", to: "#6366f1" },
-    "dev-safety": { from: "#6366f1", via: "#8b5cf6", to: "#d946ef" },
+    ttoktok: { from: "#2A2F3A", via: "#45494F", to: "#6B6F7A" },
+    shortdub: { from: "#2F3440", via: "#4A4E56", to: "#727680" },
+    "king-of-law": { from: "#262A33", via: "#43464C", to: "#686C75" },
+    andy: { from: "#2D323D", via: "#484C53", to: "#6D7178" },
+    "office-agent": { from: "#2A2E38", via: "#46494F", to: "#6A6E76" },
+    "ai-news-daily": { from: "#282C36", via: "#44474D", to: "#696D75" },
+    "dev-harness": { from: "#2B2F3A", via: "#454950", to: "#6B6F77" },
+    "dev-safety": { from: "#2C303B", via: "#474B52", to: "#6C7079" },
   };
-  return map[slug] ?? { from: "#6366f1", via: "#7c3aed", to: "#a855f7" };
+  return map[slug] ?? { from: "#2A2F3A", via: "#45494F", to: "#6B6F7A" };
 }
 
 interface Params {
@@ -55,8 +55,8 @@ export default async function ProjectOpenGraphImage({ params }: Params) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            background: "#0B0D14",
-            color: "#E7E9EE",
+            background: "#FAFAFA",
+            color: "#1F2530",
             fontSize: 48,
             fontFamily: "system-ui, -apple-system, sans-serif",
           }}
@@ -80,37 +80,14 @@ export default async function ProjectOpenGraphImage({ params }: Params) {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px 88px",
-          background: "#0B0D14",
-          color: "#E7E9EE",
+          background: "#FAFAFA",
+          color: "#1F2530",
           fontFamily: "system-ui, -apple-system, sans-serif",
           position: "relative",
           overflow: "hidden",
+          border: "8px solid #B8BCC4",
         }}
       >
-        {/* Accent ribbon (project.accent 매핑) */}
-        <div
-          style={{
-            position: "absolute",
-            top: -260,
-            right: -220,
-            width: 760,
-            height: 760,
-            borderRadius: "9999px",
-            background: `radial-gradient(circle, ${g.from}66 0%, ${g.via}33 45%, transparent 75%)`,
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: -200,
-            left: -180,
-            width: 640,
-            height: 640,
-            borderRadius: "9999px",
-            background: `radial-gradient(circle, ${g.to}44 0%, transparent 70%)`,
-          }}
-        />
-
         {/* Top — brand row */}
         <div
           style={{
@@ -124,9 +101,9 @@ export default async function ProjectOpenGraphImage({ params }: Params) {
               style={{
                 width: 44,
                 height: 44,
-                borderRadius: 12,
-                background: `linear-gradient(135deg, ${g.from} 0%, ${g.to} 100%)`,
-                boxShadow: `0 0 28px ${g.via}66`,
+                borderRadius: 4,
+                background: g.from,
+                border: "2px solid #1F2530",
               }}
             />
             <div
@@ -134,7 +111,7 @@ export default async function ProjectOpenGraphImage({ params }: Params) {
                 fontSize: 22,
                 fontWeight: 700,
                 letterSpacing: 1,
-                color: "#E7E9EE",
+                color: "#1F2530",
               }}
             >
               {SITE_NAME}
@@ -146,10 +123,10 @@ export default async function ProjectOpenGraphImage({ params }: Params) {
               fontWeight: 600,
               textTransform: "uppercase",
               letterSpacing: 4,
-              color: "#9CA3AF",
+              color: "#6B6F7A",
             }}
           >
-            Portfolio
+            솔루션
           </div>
         </div>
 
@@ -160,7 +137,7 @@ export default async function ProjectOpenGraphImage({ params }: Params) {
           <div
             style={{
               fontSize: 22,
-              color: g.from,
+              color: g.via,
               textTransform: "uppercase",
               letterSpacing: 5,
               fontWeight: 600,
@@ -175,7 +152,7 @@ export default async function ProjectOpenGraphImage({ params }: Params) {
               lineHeight: 1.05,
               letterSpacing: -2,
               maxWidth: 1000,
-              color: "#F4F5F8",
+              color: "#1F2530",
             }}
           >
             {project.title}
@@ -183,7 +160,7 @@ export default async function ProjectOpenGraphImage({ params }: Params) {
           <div
             style={{
               fontSize: 26,
-              color: "#9CA3AF",
+              color: "#45494F",
               fontWeight: 400,
               maxWidth: 1000,
               lineHeight: 1.4,
@@ -199,7 +176,7 @@ export default async function ProjectOpenGraphImage({ params }: Params) {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            color: "#6b7280",
+            color: "#6B6F7A",
             fontSize: 20,
             fontWeight: 500,
           }}
@@ -221,7 +198,7 @@ export default async function ProjectOpenGraphImage({ params }: Params) {
             />
             jinju-ict.com / portfolio
           </div>
-          <div style={{ fontWeight: 600, color: "#9CA3AF" }}>
+          <div style={{ fontWeight: 600, color: "#45494F" }}>
             {project.slug}
           </div>
         </div>
