@@ -31,9 +31,9 @@ const POSITIONS: Position[] = [
     icon: Bot,
     role: "AI / Product Engineer",
     oneLiner:
-      "Claude·Gemini 를 production 에서 다루며, 아이디어를 살아 있는 제품으로 만드는 풀스택 엔지니어.",
+      "AI 에이전트를 production 에서 다루며, 아이디어를 실제 제품으로 만드는 풀스택 엔지니어.",
     looking:
-      "Claude / Gemini production 운영 경험, agentic workflow 설계 감각, 프론트·백·인프라를 가로지르는 풀스택 기반",
+      "AI 에이전트 production 운영 경험, agentic workflow 설계 감각, 프론트·백·인프라를 가로지르는 풀스택 기반",
     doing:
       "자체 서비스 라인업과 협업 프로젝트의 AI 코어 설계·구현, tool-use·장기 기억·RAG 등 응용 아키텍처 주도",
     environment:
@@ -44,7 +44,7 @@ const POSITIONS: Position[] = [
     icon: Smartphone,
     role: "Mobile / App Engineer",
     oneLiner:
-      "Kotlin (Compose) 와 Flutter 로 자체 앱 라인업을 정성도 빠르게 만들어내는 모바일 엔지니어.",
+      "Kotlin (Compose) 또는 Flutter 로 앱을 출시한 경험이 있는 모바일 엔지니어.",
     looking:
       "Kotlin (Jetpack Compose) 또는 Flutter production 출시 경험, 디자인 시스템·접근성·성능 감각",
     doing:
@@ -57,9 +57,9 @@ const POSITIONS: Position[] = [
     icon: Sparkles,
     role: "Designer / Product Strategist",
     oneLiner:
-      "정성 미감과 제품 기획을 동시에 다루며, AI 도구를 자유롭게 활용하는 디자이너·전략가.",
+      "디자인과 제품 기획을 함께 다루는 분. AI 도구를 자유롭게 활용.",
     looking:
-      "묵직하고 절제된 디자인 감각, 사용자 흐름·정보 구조 설계 경험, Figma·AI 기반 워크플로우 OK",
+      "사용자 흐름·정보 구조 설계 경험, Figma·AI 기반 워크플로우 OK",
     doing:
       "자체 서비스·클라이언트 프로젝트의 비주얼·UX·랜딩 카피 책임, 디자인 시스템과 모션 가이드 정립",
     environment:
@@ -72,8 +72,8 @@ export function CareersSection() {
     <Section
       id="careers"
       eyebrow="Careers · 합류하기"
-      title="AI 시대의 정예 팀을 함께 만듭니다"
-      lead="정해진 자리에 맞추는 채용이 아니라, 함께 더 멀리 갈 동료를 찾습니다. 정성과 속도를 동시에 추구하는 분, AI 가 일하는 방식이 일상인 분, 자체 서비스와 협업 프로젝트를 가로지르며 성장하고 싶은 분께 열려 있습니다."
+      title="함께 일할 분을 찾습니다"
+      lead="직군이 정확히 맞지 않아도 괜찮습니다. AI 가 일하는 방식에 익숙하고, 자체 서비스와 협업 프로젝트를 함께 만들 분께 열려 있습니다."
       align="center"
     >
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">

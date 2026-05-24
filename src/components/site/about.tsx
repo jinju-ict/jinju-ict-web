@@ -10,18 +10,18 @@ import {
 const PILLARS = [
   {
     icon: BrainCircuit,
-    title: "AI 전문성",
-    body: "AI 에이전트, AI 모델, 백엔드, 앱까지. 모든 레이어를 직접 다루는 정예라 AI 시대 변화에 가장 빠르게 반응합니다.",
+    title: "AI 전 레이어",
+    body: "AI 에이전트, 모델, 백엔드, 앱을 한 팀에서 다룹니다. 새 모델·도구가 나오면 빠르게 production 에 적용합니다.",
   },
   {
     icon: Workflow,
-    title: "자체 개발 인프라",
-    body: "사내 자체 하네스와 에이전틱 엔지니어링 워크플로우로 기획·구현·검증을 자동 순환. 정성과 속도가 동시에 나옵니다.",
+    title: "자체 개발 워크플로우",
+    body: "자체 개발 워크플로우로 기획·구현·검증을 자동 순환합니다. 같은 품질로 빠르게 반복합니다.",
   },
   {
     icon: Layers,
-    title: "자체 서비스 + 협업, 균형",
-    body: "자체 서비스를 주력으로, 협업·외주도 폭넓게. 특정 영역에 치우치지 않고 가치 있는 무엇이든 만듭니다.",
+    title: "자체 서비스 + 협업",
+    body: "자체 서비스와 외주 협업을 함께 운영합니다. 특정 영역에 한정하지 않습니다.",
   },
 ] as const;
 
@@ -29,9 +29,9 @@ export function About() {
   return (
     <Section
       id="about"
-      eyebrow="왜 우리인가"
-      title="AI 시대, 정예가 만드는 차이"
-      lead="단순한 외주 회사가 아닙니다. AI 가 일하는 방식에 익숙한 사람들이, 자체 인프라와 서비스 감각을 함께 가지고 일합니다."
+      eyebrow="진주 정보통신 소개"
+      title="어떤 회사인가요"
+      lead="AI 에이전트를 production 으로 다루는 개발사입니다. 자체 서비스와 외주 협업을 함께 운영합니다."
       align="center"
     >
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">

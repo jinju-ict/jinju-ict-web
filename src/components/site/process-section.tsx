@@ -66,9 +66,9 @@ export function ProcessSection() {
   return (
     <Section
       id="process"
-      eyebrow="우리가 일하는 방식"
-      title="정성도 빠르게 — 자체 하네스가 받쳐주는 4단계"
-      lead="발견부터 배포까지 동일한 워크플로우로 묶여 있어, 매 프로젝트가 같은 수준의 정성·속도·안전성으로 마무리됩니다."
+      eyebrow="일하는 방식"
+      title="발견 → 설계 → 구현 → 배포, 4단계 워크플로우"
+      lead="모든 프로젝트가 동일한 워크플로우로 묶여 있어, 같은 수준의 품질과 속도로 마무리됩니다."
       align="center"
     >
       <div className="grid gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">

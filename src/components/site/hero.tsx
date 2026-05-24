@@ -24,7 +24,7 @@ export function Hero() {
         </h1>
 
         <p className="mx-auto mt-7 max-w-2xl text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Claude · Gemini · Grok 등 멀티 모델을 production 으로 운영해 온 정예 팀이,
+          AI 에이전트를 활용한 솔루션 production 을 개발해온 정예팀이,
           <br className="hidden sm:block" />
           자체 에이전틱 워크플로우로 비전부터 배포·운영까지 단일 흐름에 묶습니다.
           <br className="hidden sm:block" />
@@ -62,7 +62,7 @@ export function Hero() {
 
         <div className="mt-14 flex flex-wrap items-center justify-center gap-2 text-xs text-foreground sm:text-sm">
           <span className="inline-flex items-center gap-2 rounded-sm border border-border bg-muted px-3 py-1.5 text-foreground">
-            Claude · Gemini production 경험
+            AI 에이전트 production 경험
           </span>
           <span className="inline-flex items-center gap-2 rounded-sm border border-border bg-muted px-3 py-1.5 text-foreground">
             자체 에이전틱 워크플로우

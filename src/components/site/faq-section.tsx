@@ -36,10 +36,8 @@ const FAQ_ITEMS: readonly FaqItem[] = [
     answer: (
       <>
         <p>
-          현재 <strong className="text-foreground">Claude (Anthropic)</strong>,{" "}
-          <strong className="text-foreground">Gemini</strong>,{" "}
-          <strong className="text-foreground">Grok</strong>, 그리고 더빙 파이프라인에는{" "}
-          <strong className="text-foreground">ElevenLabs Dubbing</strong> 을 production 에서 운영하고
+          현재 <strong className="text-foreground">여러 AI 에이전트</strong> 와{" "}
+          <strong className="text-foreground">외부 SaaS API</strong> 를 production 에서 함께 운영하고
           있습니다.
         </p>
         <p>
