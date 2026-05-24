@@ -40,8 +40,8 @@
 - [x] 포트폴리오 카드 컴포넌트 — `src/components/site/portfolio-card.tsx` 신규. props: `{ project: Project }`. 16:10 aspect 썸네일 영역 (gradient + grid pattern radial mask + inner glow + 이니셜 합성 placeholder, project.thumbnail 있으면 next/image 로 교체 — 다음 task) + "Coming Soon" Badge (project.comingSoon=true 일 때) + categoryLabel uppercase eyebrow + title + oneLiner + stack chip (5개 + overflow "+N"). 카드 호버: lift + 썸네일 scale-1.04. p-0 으로 Header 분리.
 - [x] 포트폴리오 자산 자동 수집 스크립트 — `scripts/collect-portfolio-assets.sh` (macOS bash 3.2 호환, parallel arrays). 각 프로젝트 폴더에서 후보 디렉토리·패턴 (logo/icon/screenshot/preview/image/png/jpg/svg) 탐색 후 `public/portfolio/<slug>/thumbnail.<ext>` 로 표준명 cp. 파일명 금지 단어 검사 + **internal + 의심 client 항목은 SKIP_SECURITY 마커로 명시 차단** (사내 도구·외부 회사 자산 노출 위험). Andy 만 cp 성공. 결과: `src/lib/portfolio-assets.ts` 자동 생성 (Auto-generated manifest), PortfolioCard 에서 `PORTFOLIO_ASSETS[slug]` lookup → 자산 있으면 240x240 contain + drop-shadow, 없으면 이니셜 placeholder. package.json scripts 의 `collect:assets` 로 등록.
 - [x] 자산 없는 프로젝트 placeholder — `Project.icon: ProjectIconName` 필드 추가 (8개 모두 의미있는 lucide 아이콘 매핑: MessageCircleHeart / Video / Scale / Smartphone / Briefcase / Newspaper / Workflow / ShieldCheck). PortfolioCard 의 placeholder 를 보강: 부유 dot 4개 + 64px 둥근 사각 아이콘 컨테이너 (border + bg-white/10 backdrop-blur, hover scale-110 + 미세 rotate) + 이니셜 small uppercase. ICON_MAP 으로 lookup. tree-shaking 보존.
-- [ ] 포트폴리오 섹션 레이아웃 — 카테고리 필터 또는 그룹 헤더 + 그리드 (반응형 3/2/1 컬럼) + 카드 호버 디테일
-- [ ] Andy 프로젝트 특별 처리 — 아이콘/팔레트가 명시돼 있으면 그대로 적시 (브랜드 색감 카드)
+- [x] 포트폴리오 섹션 레이아웃 — `src/components/site/portfolio-section.tsx` (id="portfolio") 신규. owned / client / internal 그룹별 헤더 (라벨 + 한줄 설명 + count badge + border-b) + 반응형 grid (lg 3 col / sm 2 col / mobile 1 col). 그룹 간 space-y-16~20. page.tsx 의 portfolio placeholder 를 PortfolioSection 으로 교체.
+- [x] Andy 프로젝트 특별 처리 — 별도 코드 분기 불요. Andy 는 이미 (1) ic_launcher.png 실자산 (collect:assets 가 cp), (2) emerald-teal-cyan accent (Android 브랜드 톤), (3) Smartphone 아이콘 fallback 으로 카드 안에서 자연스럽게 차별화됨. 추가 hardcoding 없이 데이터 + 자산만으로 충족. → **Phase 4 (포트폴리오) 전체 완료 (7/7)**.
 
 ### Phase 5 — 콘텐츠: 사주 서비스 입구
 
