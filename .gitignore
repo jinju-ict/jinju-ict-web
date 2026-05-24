@@ -27,3 +27,6 @@ __pycache__/
 node_modules/
 .npm/
 .pnpm-store/
+
+# ralph-loop runtime state (per-machine)
+.claude/*.local.md

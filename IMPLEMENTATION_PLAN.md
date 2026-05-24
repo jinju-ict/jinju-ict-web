@@ -1,14 +1,90 @@
 # IMPLEMENTATION_PLAN
 
 > ralph 가 매 iteration 갱신하는 체크리스트.
-> 사람은 비워둔 채 시작한다 — ralph 가 specs/ 보고 채운다.
+> 사람은 비워둔 채 시작한다 — ralph 가 specs/ + CLAUDE.md 비전 보고 채운다.
 > 망가지면 통째 폐기 (disposable).
+>
+> 출처: `CLAUDE.md` §1~§8 + `specs/portfolio-research.md`.
+> 정성 우선 (§4) — 매 task PASS 후에도 Nova 급 정성 자기 점검.
 
 ---
 
 ## TODO
 
-<!-- ralph 가 이 아래에 - [ ] task 한 줄씩 누적합니다. -->
+### Phase 1 — 인프라 (scaffold + 검증 활성화)
+
+- [ ] Next.js 15 App Router + TypeScript + Tailwind CSS 프로젝트 scaffold (`pnpm create next-app`, src/ 구조, App Router, ESLint, Tailwind, import alias `@/*`)
+- [ ] AGENTS.md 채움 — Node 20+ / pnpm 9+ / 검증 명령(lint, typecheck, build) 활성화 + 로컬에서 1회 exit 0 확인
+- [ ] shadcn/ui 초기화 (`pnpm dlx shadcn@latest init`) + 기본 컴포넌트 설치 (Button, Card, Input, Textarea, Label, Toast/Sonner, Separator, Badge)
+- [ ] Tailwind 디자인 토큰 정의 — Nova 톤 참고 (다크 우선, primary 보라/남색, accent 퍼플), CSS variables 로 운영, globals.css 정리
+- [ ] 폰트 셋업 — next/font (Pretendard 또는 Noto Sans KR + Inter), lucide-react 아이콘 설치
+- [ ] 기본 레이아웃 — RootLayout (다크 기본 + lang="ko") + Header (로고 + 섹션 앵커) + Footer (회사 정보 + 카피라이트)
+- [ ] 섹션 컨테이너 컴포넌트 (`<Section>`) + 공통 spacing/타이포 시스템 정립
+
+### Phase 2 — 콘텐츠: Hero / 회사 소개
+
+- [ ] Hero 섹션 — 진주 ICT 슬로건 (AI 정예 개발사, 자체 서비스 + 협업·외주 균형 메시지) + 한 줄 소개 (CLAUDE.md §1 톤) + CTA 2개 (사주 입구 / 문의 폼 앵커)
+- [ ] Hero 시각 — 그라데이션 + 모션 디테일 (framer-motion 또는 native CSS, 가벼운 부유 애니메이션)
+- [ ] 회사 소개 보조 섹션 — "왜 우리인가" (AI 전문성 / 빠르고 탄탄한 자체 개발 인프라 / 자체 서비스 + 협업 모두 수행)
+
+### Phase 3 — 콘텐츠: 팀 소개
+
+- [ ] 팀 카드 컴포넌트 — Nova 식 placeholder 아바타 (이니셜 + 그라데이션 배경 + 직무 라벨)
+- [ ] 팀 데이터 작성 (총 2명 — **인원수 "2명" / 나이 노출 금지**, "소수 정예" 톤)
+  - 기획자: 다양한 서비스 기획 + 창업 경험 + 뛰어난 PM, AI 전문
+  - 개발자: AI 에이전트 / AI 모델 개발 / 백엔드 / 앱 개발, AI 전문
+- [ ] 팀 섹션 레이아웃 — 카드 그리드 + 호버 인터랙션 (정성 디테일)
+
+### Phase 4 — 콘텐츠: 포트폴리오 (8개 프로젝트)
+
+- [ ] 포트폴리오 데이터 모듈 — `specs/portfolio-research.md` 의 8개 항목을 `lib/portfolio.ts` 로 정형화 (제목 / 카피 초안 / 스택 태그 / 카테고리 / 보안 룰 메모)
+- [ ] **포트폴리오 보안 룰 자가 검증** — 카피·코드·메타데이터에 다음 단어 0건 확인: 골든플래닛, Geoffrey, Huntley, Ralph Wiggum, superpowers, ai_news_scraping 의 실제 클라이언트명. 위반 발견 시 즉시 추상화.
+- [ ] 포트폴리오 카드 컴포넌트 — 썸네일 영역 / 제목 / 카피 / 스택 뱃지 / 카테고리 라벨 (자체·협업·내부인프라)
+- [ ] 포트폴리오 자산 자동 수집 스크립트 — 각 프로젝트 폴더에서 스크린샷/로고/아이콘 후보 파일 (`*.png`, `*.jpg`, `*.svg`, `image.png`, README 내 이미지 등) 탐색 후 `public/portfolio/<slug>/` 로 cp. 보안 룰 위반 파일명은 rename
+- [ ] 자산 없는 프로젝트 placeholder — 그라데이션 + 이니셜 + 스택 색상 토큰 기반 자동 생성
+- [ ] 포트폴리오 섹션 레이아웃 — 카테고리 필터 또는 그룹 헤더 + 그리드 (반응형 3/2/1 컬럼) + 카드 호버 디테일
+- [ ] Andy 프로젝트 특별 처리 — 아이콘/팔레트가 명시돼 있으면 그대로 적시 (브랜드 색감 카드)
+
+### Phase 5 — 콘텐츠: 사주 서비스 입구
+
+- [ ] `/Users/goldenplanet/jinsup_space/saju` 폴더 탐색 후 사주 앱 콘텐츠 (슬로건/기능 소개/스크린샷/image.png 등) 를 `public/saju/` + `lib/saju.ts` 로 cp·정리
+- [ ] 사주 섹션 컴포넌트 — 앱 소개 카피 + 핵심 기능 3개 + "Coming Soon" CTA (다운로드 링크는 placeholder, 출시 알림 받기 mailto: 또는 폼 연동)
+- [ ] 사주 앱 모바일 mockup 스타일 시각화 (프레임 + 스크린샷 또는 그라데이션 placeholder)
+
+### Phase 6 — 콘텐츠: 협업·문의 폼
+
+- [ ] React Hook Form + Zod 설치 + 스키마 정의 (이름 / 회사선택 / 연락처 / 문의내용, 최소 10자 이상 등)
+- [ ] 문의 폼 UI — shadcn Form + Input + Textarea + Label + 검증 에러 메시지 (한국어)
+- [ ] 폼 전송 인프라 결정 — Vercel + Resend 우선 검토 (무료 tier 3000건/월), 안 되면 Formspree 무료 50건/월, 안 되면 mailto: fallback. 결정 후 환경변수 자리 마련
+- [ ] 폼 제출 API Route (`app/api/contact/route.ts`) — 선택된 인프라로 `dlwlstjq410@gmail.com` 수신
+- [ ] 폼 성공/실패 토스트 (sonner) + 폼 reset
+- [ ] honeypot + 간단 rate-limit (스팸 방지, 로그인 없으니까)
+
+### Phase 7 — 정성: Nova 급 디테일
+
+- [ ] 다크 모드 — 기본 다크 (Nova 톤), light mode 토글은 도입 X (정성 우선이면 일관된 다크가 더 강함, 단 필요시 추후)
+- [ ] 스크롤 애니메이션 — framer-motion 또는 native CSS Intersection Observer 로 섹션 진입 시 부드러운 페이드/슬라이드
+- [ ] 마이크로 인터랙션 — 카드 호버 (lift + 그림자 변화), 버튼 active feedback, focus ring (a11y 준수)
+- [ ] 타이포 계층 정립 — H1~H6 + body + caption 일관 적용
+- [ ] 반응형 검증 — 360 / 768 / 1024 / 1440 / 1920 폭에서 깨지지 않음
+- [ ] SEO 메타데이터 — `app/layout.tsx` metadata (title / description / openGraph / twitter), `robots.txt`, `sitemap.ts`
+- [ ] OG 이미지 — `app/opengraph-image.tsx` (next/og + Satori) 로 동적 생성, 진주 ICT 슬로건 + 그라데이션
+- [ ] favicon / app icon — `app/icon.tsx` 또는 정적 ico/png, 다크 친화 디자인
+- [ ] accessibility — semantic HTML, aria-label, alt 텍스트, 키보드 네비 (Tab 순서), 색상 대비 4.5:1 이상
+- [ ] performance — 이미지 next/image, 폰트 display: swap, Lighthouse 90+ 목표
+
+### Phase 8 — 배포
+
+- [ ] `vercel.ts` 설정 (`@vercel/config`) — buildCommand / framework / 환경변수 자리
+- [ ] `.env.example` 정리 — Resend API key 등 필요 환경변수 명시 (실제 secret X)
+- [ ] Vercel 배포 (preview) — `vercel deploy` 1회 성공 확인, 도메인은 임시 vercel.app 서브도메인
+- [ ] Production build 로컬 검증 — `pnpm build && pnpm start` 로 정상 동작 확인
+
+### Phase 9 — PROJECT_DONE 직전
+
+- [ ] 전 섹션 최종 정성 점검 — Nova 와 side-by-side 비교, 정성 부족 섹션 보강
+- [ ] `SETUP.html` 생성 (PROMPT.md §8 형식) — 환경변수 / Vercel 셋업 / Resend / 도메인 / 운영 메모
+- [ ] CLAUDE.md 의 ⚠️ 항목 (팀 프로필 실제 데이터 / 사주 앱 다운로드 링크 / 도메인) 을 SETUP.html 에 인수인계 메모로 정리
 
 ---
 

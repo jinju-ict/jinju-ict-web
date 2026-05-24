@@ -9,8 +9,8 @@ Claude Code 가 매 세션 자동 로드하므로, ralph 의 매 iteration fresh
 ## 🔒 비전 인터뷰 상태 (gating)
 
 ```yaml
-onboarded: false
-onboarded_at: null
+onboarded: true
+onboarded_at: 2026-05-24T04:35:39Z
 ```
 
 > `onboarded: false` 이면 ralph 는 매 iteration 첫 응답을 **비전 인터뷰** (`vision-intake` skill) 로 시작한다.
@@ -21,28 +21,87 @@ onboarded_at: null
 ## 비전 / 사양 (대표님 영역 — vision-intake 가 채움)
 
 ### 1. 비전
-*(미입력. vision-intake skill 로 채워집니다.)*
+
+**진주 ICT** — AI 전문가들이 모인 개발사. AI 기술 기반으로 **자체 서비스를 주력으로 만들면서, 협업·외주 의뢰도 폭넓게 수행**한다. 첫 자체 프로덕트로 사주 서비스를 준비 중.
+
+이 사이트(`jinju-ict-web`)는 **회사 소개(주) + 사주 서비스 입구(부)** 를 겸하는 단일 페이지 랜딩이다.
+
+핵심 메시지: "AI 잘하는 정예 개발사. 자체 서비스를 주력으로 만들면서도, 협업·외주 의뢰도 폭넓게 받는다 — **특정 영역에 치우치지 않고 가치 있는 일은 모두 수행**." 카피·섹션 비중에서 "SI 회사" 한쪽으로 쏠리는 인상 금지.
 
 ### 2. 대상 사용자
-*(미입력)*
+
+특정 페르소나 타겟팅 X — **"우리를 알린다"** 가 핵심. 잠재 SI 고객 / 사주 앱 관심자 / 흘러들어온 방문자 모두 포용. 누가 들어와도 "진짜 잘하는 회사 같다" 는 인상을 받게 만드는 게 목표.
 
 ### 3. 핵심 산출물
-*(미입력)*
+
+단일 페이지 랜딩의 섹션 구성:
+
+1. **Hero / 회사 소개** — 회사명(진주 ICT) + 슬로건(ralph 합성) + AI 전문성 어필 메시지
+2. **팀 소개** — Nova 식 팀원 카드 2명
+   - 기획자: 다양한 서비스 기획 + 창업 경험 + 뛰어난 PM. AI 전문
+   - 개발자: AI 에이전트 / AI 모델 개발 / 백엔드 / 앱 개발. AI 전문
+   - 한 줄 소개·사진은 ralph 가 위 톤으로 합성 (placeholder), 동결 후 대표님이 직접 갱신
+   - **나이 / 인원수 "2명" 표현 금지** — "소수 정예" 같은 추상 표현으로
+3. **사주 서비스 입구** — 첫 자체 프로덕트. 앱 미배포 → "Coming Soon" CTA. 콘텐츠/스크린샷은 `/Users/goldenplanet/jinsup_space/saju` 에서 cp
+4. **포트폴리오** — 8개 프로젝트를 카드/그리드로 노출
+   - 분류·정체·스택·전문가 느낌 카피·보안 룰은 `specs/portfolio-research.md` 에 정리 완료
+   - 진주 ICT 자체 (3): TtokTtok, shortdub, king_of_law
+   - 외부 클라이언트 의뢰 (3): Andy, gp_claw, ai_news_scraping
+   - 자체 개발 인프라 (2): js-ralph, js-super → "자체 하네스 / 에이전틱 엔지니어링 방식 보유, 개발 속도 빠르고 탄탄" 추상 메시지로
+   - 스크린샷·로고는 ralph 가 각 프로젝트 폴더 까서 자동 cp (`public/portfolio/` 권장)
+5. **협업·문의 폼** — 이름 / 회사(선택) / 연락처 / 문의 내용. 외주·협업·기타 문의를 통합 수신. 라벨/카피에서 "SI" 단어 단독 노출 지양 — "협업 / 프로젝트 문의" 같은 포괄 용어 사용. 수신은 이메일(`dlwlstjq410@gmail.com`)
 
 ### 4. 성공 정의
-*(미입력)*
+
+**정량 지표 없음.** 유일한 기준은 **정성 — Nova(`/Users/goldenplanet/jinsup_ralph/Nova`) 급 정성·완성도**.
+
+ralph 는 매 iteration 끝에서 "Nova 와 동등하거나 그 이상의 시각적 정성·인터랙션 디테일·코드 품질을 달성했는가" 를 자기 점검 기준으로 삼는다. (정량 검증 없음 = LLM 채점 없음 ≠ 검증 없음. AGENTS.md 의 lint/typecheck/build 는 그대로 deterministic backpressure 로 동작.)
 
 ### 5. 금지 / 범위 밖
-*(미입력)*
+
+- 가격표 / 견적 자동 산출 (협업·외주는 별도 협의)
+- 로그인 / 회원 / 인증 시스템 (단순 랜딩)
+- 다국어 (한국어만)
+- 블로그 / 뉴스 / CMS (운영 부담)
+- 사주 결과 실제 계산 로직 (앱 책임, 웹은 입구만)
+- **포트폴리오 보안 룰 위반** — `specs/portfolio-research.md` 의 노출 룰 절대 위반 금지:
+  - gp_claw 의 진짜 클라이언트 회사명
+  - ai_news_scraping 의 진짜 클라이언트 회사명
+  - js-ralph / js-super 의 원본 OSS 서비스명
 
 ### 6. 외부 의존
-*(미입력)*
+
+| 항목 | 출처 / 처리 |
+|------|------------|
+| 협업·문의 수신 이메일 | `dlwlstjq410@gmail.com` (확정) |
+| 폼 전송 인프라 | 첫 iteration 에서 ralph 가 결정 (Vercel + Resend / Formspree / mailto fallback 중 1택 — 정성 + 무료/저비용 우선) |
+| 사주 앱 자산 (스크린샷 / 슬로건 / 기능) | `/Users/goldenplanet/jinsup_space/saju` 폴더 자동 탐색 후 `public/saju/` 로 cp |
+| 사주 앱 다운로드 링크 | 미배포 → "Coming Soon" CTA, URL 자리만 마련 |
+| 포트폴리오 스크린샷 / 로고 / 아이콘 | 각 프로젝트 폴더에서 ralph 자동 수집 후 `public/portfolio/` 로 cp. 없으면 자동 합성 (placeholder + 색감 토큰) |
+| 팀 프로필 사진 / 실제 한 줄 소개 | ralph 가 Nova 식 placeholder (이니셜 + 그라데이션 + 직무 라벨) 로 자리잡기. 동결 후 대표님이 직접 갱신 |
+| 분석 / 트래킹 | 도입 X (정성 기준만 본다는 §4 결정에 따라) |
 
 ### 7. 규모·일정·비용 cap
-*(미입력)*
+
+**ralph 200 iteration cap.** 정성 우선이라 디폴트 150 보다 50 상향. ralph-loop 자동 시작 시 `--max-iterations 200` 으로 설정.
+
+비용 cap 미설정 — Nova 급 정성에 도달할 때까지 200 iteration 풀로 사용 가능.
 
 ### 8. 기술 스택
-*(미입력 — 빈 채로 두면 아래 "기본 기술 스택" 디폴트가 적용됩니다)*
+
+**Next.js 15 App Router + TypeScript + Tailwind CSS + shadcn/ui** 채택.
+
+| 영역 | 채택 | 이유 |
+|------|------|------|
+| 프레임워크 | Next.js 15 (App Router) | Nova 가 Next.js 15 App Router 라 동일 정성 재현에 가장 가까운 출발점. Vercel 1-clic 배포. |
+| 언어 | TypeScript | 단일 페이지지만 컴포넌트 props 안전성 + IDE 보조 |
+| 스타일링 | Tailwind CSS | Nova 동일. 정성 디테일 빠른 반복에 유리 |
+| UI 컴포넌트 | shadcn/ui | 카드/폼/다이얼로그 등 기본 컴포넌트 빠르게. 디자인 커스터마이즈 자유 |
+| 폼 처리 | React Hook Form + Zod | SI 문의 폼 검증 |
+| 폰트 / 아이콘 | next/font + lucide-react | 정성·일관성 |
+| 배포 | Vercel | 무료 tier + 1-clic. 도메인 추후 |
+
+factory 디폴트 (Vite + React) 는 채택하지 않음 — Nova 노선과 어긋남.
 
 ---
 
