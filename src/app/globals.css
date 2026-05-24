@@ -133,19 +133,19 @@
 /* ---------- Motion utilities (T1 white-aje: 모션 거의 제거 — animate-* 모두 no-op) ---------- */
 
 @utility animate-fade-in-up {
-  /* no-op — 모션 거의 X 정책 */
+  animation: none;
 }
 
 @utility animate-float-slow {
-  /* no-op */
+  animation: none;
 }
 
 @utility animate-float-reverse {
-  /* no-op */
+  animation: none;
 }
 
 @utility animate-pulse-soft {
-  /* no-op */
+  animation: none;
 }
 
 /* ---------- Surface utilities (T1 white-aje: 글래스 → 단순 박스로 재정의) ---------- */
