@@ -29,10 +29,8 @@
 
 ### Phase 3 — 콘텐츠: 팀 소개
 
-- [ ] 팀 카드 컴포넌트 — Nova 식 placeholder 아바타 (이니셜 + 그라데이션 배경 + 직무 라벨)
-- [ ] 팀 데이터 작성 (총 2명 — **인원수 "2명" / 나이 노출 금지**, "소수 정예" 톤)
-  - 기획자: 다양한 서비스 기획 + 창업 경험 + 뛰어난 PM, AI 전문
-  - 개발자: AI 에이전트 / AI 모델 개발 / 백엔드 / 앱 개발, AI 전문
+- [x] 팀 카드 컴포넌트 — `src/components/site/team-card.tsx` 신규. props: `{ member: TeamMember }`. 64px 그라데이션 아바타 (initials + ring + 호버 시 rotate-3 + scale-105) / displayName + role uppercase / oneLiner / strengths Badge chip 그룹. 카드 호버 시 lift + aurora glow 컬러 등장.
+- [x] 팀 데이터 작성 — `src/lib/team.ts` 의 `TEAM: readonly TeamMember[]`. 2명 항목 (Founder · Product, Founder · Engineering) — 실명/사진은 placeholder, 인원수 "N명" 표현/나이 모두 미노출. 동결 후 대표님이 직접 갱신할 자리임을 파일 상단 주석으로 명시.
 - [ ] 팀 섹션 레이아웃 — 카드 그리드 + 호버 인터랙션 (정성 디테일)
 
 ### Phase 4 — 콘텐츠: 포트폴리오 (8개 프로젝트)
