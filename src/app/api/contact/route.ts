@@ -1,0 +1,93 @@
+import { NextResponse } from "next/server";
+import { Resend } from "resend";
+import { contactSchema } from "@/lib/contact-schema";
+
+// Vercel Fluid Compute / Node.js runtime
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+export async function POST(req: Request) {
+  let body: unknown;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json(
+      { error: "요청 본문이 올바르지 않습니다." },
+      { status: 400 },
+    );
+  }
+
+  const parsed = contactSchema.safeParse(body);
+  if (!parsed.success) {
+    const firstError = parsed.error.issues[0];
+    // 봇이 honeypot 채우면 200 으로 위장 (감지 어렵게)
+    if (firstError?.message === "BOT_DETECTED") {
+      return NextResponse.json({ ok: true });
+    }
+    return NextResponse.json(
+      { error: firstError?.message ?? "입력 값이 올바르지 않습니다." },
+      { status: 422 },
+    );
+  }
+
+  const { name, company, contact, message } = parsed.data;
+
+  const apiKey = process.env.RESEND_API_KEY;
+  const to = process.env.CONTACT_INBOX_TO ?? "dlwlstjq410@gmail.com";
+  const from = process.env.CONTACT_INBOX_FROM ?? "onboarding@resend.dev";
+
+  if (!apiKey) {
+    console.warn(
+      "[contact] RESEND_API_KEY missing — message logged but NOT sent",
+      { name, company, contact, message: message.slice(0, 80) + "..." },
+    );
+    return NextResponse.json(
+      {
+        error: "메일 서비스가 아직 설정되지 않았습니다. 잠시 후 다시 시도해 주세요.",
+      },
+      { status: 503 },
+    );
+  }
+
+  const resend = new Resend(apiKey);
+  const isEmail = EMAIL_RE.test(contact);
+
+  const textBody = [
+    `이름: ${name}`,
+    company ? `회사: ${company}` : null,
+    `연락처: ${contact}${isEmail ? "" : " (전화 또는 기타)"}`,
+    "",
+    "─ 문의 내용 ─",
+    message,
+  ]
+    .filter(Boolean)
+    .join("\n");
+
+  try {
+    const result = await resend.emails.send({
+      from: `진주 ICT 협업 문의 <${from}>`,
+      to: [to],
+      ...(isEmail ? { replyTo: contact } : {}),
+      subject: `[진주 ICT 문의] ${name}${company ? ` · ${company}` : ""}`,
+      text: textBody,
+    });
+
+    if (result.error) {
+      console.error("[contact] Resend error:", result.error);
+      return NextResponse.json(
+        { error: "메일 전송에 실패했습니다. 잠시 후 다시 시도해 주세요." },
+        { status: 502 },
+      );
+    }
+
+    return NextResponse.json({ ok: true });
+  } catch (err) {
+    console.error("[contact] unhandled:", err);
+    return NextResponse.json(
+      { error: "서버 오류가 발생했습니다." },
+      { status: 500 },
+    );
+  }
+}
