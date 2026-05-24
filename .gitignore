@@ -48,3 +48,6 @@ next-env.d.ts
 # misc
 *.pem
 coverage/
+
+# 원본 자산 임시 보관 (cp 후 보존)
+ref/
