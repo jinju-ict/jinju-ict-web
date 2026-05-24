@@ -40,12 +40,12 @@ export function Section({
         </p>
       )}
       {title && (
-        <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+        <h2 className="text-balance text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
           {title}
         </h2>
       )}
       {lead && (
-        <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
+        <p className="mt-5 text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
           {lead}
         </p>
       )}
