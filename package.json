@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "check:security": "bash scripts/check-security.sh"
+    "check:security": "bash scripts/check-security.sh",
+    "collect:assets": "bash scripts/collect-portfolio-assets.sh"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

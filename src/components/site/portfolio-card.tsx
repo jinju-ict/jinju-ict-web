@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import type { Project } from "@/lib/portfolio";
+import { PORTFOLIO_ASSETS } from "@/lib/portfolio-assets";
 
 interface PortfolioCardProps {
   project: Project;
@@ -18,6 +19,7 @@ export function PortfolioCard({ project }: PortfolioCardProps) {
     project.title.replace(/\s+/g, "").slice(0, 2).toUpperCase() || "··";
   const visibleStack = project.stack.slice(0, 5);
   const overflowStack = project.stack.length - visibleStack.length;
+  const thumbnailSrc = project.thumbnail ?? PORTFOLIO_ASSETS[project.slug];
 
   return (
     <Card className="group/proj relative flex h-full flex-col overflow-hidden border-border/60 bg-card/40 p-0 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-border hover:bg-card/70 hover:shadow-xl hover:shadow-primary/5">
@@ -44,22 +46,25 @@ export function PortfolioCard({ project }: PortfolioCardProps) {
         />
         {/* Inner glow */}
         <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-90" />
-        {/* Initials */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          {project.thumbnail ? (
+        {/* Asset or initials */}
+        {thumbnailSrc ? (
+          <div className="absolute inset-0 z-10 flex items-center justify-center p-12">
             <Image
-              src={project.thumbnail}
+              src={thumbnailSrc}
               alt={`${project.title} 썸네일`}
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+              width={240}
+              height={240}
+              className="h-full w-auto max-w-full object-contain drop-shadow-[0_8px_30px_rgba(0,0,0,0.45)]"
+              sizes="(min-width: 1024px) 240px, (min-width: 640px) 40vw, 60vw"
             />
-          ) : (
+          </div>
+        ) : (
+          <div className="absolute inset-0 z-10 flex items-center justify-center">
             <span className="select-none text-5xl font-bold tracking-tight text-white/95 mix-blend-overlay drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)]">
               {initials}
             </span>
-          )}
-        </div>
+          </div>
+        )}
 
         {project.comingSoon && (
           <Badge
