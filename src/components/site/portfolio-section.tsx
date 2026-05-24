@@ -12,15 +12,15 @@ const CATEGORY_HEADERS: Record<
 > = {
   owned: {
     label: "자체 서비스",
-    sub: "우리가 직접 기획·개발·운영하는 프로덕트입니다.",
+    sub: "직접 기획·개발·운영하는 솔루션입니다.",
   },
   client: {
     label: "클라이언트 의뢰",
-    sub: "외부 기업의 의뢰를 받아 처음부터 끝까지 만든 작업입니다.",
+    sub: "외부 의뢰를 받아 만들어 운영했던 솔루션입니다.",
   },
   internal: {
     label: "사내 개발 인프라",
-    sub: "빠르고 탄탄하게 일하기 위해 직접 만든 도구입니다.",
+    sub: "내부에서 직접 만들어 사용하는 개발 도구입니다.",
   },
 };
 
@@ -34,8 +34,8 @@ export function PortfolioSection() {
     <Section
       id="portfolio"
       eyebrow="솔루션"
-      title="우리가 만든 것들"
-      lead="자체 서비스부터 외부 의뢰, 그리고 사내 개발 인프라까지 — 우리가 실제로 무엇을 만드는지 보여드립니다."
+      title="만들어 운영 중인 솔루션"
+      lead="자체 서비스 · 외부 의뢰 · 사내 개발 인프라 세 갈래로 정리했습니다. 각 솔루션이 무엇이고 누구에게 어떤 가치를 주는지 한눈에 확인하실 수 있습니다."
       align="center"
     >
       <div className="space-y-16 sm:space-y-20">

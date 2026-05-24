@@ -95,10 +95,13 @@ export default async function PortfolioDetailPage({ params }: PageProps) {
   const thumbnail = project.thumbnail ?? assets?.thumbnail;
   const initials =
     project.title.replace(/\s+/g, "").slice(0, 2).toUpperCase() || "··";
+  const hasWorkflow =
+    project.slug === "dev-harness" || project.slug === "dev-safety";
+  const hasScreens = screens.length > 0 || Boolean(thumbnail);
 
   return (
     <article className="relative w-full">
-      {/* ============ 1. 상단 Hero ribbon ============ */}
+      {/* ============ 1. 상단 Hero ============ */}
       <header className="relative w-full border-b-2 border-border bg-muted">
         <div className="relative mx-auto w-full max-w-6xl px-6 pt-16 pb-20 sm:px-8 sm:pt-20 sm:pb-24 lg:pt-28 lg:pb-32">
           {/* 우상단 back link */}
@@ -129,7 +132,7 @@ export default async function PortfolioDetailPage({ params }: PageProps) {
                 {project.title}
               </h1>
               <p className="text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
-                {project.oneLiner}
+                {project.summary}
               </p>
             </div>
 
@@ -147,85 +150,7 @@ export default async function PortfolioDetailPage({ params }: PageProps) {
       </header>
 
       <div className="mx-auto w-full max-w-6xl space-y-16 px-6 py-16 sm:space-y-20 sm:px-8 sm:py-20 lg:space-y-24 lg:py-24">
-        {/* ============ 2. Problem / Approach ============ */}
-        <section aria-labelledby="problem-approach-title">
-          <h2 id="problem-approach-title" className="sr-only">
-            문제와 접근
-          </h2>
-          <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
-            {/* Problem */}
-            <div className="rounded-sm border-2 border-border bg-card p-8 shadow-sm sm:p-10">
-              <p className="mb-4 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-                Problem
-              </p>
-              <h3 className="mb-5 text-2xl font-bold tracking-tight text-foreground">
-                풀어야 했던 것
-              </h3>
-              <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-                {project.problem}
-              </p>
-            </div>
-
-            {/* Approach */}
-            <div className="rounded-sm border-2 border-border bg-card p-8 shadow-sm sm:p-10">
-              <p className="mb-4 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-                Approach
-              </p>
-              <h3 className="mb-5 text-2xl font-bold tracking-tight text-foreground">
-                어떻게 풀었나
-              </h3>
-              <ul className="space-y-3.5">
-                {project.approach.map((item) => (
-                  <li
-                    key={item}
-                    className="flex gap-3 text-sm leading-relaxed text-muted-foreground sm:text-base"
-                  >
-                    <CheckCircle2
-                      aria-hidden="true"
-                      className="mt-1 h-4 w-4 shrink-0 text-foreground"
-                    />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* ============ 3. Architecture ============ */}
-        <section aria-labelledby="architecture-title">
-          <p className="mb-4 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-            Architecture
-          </p>
-          <h2
-            id="architecture-title"
-            className="mb-6 text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
-          >
-            아키텍처
-          </h2>
-          <div className="rounded-sm border-2 border-border bg-card p-8 shadow-sm sm:p-10">
-            <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-              {project.architecture}
-            </p>
-            <div className="mt-7 flex flex-wrap gap-2">
-              {project.stack.map((s) => (
-                <Badge
-                  key={s}
-                  variant="secondary"
-                  className="rounded-sm border border-border bg-muted px-3 py-1 text-[11px] font-medium text-foreground"
-                >
-                  {s}
-                </Badge>
-              ))}
-            </div>
-          </div>
-
-          {/* 자체 인프라 — 워크플로우 시각화 embed */}
-          {project.slug === "dev-harness" && <WorkflowHarness className="mt-8" />}
-          {project.slug === "dev-safety" && <WorkflowSafety className="mt-8" />}
-        </section>
-
-        {/* ============ 4. Features ============ */}
+        {/* ============ 2. 핵심 기능 ============ */}
         <section aria-labelledby="features-title">
           <p className="mb-4 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
             Features
@@ -254,105 +179,166 @@ export default async function PortfolioDetailPage({ params }: PageProps) {
           </ul>
         </section>
 
-        {/* ============ 5. Outcomes (있을 때만) ============ */}
-        {project.outcomes && project.outcomes.length > 0 && (
-          <section aria-labelledby="outcomes-title">
+        {/* ============ 3. 사용 사례 ============ */}
+        <section aria-labelledby="usecases-title">
+          <p className="mb-4 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+            Use cases
+          </p>
+          <h2
+            id="usecases-title"
+            className="mb-8 text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
+          >
+            사용 사례
+          </h2>
+          <ul className="space-y-3.5">
+            {project.useCases.map((uc, idx) => (
+              <li
+                key={uc}
+                className="flex items-start gap-4 rounded-sm border-2 border-border bg-card p-5 shadow-sm sm:p-6"
+              >
+                <span className="font-mono text-xs font-semibold tracking-wider text-muted-foreground">
+                  {String(idx + 1).padStart(2, "0")}
+                </span>
+                <p className="text-sm leading-relaxed text-foreground sm:text-base">
+                  {uc}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* ============ 4. 이런 분께 유용합니다 ============ */}
+        <section aria-labelledby="whofor-title">
+          <p className="mb-4 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+            For you
+          </p>
+          <h2
+            id="whofor-title"
+            className="mb-6 text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
+          >
+            이런 분께 유용합니다
+          </h2>
+          <div className="rounded-sm border-2 border-border bg-card p-8 shadow-sm sm:p-10">
+            <p className="text-base leading-relaxed text-foreground sm:text-lg">
+              {project.whoFor}
+            </p>
+          </div>
+        </section>
+
+        {/* ============ 5. 작동 방식 (자체 인프라만) ============ */}
+        {hasWorkflow && (
+          <section aria-labelledby="workflow-title">
             <p className="mb-4 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-              Outcomes
+              How it works
             </p>
             <h2
-              id="outcomes-title"
+              id="workflow-title"
               className="mb-8 text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
             >
-              산출 · 결과
+              작동 방식
             </h2>
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {project.outcomes.map((outcome, idx) => (
-                <div
-                  key={outcome}
-                  className="flex h-full flex-col gap-3 rounded-sm border-2 border-border bg-card p-6 shadow-sm"
-                >
-                  <span className="font-mono text-xs font-semibold tracking-wider text-muted-foreground">
-                    {String(idx + 1).padStart(2, "0")}
-                  </span>
-                  <p className="text-sm leading-relaxed text-foreground">
-                    {outcome}
-                  </p>
-                </div>
-              ))}
-            </div>
+            {project.slug === "dev-harness" && <WorkflowHarness />}
+            {project.slug === "dev-safety" && <WorkflowSafety />}
           </section>
         )}
 
-        {/* ============ 6. Screens ============ */}
-        <section aria-labelledby="screens-title">
+        {/* ============ 6. 기술 스택 ============ */}
+        <section aria-labelledby="stack-title">
           <p className="mb-4 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-            Screens
+            Stack
           </p>
           <h2
-            id="screens-title"
-            className="mb-8 text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
+            id="stack-title"
+            className="mb-6 text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
           >
-            화면 · 자산
+            기술 스택
           </h2>
-
-          {screens.length > 0 ? (
-            <div
-              className={cn(
-                "grid gap-5",
-                screens.length === 1
-                  ? "sm:grid-cols-1"
-                  : screens.length === 2
-                    ? "sm:grid-cols-2"
-                    : "sm:grid-cols-2 lg:grid-cols-3",
-              )}
-            >
-              {screens.map((src, idx) => (
-                <div
-                  key={src}
-                  className="relative overflow-hidden rounded-sm border-2 border-border bg-card p-4 shadow-sm"
+          <div className="rounded-sm border-2 border-border bg-card p-8 shadow-sm sm:p-10">
+            <div className="flex flex-wrap gap-2">
+              {project.stack.map((s) => (
+                <Badge
+                  key={s}
+                  variant="secondary"
+                  className="rounded-sm border border-border bg-muted px-3 py-1 text-[11px] font-medium text-foreground"
                 >
-                  <div className="relative flex aspect-[3/4] w-full items-center justify-center overflow-hidden rounded-sm bg-muted">
+                  {s}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ============ 7. 스크린샷 (자산 있을 때만) ============ */}
+        {hasScreens && (
+          <section aria-labelledby="screens-title">
+            <p className="mb-4 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+              Screens
+            </p>
+            <h2
+              id="screens-title"
+              className="mb-8 text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
+            >
+              화면
+            </h2>
+
+            {screens.length > 0 ? (
+              <div
+                className={cn(
+                  "grid gap-5",
+                  screens.length === 1
+                    ? "sm:grid-cols-1"
+                    : screens.length === 2
+                      ? "sm:grid-cols-2"
+                      : "sm:grid-cols-2 lg:grid-cols-3",
+                )}
+              >
+                {screens.map((src, idx) => (
+                  <div
+                    key={src}
+                    className="relative overflow-hidden rounded-sm border-2 border-border bg-card p-4 shadow-sm"
+                  >
+                    <div className="relative flex aspect-[3/4] w-full items-center justify-center overflow-hidden rounded-sm bg-muted">
+                      <Image
+                        src={src}
+                        alt={`${project.title} 화면 ${idx + 1}`}
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : thumbnail ? (
+              <div className="relative overflow-hidden rounded-sm border-2 border-border bg-card p-6 shadow-sm sm:p-8">
+                <div className="relative flex aspect-[16/10] w-full items-center justify-center overflow-hidden rounded-sm border border-border bg-muted">
+                  <div className="relative flex items-center justify-center p-12">
                     <Image
-                      src={src}
-                      alt={`${project.title} 화면 ${idx + 1}`}
-                      fill
-                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      className="object-contain"
+                      src={thumbnail}
+                      alt={`${project.title} 썸네일`}
+                      width={420}
+                      height={420}
+                      className="h-full max-h-[360px] w-auto object-contain"
                     />
                   </div>
                 </div>
-              ))}
-            </div>
-          ) : thumbnail ? (
-            <div className="relative overflow-hidden rounded-sm border-2 border-border bg-card p-6 shadow-sm sm:p-8">
-              <div className="relative flex aspect-[16/10] w-full items-center justify-center overflow-hidden rounded-sm border border-border bg-muted">
-                <div className="relative flex items-center justify-center p-12">
-                  <Image
-                    src={thumbnail}
-                    alt={`${project.title} 썸네일`}
-                    width={420}
-                    height={420}
-                    className="h-full max-h-[360px] w-auto object-contain"
-                  />
+              </div>
+            ) : (
+              <div className="relative flex aspect-[16/9] w-full items-center justify-center overflow-hidden rounded-sm border-2 border-border bg-muted shadow-sm">
+                <div className="relative flex flex-col items-center gap-4">
+                  <div className="flex h-20 w-20 items-center justify-center rounded-sm border-2 border-border bg-card text-foreground">
+                    <Icon aria-hidden="true" className="h-8 w-8" />
+                  </div>
+                  <span className="select-none font-mono text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                    {initials}
+                  </span>
                 </div>
               </div>
-            </div>
-          ) : (
-            <div className="relative flex aspect-[16/9] w-full items-center justify-center overflow-hidden rounded-sm border-2 border-border bg-muted shadow-sm">
-              <div className="relative flex flex-col items-center gap-4">
-                <div className="flex h-20 w-20 items-center justify-center rounded-sm border-2 border-border bg-card text-foreground">
-                  <Icon aria-hidden="true" className="h-8 w-8" />
-                </div>
-                <span className="select-none font-mono text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-                  {initials}
-                </span>
-              </div>
-            </div>
-          )}
-        </section>
+            )}
+          </section>
+        )}
 
-        {/* ============ 7. 하단 CTA ============ */}
+        {/* ============ 8. 하단 CTA ============ */}
         <section
           aria-labelledby="cta-title"
           className="relative overflow-hidden rounded-sm border-2 border-border bg-card shadow-sm"
