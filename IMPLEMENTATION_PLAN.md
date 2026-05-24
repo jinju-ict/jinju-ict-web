@@ -55,8 +55,8 @@
 - [x] 문의 폼 UI — `src/components/site/contact-form.tsx` (client, RHF + zodResolver(contactSchema)) + `src/components/site/contact-section.tsx` (Section 래퍼). Field 헬퍼 (label / required * / error / hint), Input/Textarea 사용, honeypot (hidden + tabIndex=-1 + autocomplete=off), submit 시 toast.success/error (sonner). sonner.tsx 의 theme 을 "dark" 고정 + next-themes 의존 제거 (강제 다크 정책 일관). layout.tsx 에 `<Toaster position="bottom-right" />` 추가. page.tsx 의 contact placeholder 를 ContactSection 으로 교체. Zod 4 + @hookform/resolvers 5 internal API 충돌 → zod 3.25 로 다운그레이드 (우리 스키마는 v4 specific 기능 미사용).
 - [x] 폼 전송 인프라 결정 — **Resend** 채택 (무료 3000/월, Vercel 1-clic 통합, 정성 톤 가장 적합). `.env.example` 신규 (RESEND_API_KEY, CONTACT_INBOX_TO=dlwlstjq410@gmail.com, CONTACT_INBOX_FROM=onboarding@resend.dev 도메인검증전 fallback). CLAUDE.md §6 표의 폼 인프라 라인을 Resend 결정으로 갱신.
 - [x] 폼 제출 API Route — `src/app/api/contact/route.ts` (POST, runtime=nodejs, dynamic=force-dynamic). 서버측 contactSchema 재검증, honeypot 위반 시 200 위장 (감지 어렵게), Resend SDK 6.12 로 발송 (`진주 ICT 협업 문의 <from>` → CONTACT_INBOX_TO). 이메일 형식이면 replyTo 자동 설정. RESEND_API_KEY 미설정 시 503 + console.warn (dev 로그만). Resend 응답 error 시 502.
-- [ ] 폼 성공/실패 토스트 (sonner) + 폼 reset
-- [ ] honeypot + 간단 rate-limit (스팸 방지, 로그인 없으니까)
+- [x] 폼 성공/실패 토스트 (sonner) + 폼 reset — iteration 22 의 ContactForm 에 이미 구현 완료: `toast.success("...")` + `reset()` 성공 시, `toast.error("...")` 실패 시. layout.tsx 의 `<Toaster position="bottom-right" theme="dark" />` 가 모든 페이지에서 작동.
+- [x] honeypot + rate-limit — honeypot 은 iteration 22 (form hidden 필드) + iteration 24 (route 의 BOT_DETECTED 200 위장 분기) 양쪽 구현. rate-limit 은 in-memory per-instance Map (분당 5건/IP, Fluid Compute instance 재사용 활용, 100+ buckets 시 만료 정리). x-forwarded-for / x-real-ip 헤더 fallback. 초과 시 429 + Retry-After 헤더. → **Phase 6 (협업·문의 폼) 전체 완료 (6/6)**.
 
 ### Phase 7 — 정성: Nova 급 디테일
 

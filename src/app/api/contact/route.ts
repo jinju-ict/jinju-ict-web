@@ -8,7 +8,57 @@ export const dynamic = "force-dynamic";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+/* ---------- Rate limit (in-memory, per-instance) ----------
+ * Fluid Compute 가 instance 를 재사용해서 burst 차단에 충분.
+ * cold start 후엔 reset 되지만 그 자체로도 봇 비용 부담 효과.
+ * 분당 5건 / IP. 외부 상태 의존 X.
+ */
+const RATE_WINDOW_MS = 60_000;
+const RATE_MAX = 5;
+const RATE_BUCKETS = new Map<string, { count: number; resetAt: number }>();
+
+function getClientIp(req: Request) {
+  const xff = req.headers.get("x-forwarded-for");
+  if (xff) return xff.split(",")[0].trim();
+  return req.headers.get("x-real-ip") ?? "unknown";
+}
+
+function rateLimit(ip: string): { ok: true } | { ok: false; retryAfter: number } {
+  const now = Date.now();
+  // 가벼운 prune — bucket 100개 초과 시에만 cleanup (메모리 leak 방지)
+  if (RATE_BUCKETS.size > 100) {
+    for (const [k, v] of RATE_BUCKETS) {
+      if (v.resetAt < now) RATE_BUCKETS.delete(k);
+    }
+  }
+  const bucket = RATE_BUCKETS.get(ip);
+  if (!bucket || now > bucket.resetAt) {
+    RATE_BUCKETS.set(ip, { count: 1, resetAt: now + RATE_WINDOW_MS });
+    return { ok: true };
+  }
+  if (bucket.count >= RATE_MAX) {
+    return { ok: false, retryAfter: Math.ceil((bucket.resetAt - now) / 1000) };
+  }
+  bucket.count += 1;
+  return { ok: true };
+}
+
 export async function POST(req: Request) {
+  // Rate limit (분당 5건/IP)
+  const ip = getClientIp(req);
+  const rl = rateLimit(ip);
+  if (!rl.ok) {
+    return NextResponse.json(
+      {
+        error: `요청이 너무 잦습니다. ${rl.retryAfter}초 후 다시 시도해 주세요.`,
+      },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rl.retryAfter) },
+      },
+    );
+  }
+
   let body: unknown;
   try {
     body = await req.json();
