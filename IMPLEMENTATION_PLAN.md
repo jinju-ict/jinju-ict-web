@@ -31,7 +31,7 @@
 
 - [x] 팀 카드 컴포넌트 — `src/components/site/team-card.tsx` 신규. props: `{ member: TeamMember }`. 64px 그라데이션 아바타 (initials + ring + 호버 시 rotate-3 + scale-105) / displayName + role uppercase / oneLiner / strengths Badge chip 그룹. 카드 호버 시 lift + aurora glow 컬러 등장.
 - [x] 팀 데이터 작성 — `src/lib/team.ts` 의 `TEAM: readonly TeamMember[]`. 2명 항목 (Founder · Product, Founder · Engineering) — 실명/사진은 placeholder, 인원수 "N명" 표현/나이 모두 미노출. 동결 후 대표님이 직접 갱신할 자리임을 파일 상단 주석으로 명시.
-- [ ] 팀 섹션 레이아웃 — 카드 그리드 + 호버 인터랙션 (정성 디테일)
+- [x] 팀 섹션 레이아웃 — `src/components/site/team-section.tsx` (id="team", align="center") 신규. eyebrow "팀" + title "소수 정예, 모든 레이어를 책임집니다" + lead. TEAM 데이터를 sm 2 col grid (max-w-4xl) 로 TeamCard 렌더. page.tsx 의 team placeholder 를 TeamSection 으로 교체. → **Phase 3 (팀 소개) 전체 완료 (3/3)**.
 
 ### Phase 4 — 콘텐츠: 포트폴리오 (8개 프로젝트)
 

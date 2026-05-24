@@ -1,6 +1,7 @@
 import { About } from "@/components/site/about";
 import { Hero } from "@/components/site/hero";
 import { Section } from "@/components/site/section";
+import { TeamSection } from "@/components/site/team-section";
 
 export default function Home() {
   return (
@@ -9,12 +10,7 @@ export default function Home() {
 
       <About />
 
-      <Section
-        id="team"
-        eyebrow="팀"
-        title="팀 소개 섹션"
-        lead="다음 iteration 에서 채워집니다."
-      />
+      <TeamSection />
 
       <Section
         id="portfolio"
