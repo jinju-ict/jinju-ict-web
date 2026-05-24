@@ -50,9 +50,13 @@ export function SiteHeader() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="group/nav relative text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {item.label}
+                  <span
+                    aria-hidden="true"
+                    className="absolute -bottom-1.5 left-0 h-px w-0 bg-gradient-to-r from-primary to-accent transition-[width] duration-300 ease-out group-hover/nav:w-full"
+                  />
                 </Link>
               </li>
             ))}

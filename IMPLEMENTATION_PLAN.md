@@ -62,7 +62,7 @@
 
 - [x] 다크 모드 — html.dark 강제 + globals.css color-scheme:dark + Toaster theme="dark" 이미 적용 (iteration 5/22). 추가 명시화: layout.tsx 에 `export const viewport: Viewport = { themeColor: "#0a0915", colorScheme: "dark" }` — 모바일 브라우저 상단 색 일관.
 - [x] 스크롤 애니메이션 — native CSS Intersection Observer 채택 (framer-motion 무거움 1MB+ 회피). `src/hooks/use-in-view.ts` (한 번 노출 후 disconnect, threshold 0.12, rootMargin -10%) + `src/components/site/in-view-fade.tsx` (opacity + translate3d, 700ms cubic-bezier, delay/distance/duration 옵션). Section 의 `fadeOnScroll` prop (default true) 으로 header + children 자동 InViewFade 감싸기 — Hero 등 자체 mount 애니메이션 있는 곳은 fadeOnScroll=false. IntersectionObserver 미지원 환경 fallback (eslint-disable 명시).
-- [ ] 마이크로 인터랙션 — 카드 호버 (lift + 그림자 변화), 버튼 active feedback, focus ring (a11y 준수)
+- [x] 마이크로 인터랙션 — 점검 결과 대부분 이미 적용: (1) 카드 호버 lift + glow (About / Team / Portfolio / Saju), (2) 버튼 active feedback (Button cva 의 `active:translate-y-px`), (3) focus ring (globals.css `*:focus-visible { outline: 2px solid var(--ring) }`), (4) Sparkles pulse / 화살표 슬라이드 / 썸네일 scale / 아바타 rotate, (5) ::selection 색감. **추가 보강**: Header nav 링크 + Footer 이메일에 그라데이션 underline-slide (from-primary to-accent, 300ms ease-out).
 - [ ] 타이포 계층 정립 — H1~H6 + body + caption 일관 적용
 - [ ] 반응형 검증 — 360 / 768 / 1024 / 1440 / 1920 폭에서 깨지지 않음
 - [ ] SEO 메타데이터 — `app/layout.tsx` metadata (title / description / openGraph / twitter), `robots.txt`, `sitemap.ts`

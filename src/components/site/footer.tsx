@@ -21,9 +21,13 @@ export function SiteFooter() {
         <div className="flex flex-col gap-2 text-sm text-muted-foreground sm:text-right">
           <a
             href="mailto:dlwlstjq410@gmail.com"
-            className="transition-colors hover:text-foreground"
+            className="group/email relative inline-block transition-colors hover:text-foreground"
           >
             dlwlstjq410@gmail.com
+            <span
+              aria-hidden="true"
+              className="absolute -bottom-0.5 left-0 h-px w-0 bg-gradient-to-r from-primary to-accent transition-[width] duration-300 ease-out group-hover/email:w-full"
+            />
           </a>
           <p>© {year} 진주 ICT. All rights reserved.</p>
         </div>
