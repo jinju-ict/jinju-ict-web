@@ -7,20 +7,19 @@
 
 ## 환경 사전조건
 
-<!-- 도메인에 맞게 채우십시오. 사용자가 직접 채우거나, ralph 첫 iteration 이 채웁니다.
-     비어 있으면 ralph 의 backpressure (검증) 가 작동하지 못하므로 결국 채워져야 합니다. -->
-
-- 운영체제:
-- 런타임 버전:
-- 패키지 매니저:
+- 운영체제: macOS (Darwin) / Linux 호환
+- 런타임: Node.js 20 LTS+ (테스트 환경 22.x)
+- 패키지 매니저: pnpm 11+ (없으면 `npm i -g pnpm`)
 
 ---
 
 ## 셋업 (1회)
 
 ```bash
-# 예) uv sync && cd web && npm ci
+pnpm install
 ```
+
+> `pnpm-workspace.yaml` 의 `allowBuilds` 가 sharp / unrs-resolver 의 native 빌드를 허용한다.
 
 ---
 
@@ -29,22 +28,22 @@
 모든 명령이 exit 0 이어야 commit 한다.
 
 ```bash
-# 1) lint
-# 예) ruff check . && (cd web && npm run lint)
+# 1) lint (ESLint 9 flat + eslint-config-next)
+pnpm lint
 
-# 2) typecheck
-# 예) mypy . && (cd web && npm run typecheck)
-
-# 3) tests
-# 예) pytest -q && (cd web && npm run test -- --run)
+# 2) typecheck (tsc --noEmit)
+pnpm typecheck
 ```
+
+> build (`pnpm build`) 는 매 iteration 돌리지 않는다 — 1~3분 소요. 큰 변경 직후 + PROJECT_DONE 직전에만 돌린다 (아래 "선택 검증").
 
 ---
 
 ## 선택 검증
 
 ```bash
-# 예) e2e, 빌드, 보안 스캔 등
+# Production build (Next.js, 페이지·라우트 빌드 시간 적정성 확인)
+pnpm build
 ```
 
 ---
@@ -52,5 +51,6 @@
 ## 실행 (로컬 확인용)
 
 ```bash
-# 예) uvicorn app.main:app --reload
+# 개발 서버 (http://localhost:3000)
+pnpm dev
 ```
