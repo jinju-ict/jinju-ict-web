@@ -10,10 +10,7 @@ export type PortfolioAsset = {
 };
 
 export const PORTFOLIO_ASSETS: Record<string, PortfolioAsset> = {
-  "ttoktok": {
-    thumbnail: "/portfolio/ttoktok/thumbnail.png",
-    screens: ["/portfolio/ttoktok/screen-1.png"],
-  },
+  // ttoktok — 자산 대기 중 (대표님 새 캡처 보내실 예정)
   "shortdub": {
     thumbnail: "/portfolio/shortdub/thumbnail.png",
     screens: [

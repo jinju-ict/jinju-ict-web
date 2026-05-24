@@ -14,8 +14,6 @@ export const SAJU = {
   status: "준비중" as const,
   releaseEta: "출시 알림 신청",
   platforms: ["iOS", "Android"] as const,
-  hero: "/saju/hero.png",
-  screens: ["/saju/screen-1.png", "/saju/screen-2.png"] as const,
   features: [
     {
       title: "사주",

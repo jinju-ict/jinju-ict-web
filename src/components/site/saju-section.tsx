@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Apple, ArrowRight, Smartphone, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,9 +5,6 @@ import { Section } from "@/components/site/section";
 import { SAJU } from "@/lib/saju";
 
 export function SajuSection() {
-  const subScreens: readonly string[] = (SAJU as { screens?: readonly string[] })
-    .screens ?? [];
-
   return (
     <Section
       id="saju"
@@ -78,55 +74,28 @@ export function SajuSection() {
           </div>
         </div>
 
-        {/* 우: 모바일 mockup + sub-thumbnails */}
+        {/* 우: 모바일 mockup placeholder — 디자인 동결 전 */}
         <div className="mx-auto flex w-full max-w-[300px] flex-col items-center gap-4">
-          {/* Device frame (회색 보더, glow 제거) */}
           <div className="relative aspect-[9/19] w-full rounded-md border-2 border-border bg-card p-2.5 shadow-sm">
-            {/* Notch / dynamic island */}
             <div
               aria-hidden="true"
               className="absolute top-3 left-1/2 z-20 h-5 w-24 -translate-x-1/2 rounded-sm bg-background"
             />
-            {/* Inner screen */}
-            <div className="relative h-full w-full overflow-hidden rounded-sm bg-background">
-              <Image
-                src={SAJU.hero}
-                alt={`${SAJU.appName} 앱 화면 (가제)`}
-                fill
-                className="object-contain"
-                sizes="(min-width: 1024px) 300px, 80vw"
-                priority={false}
-              />
+            <div className="relative flex h-full w-full flex-col items-center justify-center gap-3 overflow-hidden rounded-sm bg-muted px-6 text-center">
+              <span className="text-[10.5px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
+                {SAJU.appName}
+              </span>
+              <p className="text-sm font-bold text-foreground">
+                앱 디자인 준비 중
+              </p>
+              <p className="text-xs leading-relaxed text-muted-foreground">
+                출시 시점에 실제 화면으로 갱신됩니다.
+              </p>
             </div>
-            {/* Coming Soon chip */}
             <div className="pointer-events-none absolute -right-2 -bottom-2 rounded-sm border-2 border-border bg-card px-3 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-foreground shadow-sm">
               Coming Soon
             </div>
           </div>
-
-          {/* Sub thumbnails — SAJU.screens 가 있으면 1~2장 */}
-          {subScreens.length > 0 && (
-            <ul
-              role="list"
-              className="grid w-full grid-cols-2 gap-3"
-            >
-              {subScreens.slice(0, 2).map((src, idx) => (
-                <li
-                  key={src}
-                  className="relative aspect-[9/16] w-full overflow-hidden rounded-sm border-2 border-border bg-card shadow-sm"
-                >
-                  <Image
-                    src={src}
-                    alt={`${SAJU.appName} 보조 화면 ${idx + 1}`}
-                    fill
-                    className="object-contain"
-                    sizes="(min-width: 1024px) 144px, 40vw"
-                    priority={false}
-                  />
-                </li>
-              ))}
-            </ul>
-          )}
         </div>
       </div>
     </Section>
