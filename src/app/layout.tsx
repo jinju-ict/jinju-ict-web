@@ -78,8 +78,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0915", // 다크 배경 톤과 일치 (모바일 브라우저 상단 색)
-  colorScheme: "dark",
+  themeColor: "#FAFAFA", // T1 white-aje: 화이트 배경 톤과 일치 (모바일 브라우저 상단 색)
+  colorScheme: "light",
 };
 
 export default function RootLayout({
@@ -90,7 +90,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`dark ${geistSans.variable} ${geistMono.variable} ${notoSansKr.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${notoSansKr.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body

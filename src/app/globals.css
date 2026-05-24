@@ -1,59 +1,57 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+/* T1 white-aje-rework: dark variant 무력화 (강제 화이트 사이트, dark 클래스 자체를 layout 에서 제거) */
+@custom-variant dark (&:is(.__never_dark__ *));
 
-/* ---------- Design tokens — 진주 정보통신개발 (Stripe-style 묵직 미드나잇 다크) ---------- */
-/* T1 major-rework: light/dark 동일 톤 — 강제 다크 사이트. shadcn 호환 위해 :root 와 .dark 모두 정의 */
+/* ---------- Design tokens — 진주 정보통신 (white-aje: 화이트 + 회색 + 아재 투박) ---------- */
+/* T1 white-aje-rework: :root 단일 화이트 톤. 40~50대 아저씨가 사무용 툴 (MS Word / 한컴오피스 / Confluence) 톤으로 만든 듯한 투박함. */
 
-:root,
-.dark {
-  /* Stripe-style 묵직한 미드나잇 다크 */
-  --background: oklch(0.14 0.015 260);          /* #0B0D14 deep midnight */
-  --foreground: oklch(0.93 0.005 260);          /* #E7E9EE */
-  --card: oklch(0.18 0.018 260);                /* #11141B */
-  --card-foreground: oklch(0.93 0.005 260);
-  --popover: oklch(0.18 0.018 260);
-  --popover-foreground: oklch(0.93 0.005 260);
+:root {
+  --background: oklch(0.985 0 0);              /* 거의 화이트, 미세 따뜻함 (#FAFAFA 톤) */
+  --foreground: oklch(0.18 0.005 260);         /* 거의 검정 — #1F2530 */
+  --card: oklch(1 0 0);                        /* 순수 화이트 — 보더로 구분 */
+  --card-foreground: oklch(0.18 0.005 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.005 260);
 
-  --primary: oklch(0.55 0.20 270);              /* #4F5BD5 절제된 인디고 */
-  --primary-foreground: oklch(0.98 0 0);
-  --accent: oklch(0.55 0.18 285);               /* #6B5BD8 약한 보라 */
-  --accent-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.28 0.008 260);            /* 다크 그레이 — #2A2F3A 류, 채도 거의 0 */
+  --primary-foreground: oklch(1 0 0);
+  --accent: oklch(0.45 0.01 260);              /* 미디엄 그레이 */
+  --accent-foreground: oklch(1 0 0);
 
   /* secondary — muted 와 동일 표면 톤으로 정렬 (shadcn 호환) */
-  --secondary: oklch(0.22 0.015 260);
-  --secondary-foreground: oklch(0.93 0.005 260);
+  --secondary: oklch(0.94 0.003 260);
+  --secondary-foreground: oklch(0.18 0.005 260);
 
-  --muted: oklch(0.22 0.015 260);               /* #1A1D27 */
-  --muted-foreground: oklch(0.68 0.01 260);     /* #9CA3AF */
+  --muted: oklch(0.94 0.003 260);              /* 옅은 회색 BG */
+  --muted-foreground: oklch(0.45 0.005 260);   /* 보조 텍스트 회색 */
 
-  --border: oklch(0.25 0.012 260);              /* #1F242E */
-  --input: oklch(0.22 0.015 260);
-  --ring: oklch(0.55 0.20 270);
+  --border: oklch(0.78 0.005 260);             /* 진한 보더 회색 — #B8BCC4 류 */
+  --input: oklch(0.85 0.003 260);
+  --ring: oklch(0.40 0.008 260);
 
-  /* destructive 유지 */
-  --destructive: oklch(0.62 0.22 25);
-  --destructive-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.55 0.18 25);          /* 살짝 죽은 빨강 (강한 빨강 X) */
+  --destructive-foreground: oklch(1 0 0);
 
-  /* sidebar 토큰 (shadcn 기본) — 메인 톤과 동기화 */
-  --sidebar: oklch(0.16 0.015 260);
-  --sidebar-foreground: oklch(0.93 0.005 260);
-  --sidebar-primary: oklch(0.55 0.20 270);
-  --sidebar-primary-foreground: oklch(0.98 0 0);
-  --sidebar-accent: oklch(0.22 0.015 260);
-  --sidebar-accent-foreground: oklch(0.93 0.005 260);
-  --sidebar-border: oklch(0.25 0.012 260);
-  --sidebar-ring: oklch(0.55 0.20 270);
+  /* sidebar — 메인과 동기화 */
+  --sidebar: oklch(0.97 0 0);
+  --sidebar-foreground: oklch(0.18 0.005 260);
+  --sidebar-primary: oklch(0.28 0.008 260);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.94 0.003 260);
+  --sidebar-accent-foreground: oklch(0.18 0.005 260);
+  --sidebar-border: oklch(0.78 0.005 260);
+  --sidebar-ring: oklch(0.40 0.008 260);
 
-  /* chart 토큰 — 인디고/보라 계열로 통일 (Stripe 톤 일관성) */
-  --chart-1: oklch(0.55 0.20 270);
-  --chart-2: oklch(0.55 0.18 285);
-  --chart-3: oklch(0.60 0.15 250);
-  --chart-4: oklch(0.65 0.12 230);
-  --chart-5: oklch(0.50 0.18 290);
+  /* chart 토큰 — 그레이스케일 통일 (white-aje 톤) */
+  --chart-1: oklch(0.28 0.008 260);
+  --chart-2: oklch(0.40 0.008 260);
+  --chart-3: oklch(0.55 0.005 260);
+  --chart-4: oklch(0.68 0.005 260);
+  --chart-5: oklch(0.78 0.005 260);
 
-  --radius: 0.625rem;
+  --radius: 0.25rem;                            /* 거의 직각, 살짝만 둥글게 */
 }
 
 /* ---------- Theme bridge (Tailwind 4 inline tokens) ---------- */
@@ -92,10 +90,10 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: calc(var(--radius) - 0.125rem);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 0.125rem);
+  --radius-xl: calc(var(--radius) + 0.25rem);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -108,7 +106,7 @@
     border-color: var(--border);
   }
   html {
-    color-scheme: dark;
+    color-scheme: light;
   }
   body {
     position: relative;
@@ -119,122 +117,48 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
-  /* Fixed ambient gradient — 절제된 단일 radial + 미세 grid mask (보라 blob 2개 → 1개로 축소) */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-    background:
-      radial-gradient(ellipse 65% 40% at 50% -5%, color-mix(in oklch, var(--primary) 7%, transparent), transparent 60%);
-  }
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-    background-image:
-      linear-gradient(to right, color-mix(in oklch, var(--foreground) 3%, transparent) 1px, transparent 1px),
-      linear-gradient(to bottom, color-mix(in oklch, var(--foreground) 3%, transparent) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 75%);
-    opacity: 0.5;
-  }
-  /* Selection */
+  /* T1 white-aje: body::before / body::after 의 radial / grid mask 삭제 — 배경 ambient 일체 제거 */
+  /* Selection — 그레이톤 단순 */
   ::selection {
-    background: oklch(0.55 0.20 270 / 0.35);
+    background: oklch(0.78 0.005 260 / 0.45);
     color: var(--foreground);
   }
-  /* Focus ring 강화 (a11y) */
+  /* Focus ring 유지 (a11y) */
   *:focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 2px;
   }
 }
 
-/* ---------- Motion utilities (native CSS — 절제된 진폭, fade-in-up 유지) ---------- */
-
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* float-slow — 진폭 50% 축소 (4% → 2%, scale 1.06 → 1.03) */
-@keyframes float-slow {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(2%, -1.5%, 0) scale(1.03);
-  }
-}
-
-/* float-reverse — 진폭 50% 축소 */
-@keyframes float-reverse {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-2%, 2%, 0) scale(0.975);
-  }
-}
-
-/* pulse-soft — 진폭 50% 축소 (opacity range, scale 1.12 → 1.06) */
-@keyframes pulse-soft {
-  0%,
-  100% {
-    opacity: 0.92;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.06);
-  }
-}
+/* ---------- Motion utilities (T1 white-aje: 모션 거의 제거 — animate-* 모두 no-op) ---------- */
 
 @utility animate-fade-in-up {
-  animation: fade-in-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* no-op — 모션 거의 X 정책 */
 }
 
 @utility animate-float-slow {
-  animation: float-slow 18s ease-in-out infinite;
+  /* no-op */
 }
 
 @utility animate-float-reverse {
-  animation: float-reverse 22s ease-in-out infinite;
+  /* no-op */
 }
 
 @utility animate-pulse-soft {
-  animation: pulse-soft 4s ease-in-out infinite;
+  /* no-op */
 }
 
-/* ---------- Glass surface utilities (T1 디자인 원칙 — 글래스 카드 표준) ---------- */
+/* ---------- Surface utilities (T1 white-aje: 글래스 → 단순 박스로 재정의) ---------- */
 
 @utility glass-card {
-  background-color: color-mix(in oklch, white 3%, transparent);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid color-mix(in oklch, white 10%, transparent);
+  background-color: var(--card);
+  border: 2px solid var(--border);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
 }
 
 @utility surface-gradient {
-  background-image: linear-gradient(
-    to bottom right,
-    oklch(0.18 0.018 260),
-    oklch(0.16 0.015 260),
-    oklch(0.14 0.015 260)
-  );
+  /* 그라데이션 X, 단색 카드 */
+  background-color: var(--card);
 }
 
 @media (prefers-reduced-motion: no-preference) {
