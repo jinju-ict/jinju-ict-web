@@ -41,7 +41,7 @@ export function PortfolioCard({ project }: PortfolioCardProps) {
     project.title.replace(/\s+/g, "").slice(0, 2).toUpperCase() || "··";
   const visibleStack = project.stack.slice(0, 5);
   const overflowStack = project.stack.length - visibleStack.length;
-  const thumbnailSrc = project.thumbnail ?? PORTFOLIO_ASSETS[project.slug];
+  const thumbnailSrc = project.thumbnail ?? PORTFOLIO_ASSETS[project.slug]?.thumbnail;
   const Icon = ICON_MAP[project.icon];
 
   return (
