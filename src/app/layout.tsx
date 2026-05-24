@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Noto_Sans_KR } from "next/font/google";
+import { SiteHeader } from "@/components/site/header";
+import { SiteFooter } from "@/components/site/footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -38,8 +40,13 @@ export default function RootLayout({
       className={`dark ${geistSans.variable} ${geistMono.variable} ${notoSansKr.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
-        {children}
+      <body
+        id="top"
+        className="min-h-full flex flex-col bg-background text-foreground"
+      >
+        <SiteHeader />
+        <main className="flex-1 pt-16">{children}</main>
+        <SiteFooter />
       </body>
     </html>
   );

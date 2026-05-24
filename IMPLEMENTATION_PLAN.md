@@ -18,8 +18,8 @@
 - [x] shadcn/ui 초기화 (`pnpm dlx shadcn@latest init --template next --base radix --preset nova`) + 기본 컴포넌트 8종 설치 (Button, Card, Input, Textarea, Label, Sonner, Separator, Badge). *style: radix-nova / baseColor: neutral / iconLibrary: lucide / Geist 폰트. src/lib/utils.ts 수동 생성 (shadcn v4 가 자동 생성 안 함). pnpm-workspace.yaml 의 allowBuilds 에 msw 추가.*
 - [x] Tailwind 디자인 토큰 정의 — Nova 톤 참고 (다크 우선, primary 보라/남색 oklch(0.62 0.22 285), accent 퍼플 oklch(0.7 0.2 320)), CSS variables 로 운영, globals.css 풀 셋업. *layout.tsx: lang="ko" + html.dark 강제 + 메타데이터 한국어화 + 토큰 기반 body 배경/색상. Tailwind 4 @theme inline 으로 토큰 브릿지.*
 - [x] 폰트 셋업 — next/font/google 로 Geist (라틴) + Geist_Mono (코드) + Noto_Sans_KR (한국어, w400~900, swap), lucide-react 1.16.0 이미 설치 확인. *globals.css font-family chain: var(--font-sans) → var(--font-noto-sans-kr) → system → Pretendard fallback.*
-- [ ] 기본 레이아웃 — RootLayout (다크 기본 + lang="ko") + Header (로고 + 섹션 앵커) + Footer (회사 정보 + 카피라이트)
-- [ ] 섹션 컨테이너 컴포넌트 (`<Section>`) + 공통 spacing/타이포 시스템 정립
+- [x] 기본 레이아웃 — RootLayout (다크 기본 + lang="ko") + SiteHeader (로고 + 섹션 앵커 5개 + 문의하기 버튼 + scroll-aware backdrop blur) + SiteFooter (로고 + 한줄소개 + 이메일 + © year). *page.tsx 는 5개 anchor placeholder section + Hero placeholder 로 교체. fixed header 보정 pt-16.*
+- [x] 섹션 컨테이너 컴포넌트 (`<Section>`) + 공통 spacing/타이포 시스템 정립. *eyebrow / title / lead / align="left"|"center" / bare 옵션 / max-w-6xl 컨테이너 / py-20~36 일관 vertical rhythm. HTMLAttributes 의 title 속성 충돌은 Omit 으로 해결.*
 
 ### Phase 2 — 콘텐츠: Hero / 회사 소개
 
