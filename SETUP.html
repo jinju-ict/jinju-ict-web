@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>진주 ICT 사이트 — 인수인계 SETUP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #fafafa;
+      --fg: #18181b;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --code-bg: #f3f4f6;
+      --primary: #7c3aed;
+      --accent: #db2777;
+      --warning: #b45309;
+      --warning-bg: #fef3c7;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Pretendard",
+        "Noto Sans KR", sans-serif;
+      font-size: 14.5px;
+      line-height: 1.55;
+    }
+    .page {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 48px 36px 80px;
+    }
+    header.cover {
+      border-bottom: 2px solid var(--fg);
+      padding-bottom: 22px;
+      margin-bottom: 36px;
+    }
+    header.cover h1 {
+      margin: 0 0 6px;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    header.cover .mark {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+    }
+    header.cover .sub {
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 38px 0 14px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -0.2px;
+    }
+    h2 .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      font-size: 11.5px;
+      font-weight: 700;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    h3 {
+      font-size: 14.5px;
+      font-weight: 700;
+      margin: 18px 0 8px;
+      color: var(--fg);
+    }
+    p { margin: 6px 0 12px; }
+    ul { margin: 6px 0 14px; padding-left: 20px; }
+    ul li { margin: 4px 0; }
+    code, .mono {
+      font-family: "SF Mono", Menlo, Consolas, "Courier New", monospace;
+      font-size: 12.5px;
+      background: var(--code-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--fg);
+    }
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px 14px;
+      overflow-x: auto;
+      font-family: "SF Mono", Menlo, Consolas, "Courier New", monospace;
+      font-size: 12px;
+      line-height: 1.55;
+      margin: 8px 0 14px;
+    }
+    pre code {
+      background: transparent;
+      padding: 0;
+      font-size: 12px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 16px;
+      font-size: 13px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f5f5f5;
+      font-weight: 700;
+      font-size: 12.5px;
+      letter-spacing: 0.2px;
+    }
+    .checklist {
+      list-style: none;
+      padding-left: 0;
+    }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .checklist input[type="checkbox"] {
+      margin-top: 5px;
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+    .callout {
+      background: var(--warning-bg);
+      border-left: 4px solid var(--warning);
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      margin: 14px 0;
+      font-size: 13.5px;
+    }
+    .callout strong { color: var(--warning); }
+    .note {
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+    footer.end {
+      margin-top: 56px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+    @media print {
+      body { background: white; }
+      .page { padding: 24px 18px 36px; }
+      h2 { page-break-after: avoid; }
+      pre, table { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="cover">
+      <h1><span class="mark"></span>진주 ICT 사이트 — 인수인계 SETUP</h1>
+      <p class="sub">
+        대표님이 코드 바깥에서 직접 세팅·갱신해야 하는 것들을 한 페이지에
+        모았습니다. 체크하며 진행하세요.
+      </p>
+    </header>
+
+    <!-- ============ 1. 환경변수 ============ -->
+    <h2><span class="num">1</span>환경변수 (Vercel 대시보드에서 등록)</h2>
+    <p>
+      <code>.env.example</code> 도 같은 정보를 담고 있습니다. 로컬은
+      <code>.env.local</code>, 배포는 Vercel 대시보드 → Settings → Environment
+      Variables 에 등록.
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>이름</th>
+          <th>의미</th>
+          <th>발급처 / 예시</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>RESEND_API_KEY</code></td>
+          <td>협업·문의 폼 메일 발송 (Resend SDK)</td>
+          <td><a href="https://resend.com/api-keys">resend.com/api-keys</a><br />
+          <span class="mono">re_xxx...</span></td>
+        </tr>
+        <tr>
+          <td><code>CONTACT_INBOX_TO</code></td>
+          <td>문의 수신 이메일 (대표님)</td>
+          <td><span class="mono">dlwlstjq410@gmail.com</span> (default)</td>
+        </tr>
+        <tr>
+          <td><code>CONTACT_INBOX_FROM</code></td>
+          <td>발신 이메일 — Resend 도메인 검증 전 fallback</td>
+          <td><span class="mono">onboarding@resend.dev</span><br />
+          도메인 검증 후 <span class="mono">noreply@&lt;domain&gt;</span></td>
+        </tr>
+        <tr>
+          <td><code>NEXT_PUBLIC_SITE_URL</code></td>
+          <td>production canonical URL — metadata / robots / sitemap / OG 가 공유</td>
+          <td><span class="mono">https://jinju-ict.com</span> 등<br />
+          미설정 시 <code>VERCEL_URL</code> → <code>localhost:3000</code> fallback</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ============ 2. 외부 인프라 ============ -->
+    <h2><span class="num">2</span>외부 인프라</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>서비스</th>
+          <th>용도</th>
+          <th>비용 / 비고</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Vercel</strong></td>
+          <td>Next.js 호스팅 + Functions (Fluid Compute)</td>
+          <td>Hobby plan (무료). 도메인 연결은 Pro 부터 추천.</td>
+        </tr>
+        <tr>
+          <td><strong>Resend</strong></td>
+          <td>협업·문의 폼 메일 발송</td>
+          <td>무료 3,000건/월. 도메인 검증 시 발신자명 자유.</td>
+        </tr>
+        <tr>
+          <td><strong>GitHub</strong></td>
+          <td>소스 저장 + Vercel 자동 배포 트리거</td>
+          <td>main 푸시 = production, PR = preview deploy</td>
+        </tr>
+        <tr>
+          <td><strong>도메인</strong></td>
+          <td>커스텀 도메인 (예: jinju-ict.com)</td>
+          <td><em class="note">⚠️ 아직 미정 — 결정 후 Vercel 에 추가 + NEXT_PUBLIC_SITE_URL 갱신</em></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ============ 3. 첫 배포 절차 ============ -->
+    <h2><span class="num">3</span>첫 배포 절차</h2>
+    <h3>방법 A — GitHub 연동 (권장)</h3>
+    <ul class="checklist">
+      <li><input type="checkbox" /><span>GitHub repo 생성 후 <code>git push</code></span></li>
+      <li><input type="checkbox" /><span>Vercel 대시보드 → <code>Add New Project</code> → repo 선택</span></li>
+      <li><input type="checkbox" /><span>Framework 자동 감지 (Next.js) 확인 + 환경변수 4종 등록</span></li>
+      <li><input type="checkbox" /><span>Deploy → preview URL 확인 → main 푸시로 production</span></li>
+    </ul>
+
+    <h3>방법 B — Vercel CLI</h3>
+    <pre><code>pnpm i -g vercel
+vercel link                          # 프로젝트 연결 (1회)
+vercel env add RESEND_API_KEY        # 4종 env 등록
+vercel env add CONTACT_INBOX_TO
+vercel env add CONTACT_INBOX_FROM
+vercel env add NEXT_PUBLIC_SITE_URL
+vercel deploy                        # preview
+vercel deploy --prod                 # production</code></pre>
+
+    <!-- ============ 4. 운영 명령 ============ -->
+    <h2><span class="num">4</span>자주 보는 명령</h2>
+    <pre><code>pnpm install                         # 첫 설치
+pnpm dev                             # 로컬 개발 (http://localhost:3000)
+pnpm build                           # production build
+pnpm start                           # production 서버 (build 이후)
+
+pnpm lint                            # ESLint
+pnpm typecheck                       # tsc --noEmit
+pnpm check:security                  # 금지 단어 0건 검증
+pnpm collect:assets                  # 포트폴리오 자산 재수집 (외부 폴더 변경 시)</code></pre>
+
+    <!-- ============ 5. 인수인계 ⚠️ 갱신 영역 ============ -->
+    <h2><span class="num">5</span>대표님이 직접 갱신할 영역 (placeholder)</h2>
+    <p>
+      AI 가 톤 맞춰 작성한 placeholder 부분 — 실 데이터로 교체 권장.
+    </p>
+
+    <h3>5-1. 팀 프로필 (<code>src/lib/team.ts</code>)</h3>
+    <div class="callout">
+      현재 <strong>Founder · Product</strong> / <strong>Founder · Engineering</strong>
+      2건 placeholder. 실명·실제 사진·구체 한 줄 소개로 교체 가능. 인원수
+      "N명" 표현 / 나이 노출은 사이트 룰상 금지 — "소수 정예" 톤 유지.
+    </div>
+    <ul>
+      <li><code>displayName</code> — 실명 또는 닉네임</li>
+      <li><code>oneLiner</code> — 강조하고 싶은 한 줄</li>
+      <li><code>strengths</code> — 키워드 chip (현재는 일반화)</li>
+      <li>아바타 사진 — 현재 이니셜 그라데이션. 실사진은 별도 컴포넌트 수정 필요</li>
+    </ul>
+
+    <h3>5-2. 사주 앱 메타 (<code>src/lib/saju.ts</code>)</h3>
+    <div class="callout">
+      <strong>appName</strong> 이 가제 (<code>"사주"</code>). 정식 브랜드명
+      확정 후 갱신. 출시 후엔 <code>status</code> 를 <code>"준비중"</code>에서
+      <code>"출시"</code> 등으로 변경, App Store / Play Store 다운로드 링크
+      추가 필요 (CTA 의 <code>#contact</code> 앵커도 다운로드 링크로 교체).
+    </div>
+
+    <h3>5-3. 도메인 + production URL</h3>
+    <div class="callout">
+      도메인 결정 후 <code>NEXT_PUBLIC_SITE_URL</code> 갱신 (Vercel env +
+      <code>.env.local</code>). metadata / robots / sitemap / OG 모두 자동 반영.
+    </div>
+
+    <h3>5-4. Resend 도메인 검증</h3>
+    <div class="callout">
+      현재 발신 <code>onboarding@resend.dev</code> (테스트 도메인). 자체
+      도메인에서 발신하려면 Resend 대시보드 → Domains → Add 후 DNS TXT/MX
+      레코드 등록. 검증 완료 후 <code>CONTACT_INBOX_FROM</code> 을
+      <code>noreply@&lt;도메인&gt;</code> 으로 갱신.
+    </div>
+
+    <h3>5-5. 포트폴리오 자산 보강 (선택)</h3>
+    <p>
+      현재 owned 3건 + Andy 1건 = 일부만 실자산. 나머지는 의도된
+      placeholder (사내 도구·외부 회사 자산 보안 룰). owned 의 스크린샷
+      추가 원하면 해당 폴더에 <code>logo.png</code> / <code>screenshot.png</code>
+      등 두고 <code>pnpm collect:assets</code> 재실행.
+    </p>
+
+    <!-- ============ 6. 보안 룰 (잊지 마세요) ============ -->
+    <h2><span class="num">6</span>보안 룰 (절대 위반 금지)</h2>
+    <p>
+      카피 추가·갱신 시 다음 항목 노출되면 <code>pnpm check:security</code> 가
+      차단합니다. 단어는 <code>scripts/check-security.sh</code> 가 단일 출처.
+    </p>
+    <ul>
+      <li>외부 클라이언트 회사명 (<code>office-agent</code>, <code>ai-news-daily</code>)</li>
+      <li>사내 개발 인프라의 OSS 원작자·원본명 (<code>dev-harness</code>, <code>dev-safety</code>)</li>
+      <li>Nova 디자인 레퍼런스의 가공 회사명 (혼입 방지)</li>
+    </ul>
+    <p>
+      <strong>Andy</strong> 만 상호명 노출 허용 (대표님 명시).
+    </p>
+
+    <footer class="end">
+      <span>진주 ICT — jinju-ict-web</span>
+      <span>인수인계서 v1 · ralph harness 자동 생성</span>
+    </footer>
+  </div>
+</body>
+</html>

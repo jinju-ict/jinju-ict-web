@@ -81,8 +81,27 @@
 ### Phase 9 — PROJECT_DONE 직전
 
 - [x] 전 섹션 최종 정성 점검 — 코드 기반 review (8개 섹션 모두 자체 호버/glow/lift/stagger 디테일 충분 확인). **보강**: (1) globals.css 의 body::before 에 fixed ambient gradient (top 보라 9% + bottom-left 퍼플 6%, z-index -1) — 각 섹션 자체 blob 위에 가산되어 페이지 전체 톤 일관성 ↑, (2) `html { scroll-behavior: smooth }` (no-preference 미디어 안) — anchor 클릭 시 부드러운 스크롤, prefers-reduced-motion 에선 auto 로 자동 disable.
-- [ ] `SETUP.html` 생성 (PROMPT.md §8 형식) — 환경변수 / Vercel 셋업 / Resend / 도메인 / 운영 메모
-- [ ] CLAUDE.md 의 ⚠️ 항목 (팀 프로필 실제 데이터 / 사주 앱 다운로드 링크 / 도메인) 을 SETUP.html 에 인수인계 메모로 정리
+- [x] `SETUP.html` 생성 (PROMPT.md §8 형식) — 루트 SETUP.html 단일 파일 (외부 의존 0, inline style, 인쇄 친화 @media print). 6 sections: (1) 환경변수 표 4종, (2) 외부 인프라 표 (Vercel/Resend/GitHub/도메인), (3) 첫 배포 절차 (GitHub 연동 권장 + CLI 대안 + 체크박스 input), (4) 자주 보는 명령 pre, (5) 인수인계 ⚠️ 갱신 영역 5종, (6) 보안 룰 reminder. 색감: light + 그라데이션 마크 (사이트 톤 일관).
+- [x] CLAUDE.md 의 ⚠️ 항목 SETUP.html 인수인계 정리 — SETUP.html §5 의 5 영역으로 정형화: (5-1) 팀 프로필 실명/사진/한줄 갱신, (5-2) 사주 앱 정식 명칭 + 출시 후 다운로드 링크, (5-3) 도메인 + NEXT_PUBLIC_SITE_URL 갱신, (5-4) Resend 도메인 검증 → CONTACT_INBOX_FROM 교체, (5-5) 포트폴리오 자산 보강 (선택, owned 만). → **Phase 9 (마무리) 전체 완료 (3/3)**.
+
+---
+
+## DONE (PROJECT_DONE 완료 — 2026-05-24)
+
+**누적 진척: 47 task 완료 / 37 iterations / cap 200**
+
+Phase 별 결과:
+- **Phase 1 (인프라, 7/7)**: Next.js 16 + Tailwind 4 + shadcn (Nova preset) + 다크 디자인 토큰 + Geist/Noto Sans KR + Header/Footer/Section
+- **Phase 2 (Hero + About, 3/3)**: Hero (gradient + stagger + CTA) + About (3 pillar 카드)
+- **Phase 3 (팀, 3/3)**: TeamCard + 2명 placeholder + Section
+- **Phase 4 (포트폴리오, 7/7)**: lib/portfolio.ts (8 프로젝트) + 보안 룰 자가 검증 자동 게이트 + PortfolioCard + 자산 자동 수집 (Andy 1건) + placeholder 보강 + 3 그룹 섹션
+- **Phase 5 (사주, 3/3)**: lib/saju.ts + SajuSection (4 feature + 모바일 mockup + Coming Soon)
+- **Phase 6 (문의 폼, 6/6)**: contact-schema (Zod 3) + RHF Form + Resend 결정 + /api/contact + toast + honeypot/rate-limit
+- **Phase 7 (정성, 10/10)**: 다크 + scroll fade + 마이크로 인터랙션 + 타이포 + 반응형 + SEO + OG + favicon + a11y + build PASS
+- **Phase 8 (배포, 4/4)**: vercel.ts + .env.example + Vercel CLI 가이드 + build 검증
+- **Phase 9 (마무리, 3/3)**: 정성 보강 (fixed ambient + smooth scroll) + SETUP.html 인수인계
+
+게이트 baseline: lint + typecheck + check:security 모두 exit 0. Production build PASS (Turbopack, 8 routes).
 
 ---
 
