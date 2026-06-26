@@ -3,6 +3,7 @@ import Link from "next/link";
 import {
   Briefcase,
   MessageCircleHeart,
+  MoonStar,
   Newspaper,
   Scale,
   ShieldCheck,
@@ -23,6 +24,7 @@ import type { Project, ProjectIconName } from "@/lib/portfolio";
 import { PORTFOLIO_ASSETS } from "@/lib/portfolio-assets";
 
 const ICON_MAP: Record<ProjectIconName, LucideIcon> = {
+  MoonStar,
   MessageCircleHeart,
   Video,
   Scale,

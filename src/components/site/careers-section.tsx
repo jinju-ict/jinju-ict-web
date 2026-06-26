@@ -73,7 +73,12 @@ export function CareersSection() {
       id="careers"
       eyebrow="Careers · 합류하기"
       title="함께 일할 분을 찾습니다"
-      lead="직군이 정확히 맞지 않아도 괜찮습니다. AI 가 일하는 방식에 익숙하고, 자체 서비스와 협업 프로젝트를 함께 만들 분께 열려 있습니다."
+      lead={
+        <>
+          <span className="block">직군이 정확히 맞지 않아도 괜찮습니다.</span>
+          <span className="block">AI 가 일하는 방식에 익숙하고, 자체 서비스와 협업 프로젝트를 함께 만들 분께 열려 있습니다.</span>
+        </>
+      }
       align="center"
     >
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">

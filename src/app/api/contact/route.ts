@@ -85,7 +85,7 @@ export async function POST(req: Request) {
   const { name, company, contact, message } = parsed.data;
 
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_INBOX_TO ?? "teo.baek@outlook.com";
+  const to = process.env.CONTACT_INBOX_TO ?? "admin@jinju-ict.com";
   const from = process.env.CONTACT_INBOX_FROM ?? "onboarding@resend.dev";
 
   if (!apiKey) {

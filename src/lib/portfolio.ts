@@ -21,6 +21,7 @@
 export type PortfolioCategory = "owned" | "client" | "internal";
 
 export type ProjectIconName =
+  | "MoonStar"
   | "MessageCircleHeart"
   | "Video"
   | "Scale"
@@ -59,6 +60,45 @@ export type Project = {
 };
 
 export const PROJECTS: readonly Project[] = [
+  {
+    slug: "paljaja",
+    title: "팔자상담소",
+    category: "owned",
+    categoryLabel: "자체 서비스 · 준비중",
+    oneLiner:
+      "전통 사주 풀이부터 AI 1:1 상담까지, 어려운 사주를 일상의 언어로 풀어 주는 모바일 앱입니다.",
+    description:
+      "어렵게 느껴지던 사주를 일상의 언어로 옮긴 모바일 앱입니다. 전통 명리 해석에 AI 가이드를 더해, 오늘의 흐름과 사주 풀이, 그리고 1:1 상담까지 한 곳에서 가볍게 만날 수 있습니다.",
+    summary:
+      "팔자상담소는 전통 사주를 가볍게 즐길 수 있도록 만든 모바일 앱입니다. 생년월일과 출생시간을 입력하면 사주 8자를 어려운 한자 없이 일상의 언어로 풀어 주고, 오늘·이번 주·이달·올해 운세를 한눈에 확인할 수 있습니다. 사주 자료를 근거로 답하는 AI 1:1 상담과 두 사람의 궁합 풀이까지, 명리에 익숙하지 않아도 부담 없이 들여다볼 수 있는 입구를 지향합니다.",
+    whoFor:
+      "사주가 궁금하지만 어려운 한자와 명리 용어에 막혔던 분, 바쁜 일상 사이 가볍게 오늘의 흐름을 확인하고 싶은 분",
+    useCases: [
+      "생년월일·출생시간을 입력하면 내 사주 8자를 일상의 언어로 풀이",
+      "오늘·이번 주·이달·올해 운세를 한눈에 확인",
+      "사주 자료를 근거로 답하는 AI 와 1:1 상담",
+      "두 사람의 사주로 궁합과 관계의 결 확인",
+    ],
+    stack: [
+      "iOS · Android",
+      "Firebase Authentication",
+      "OpenAI API",
+      "Google Cloud Platform",
+      "Google Play 인앱결제",
+      "Firebase Analytics",
+    ],
+    features: [
+      "전통 사주 8자 풀이 — 어려운 한자 없이 핵심 흐름만 또렷하게",
+      "오늘·이번 주·이달·올해 운세를 한눈에 — 바쁜 일상 사이 가볍게 확인",
+      "AI 1:1 상담 — 사주 자료를 근거로 답하고, 답변의 출처를 곧바로 되짚을 수 있음",
+      "궁합 풀이 — 두 사람의 사주로 어울림과 보완 지점까지 확인",
+      "Google 계정으로 간편 로그인 — 복잡한 가입 절차 없음",
+      "별가루 인앱 충전 — 필요한 만큼만 가볍게 이용",
+    ],
+    accent: "from-indigo-500/45 via-violet-500/30 to-purple-500/40",
+    icon: "MoonStar",
+    comingSoon: true,
+  },
   {
     slug: "ttoktok",
     title: "TtokTtok",

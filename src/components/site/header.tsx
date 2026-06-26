@@ -9,7 +9,6 @@ const NAV_ITEMS = [
   { href: "/#process", label: "방식" },
   { href: "/#team", label: "팀" },
   { href: "/#portfolio", label: "솔루션" },
-  { href: "/#saju", label: "사주" },
   { href: "/#careers", label: "채용" },
 ] as const;
 

@@ -129,7 +129,12 @@ export function FaqSection() {
       id="faq"
       eyebrow="FAQ"
       title="자주 묻는 질문"
-      lead="외주 · 협업 · 자체 서비스 · 채용까지, 진주 정보통신에 자주 들어오는 질문을 모았습니다. 더 궁금한 내용은 Contact 폼으로 편하게 보내주세요."
+      lead={
+        <>
+          <span className="block">외주 · 협업 · 자체 서비스 · 채용까지, 진주 정보통신에 자주 들어오는 질문을 모았습니다.</span>
+          <span className="block">더 궁금한 내용은 Contact 폼으로 편하게 보내주세요.</span>
+        </>
+      }
       align="center"
     >
       <div className="mx-auto w-full max-w-3xl">

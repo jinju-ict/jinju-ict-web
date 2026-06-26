@@ -14,28 +14,28 @@ export function SiteFooter() {
             />
             <span className="text-base font-bold tracking-tight text-foreground">진주 정보통신</span>
           </div>
-          <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
+          <p className="text-sm leading-relaxed text-muted-foreground sm:whitespace-nowrap">
             AI 정예 개발사. 자체 서비스를 주력으로, 협업·외주도 폭넓게.
           </p>
+          <Link
+            href="/paljaja/privacy"
+            className="text-xs text-muted-foreground/80 transition-colors duration-150 hover:text-foreground"
+          >
+            개인정보처리방침
+          </Link>
         </div>
 
         <div className="flex flex-col gap-2 text-sm text-muted-foreground sm:text-right">
           <a
-            href="mailto:teo.baek@outlook.com"
+            href="mailto:admin@jinju-ict.com"
             className="group/email relative inline-block transition-colors duration-150 hover:text-foreground"
           >
-            teo.baek@outlook.com
+            admin@jinju-ict.com
             <span
               aria-hidden="true"
               className="absolute -bottom-0.5 left-0 h-px w-0 bg-foreground transition-[width] duration-150 ease-out group-hover/email:w-full"
             />
           </a>
-          <Link
-            href="/paljaja/privacy"
-            className="text-xs text-muted-foreground/80 transition-colors duration-150 hover:text-foreground"
-          >
-            팔자상담소 개인정보처리방침
-          </Link>
           <p>© {year} 진주 정보통신. All rights reserved.</p>
         </div>
       </div>

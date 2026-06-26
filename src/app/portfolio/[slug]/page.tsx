@@ -8,6 +8,7 @@ import {
   Briefcase,
   CheckCircle2,
   MessageCircleHeart,
+  MoonStar,
   Newspaper,
   Scale,
   ShieldCheck,
@@ -26,6 +27,7 @@ import { WorkflowHarness } from "@/components/site/workflow-harness";
 import { WorkflowSafety } from "@/components/site/workflow-safety";
 
 const ICON_MAP: Record<ProjectIconName, LucideIcon> = {
+  MoonStar,
   MessageCircleHeart,
   Video,
   Scale,

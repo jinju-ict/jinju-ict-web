@@ -9,6 +9,10 @@ interface SectionProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> 
   lead?: React.ReactNode;
   align?: "left" | "center";
   containerClassName?: string;
+  /** 헤더 래퍼 추가 클래스 — center 정렬 시 기본 max-w-3xl 을 덮어쓸 때 사용 */
+  headerClassName?: string;
+  /** lead 단락 추가 클래스 — 데스크탑 한 줄 처리(whitespace-nowrap) 등에 사용 */
+  leadClassName?: string;
   bare?: boolean;
   /** Header / children 을 viewport 진입 시 페이드인 (default true). Hero 등 자체 mount 애니메이션 있는 곳은 false. */
   fadeOnScroll?: boolean;
@@ -22,6 +26,8 @@ export function Section({
   align = "left",
   className,
   containerClassName,
+  headerClassName,
+  leadClassName,
   bare = false,
   fadeOnScroll = true,
   children,
@@ -33,6 +39,7 @@ export function Section({
       className={cn(
         "mb-12 sm:mb-16",
         align === "center" && "mx-auto max-w-3xl text-center",
+        headerClassName,
       )}
     >
       {eyebrow && (
@@ -49,7 +56,12 @@ export function Section({
         </h2>
       )}
       {lead && (
-        <p className="mt-5 text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
+        <p
+          className={cn(
+            "mt-5 text-balance text-base leading-relaxed text-muted-foreground sm:text-lg",
+            leadClassName,
+          )}
+        >
           {lead}
         </p>
       )}

@@ -169,7 +169,7 @@ export function ContactForm() {
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-muted-foreground">
-          전송 시 teo.baek@outlook.com 으로 접수됩니다.
+          전송 시 admin@jinju-ict.com 으로 접수됩니다.
         </p>
         <Button
           type="submit"

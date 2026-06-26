@@ -9,8 +9,20 @@ export function SajuSection() {
     <Section
       id="saju"
       eyebrow="자체 서비스 · 준비중"
-      title={SAJU.tagline}
-      lead={SAJU.description}
+      title={
+        <>
+          <span className="block">전통 사주를 가볍게</span>
+          <span className="block">— 풀이부터 상담까지 한 앱에서</span>
+        </>
+      }
+      lead={
+        <>
+          <span className="block">어렵게 느껴지던 사주를 일상의 언어로 옮겼다.</span>
+          <span className="block">
+            전통 명리 해석에 AI 가이드를 더해, 오늘의 흐름과 사주 풀이, 그리고 1:1 상담까지 한 곳에서 가볍게 만날 수 있다.
+          </span>
+        </>
+      }
       align="center"
     >
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1fr_minmax(280px,360px)] lg:gap-16">

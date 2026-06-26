@@ -35,7 +35,12 @@ export function PortfolioSection() {
       id="portfolio"
       eyebrow="솔루션"
       title="만들어 운영 중인 솔루션"
-      lead="자체 서비스 · 외부 의뢰 · 사내 개발 인프라 세 갈래로 정리했습니다. 각 솔루션이 무엇이고 누구에게 어떤 가치를 주는지 한눈에 확인하실 수 있습니다."
+      lead={
+        <>
+          <span className="block">자체 서비스 · 외부 의뢰 · 사내 개발 인프라 세 갈래로 정리했습니다.</span>
+          <span className="block">각 솔루션이 무엇이고 누구에게 어떤 가치를 주는지 한눈에 확인하실 수 있습니다.</span>
+        </>
+      }
       align="center"
     >
       <div className="space-y-16 sm:space-y-20">

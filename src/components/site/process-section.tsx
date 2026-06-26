@@ -67,7 +67,12 @@ export function ProcessSection() {
     <Section
       id="process"
       eyebrow="일하는 방식"
-      title="발견 → 설계 → 구현 → 배포, 4단계 워크플로우"
+      title={
+        <>
+          <span className="block">발견 → 설계 → 구현 → 배포</span>
+          <span className="block">4단계 워크플로우</span>
+        </>
+      }
       lead="모든 프로젝트가 동일한 워크플로우로 묶여 있어, 같은 수준의 품질과 속도로 마무리됩니다."
       align="center"
     >
