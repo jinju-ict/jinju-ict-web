@@ -167,6 +167,19 @@
   }
 }
 
+/* ---------- 법적 문서(개인정보처리방침 / 이용약관) 전용 ---------- */
+/* 페이지 루트의 `.legal-doc` 마커가 있을 때만 적용 — 우측 스크롤바 숨김 + smooth-scroll off.
+   :has() 스코프라 다른 라우트에는 영향 없음. 법적 문서는 정적이어야 한다는 요구. */
+html:has(.legal-doc) {
+  scrollbar-width: none; /* Firefox */
+  scroll-behavior: auto; /* 부드러운 스크롤도 끔 */
+}
+html:has(.legal-doc)::-webkit-scrollbar {
+  display: none; /* Chrome / Safari / Edge */
+  width: 0;
+  height: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

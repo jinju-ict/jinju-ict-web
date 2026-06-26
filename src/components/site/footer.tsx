@@ -1,4 +1,5 @@
 import * as React from "react";
+import Link from "next/link";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -29,6 +30,12 @@ export function SiteFooter() {
               className="absolute -bottom-0.5 left-0 h-px w-0 bg-foreground transition-[width] duration-150 ease-out group-hover/email:w-full"
             />
           </a>
+          <Link
+            href="/paljaja/privacy"
+            className="text-xs text-muted-foreground/80 transition-colors duration-150 hover:text-foreground"
+          >
+            팔자상담소 개인정보처리방침
+          </Link>
           <p>© {year} 진주 정보통신. All rights reserved.</p>
         </div>
       </div>
