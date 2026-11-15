@@ -19,7 +19,7 @@ import { SITE_URL } from "@/lib/site";
  *   - 서버: Google Cloud Run(서울 리전) / DB: Supabase Postgres(AWS 서울 리전).
  *   - AI: OpenAI Responses API(store=false). 생년월일·출생시간·성별 원문과 이메일·이름은 전송하지 않음.
  *   - 인앱결제·광고·광고 식별자·Firebase Analytics·외부 오류 수집 SDK: 현재 코드에 없음.
- *   - 앱 내 회원탈퇴 기능 없음 → 이메일 요청으로 안내.
+ *   - 앱 내 회원탈퇴 기능 없음 → 이메일 요청 + /paljaja/delete-account 안내 페이지.
  * 서비스 구현이 바뀌면(결제·광고·분석 SDK 도입, 서버/DB 이전 등) 이 문서를 함께 개정할 것.
  */
 
@@ -214,8 +214,14 @@ export default function PaljajaPrivacyPage() {
       <LegalArticle no={4} title="회원 탈퇴 및 개인정보 삭제 요청">
         <p>
           이용자는 언제든지 회원 탈퇴(계정 및 관련 데이터 삭제)를 요청할 수 있습니다.
-          현재 앱 내에서는 탈퇴 기능을 제공하지 않으며, 제11조의 문의 이메일로
-          요청하실 수 있습니다.
+          제11조의 문의 이메일로 요청하실 수 있으며, 자세한 방법은{" "}
+          <a
+            href="/paljaja/delete-account"
+            className="underline underline-offset-2 hover:text-foreground"
+          >
+            계정 삭제 요청 안내
+          </a>{" "}
+          페이지에서 확인하실 수 있습니다.
         </p>
         <ul className="list-disc space-y-1 pl-5 text-foreground/80">
           <li>

@@ -19,8 +19,8 @@ export function LegalDoc({
 }: {
   title: string;
   intro?: React.ReactNode;
-  announcedDate: string;
-  effectiveDate: string;
+  announcedDate?: string;
+  effectiveDate?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -39,10 +39,12 @@ export function LegalDoc({
 
         <div className="mt-10">{children}</div>
 
-        <footer className="mt-12 border-t-2 border-border pt-6 text-sm leading-7 text-muted-foreground">
-          <p>공고일자: {announcedDate}</p>
-          <p>시행일자: {effectiveDate}</p>
-        </footer>
+        {announcedDate || effectiveDate ? (
+          <footer className="mt-12 border-t-2 border-border pt-6 text-sm leading-7 text-muted-foreground">
+            {announcedDate ? <p>공고일자: {announcedDate}</p> : null}
+            {effectiveDate ? <p>시행일자: {effectiveDate}</p> : null}
+          </footer>
+        ) : null}
       </article>
     </div>
   );
