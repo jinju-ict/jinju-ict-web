@@ -18,6 +18,7 @@ import { SITE_URL } from "@/lib/site";
  *   - 인증: Google 로그인(google_sign_in) → 백엔드가 Google ID 토큰 검증 후 자체 토큰 발급. Firebase 미사용.
  *   - 서버: Microsoft Azure Container Apps(한국 중부 리전, 1.0.2+8 부터 — 2026-11-15 이전 확인) /
  *     DB: Supabase Postgres(AWS 서울 리전). 이전 Cloud Run 은 운영 제외(/health 500).
+ *   - 서버 로그: Log Analytics 'saju-logs' (koreacentral, 보관 30일) — 2026-11-15 az CLI 확인.
  *   - AI: OpenAI Responses API(store=false). 생년월일·출생시간·성별 원문과 이메일·이름은 전송하지 않음.
  *   - 인앱결제·광고·광고 식별자·Firebase Analytics·외부 오류 수집 SDK: 현재 코드에 없음.
  *   - 앱 내 회원탈퇴 기능 없음 → 이메일 요청 + /paljaja/delete-account 안내 페이지.
@@ -200,7 +201,7 @@ export default function PaljajaPrivacyPage() {
           <div>
             <p className="font-semibold text-foreground">2. 자동 생성 정보(서버 로그)</p>
             <ul className="mt-1.5 list-disc space-y-1 pl-5 text-foreground/80">
-              <li>클라우드 서비스의 로그 보관 설정 기간이 지나면 자동 삭제</li>
+              <li>수집일로부터 30일이 지나면 자동 삭제</li>
             </ul>
           </div>
           <div>
@@ -289,7 +290,8 @@ export default function PaljajaPrivacyPage() {
       <LegalArticle no={6} title="개인정보의 국외 이전">
         <p>
           서비스의 서버는 Microsoft Azure 한국 중부(서울) 리전에서, 데이터베이스는
-          Supabase(AWS 서울 리전)에서 운영됩니다. 다만 AI 풀이·상담 기능 제공을 위하여 다음 정보가 국외로
+          Supabase(AWS 서울 리전)에서 운영되며, 서버 로그도 Microsoft Azure 한국 중부
+          리전에 보관됩니다. 다만 AI 풀이·상담 기능 제공을 위하여 다음 정보가 국외로
           전송되며, 클라우드 서비스의 인증·운영 과정에서 정보가 국외에서 처리될 수
           있습니다.
         </p>
@@ -322,14 +324,6 @@ export default function PaljajaPrivacyPage() {
               <LegalTd>Google 계정 인증 정보</LegalTd>
               <LegalTd>
                 로그인 인증 / 로그인 시마다 / 암호화된 네트워크(HTTPS)를 통한 전송
-              </LegalTd>
-            </tr>
-            <tr>
-              <LegalTd>Microsoft Corporation</LegalTd>
-              <LegalTd>미국 등 Microsoft 데이터센터 소재 국가</LegalTd>
-              <LegalTd>자동 생성 정보(서버 로그)</LegalTd>
-              <LegalTd>
-                서버 운영 및 오류 분석 / 서비스 이용 시마다 / 클라우드 서비스 내 전송
               </LegalTd>
             </tr>
           </tbody>

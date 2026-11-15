@@ -94,8 +94,8 @@ export default function PaljajaDeleteAccountPage() {
       <Section title="3. 보관될 수 있는 데이터">
         <ul className="list-disc space-y-1 pl-5 text-foreground/80">
           <li>
-            서버 접속 기록 등 자동 생성 로그는 클라우드 서비스의 로그 보관 기간이 지나면
-            자동 삭제됩니다.
+            서버 접속 기록 등 자동 생성 로그는 수집일로부터 30일이 지나면 자동
+            삭제됩니다.
           </li>
           <li>
             데이터베이스 백업본에 남아 있는 정보는 백업 보관 기간이 지나면 순차적으로
