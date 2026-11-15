@@ -23,9 +23,9 @@ import { SITE_URL } from "@/lib/site";
  * 서비스 구현이 바뀌면(결제·광고·분석 SDK 도입, 서버/DB 이전 등) 이 문서를 함께 개정할 것.
  */
 
-// TODO(대표님 확인): 공고일·시행일은 실제 게시 일정에 맞춰 확정 필요 (미확정 항목).
+// 공고일·시행일: 2026-11-15 (대표님 확정 — 실제 처리 방식과 즉시 일치시키기 위해 당일 시행).
 const ANNOUNCED_DATE = "2026년 11월 15일";
-const EFFECTIVE_DATE = "2026년 11월 22일";
+const EFFECTIVE_DATE = "2026년 11월 15일";
 
 export const metadata: Metadata = {
   title: "운명관측소 개인정보처리방침",
