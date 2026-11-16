@@ -180,6 +180,110 @@ html:has(.legal-doc)::-webkit-scrollbar {
   height: 0;
 }
 
+/* ---------- 운명관측소 공유 페이지(/paljaja/s/[code]) 전용 ---------- */
+/* 페이지 루트의 `.saju-share` 마커가 있을 때만 적용 (:has() 스코프 — 다른 라우트 영향 없음).
+   앱(saju/mobile)의 라이트 팔레트·손그림 디자인 시스템을 그대로 옮긴다.
+   회사 사이트 헤더(로고)·푸터는 이 페이지에서 숨긴다 — 받는 사람에게는 앱 화면처럼 보여야 한다. */
+body:has(.saju-share) {
+  background: #fbf8f0;
+}
+body:has(.saju-share) > header,
+body:has(.saju-share) > footer {
+  display: none;
+}
+body:has(.saju-share) > main {
+  padding-top: 0;
+}
+.saju-share {
+  /* AppPalette.light */
+  --saju-paper: #fbf8f0;
+  --saju-surface: #ffffff;
+  --saju-border: #d8cfbc;
+  --saju-border-soft: #ece5d6;
+  --saju-ink: #0f0d0a;
+  --saju-ink-body: #1a1714;
+  --saju-ink-dim: #4d463b;
+  --saju-ink-muted: #877e6e;
+  --saju-stroke: #111111;
+  --saju-metal: #d4912f;
+  --saju-cyan: #2ba39a;
+  background: var(--saju-paper);
+  color: var(--saju-ink-body);
+  font-family: var(--font-gowun-dodum), var(--font-noto-sans-kr), sans-serif;
+}
+.saju-hand {
+  font-family: var(--font-gaegu), var(--font-noto-sans-kr), cursive;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.saju-mono {
+  font-family: var(--font-roboto-mono), var(--font-geist-mono), monospace;
+}
+/* 손그림 비대칭 프레임 — 검정 2px 잉크 + 모서리마다 다른 곡률 + 종이 그림자 (AsymmetricContainer) */
+.saju-frame {
+  border: 2px solid var(--saju-stroke);
+  border-radius: 26px 20px 30px 18px / 20px 30px 18px 28px;
+  background: var(--saju-surface);
+  box-shadow: 0 3px 9px rgb(40 30 10 / 0.12);
+}
+.saju-frame-alt {
+  border-radius: 18px 28px 20px 30px / 28px 18px 30px 20px;
+}
+.saju-chip {
+  border: 2px solid var(--saju-chip-color, var(--saju-stroke));
+  border-radius: 999px 940px 999px 920px / 920px 999px 940px 999px;
+}
+.saju-button {
+  border: 2px solid var(--saju-stroke);
+  border-radius: 22px 28px 20px 30px / 28px 20px 30px 22px;
+  background: color-mix(in srgb, var(--saju-metal) 26%, var(--saju-surface));
+  box-shadow: 0 3px 0 var(--saju-stroke);
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease;
+}
+.saju-button:hover {
+  transform: translateY(1px);
+  box-shadow: 0 2px 0 var(--saju-stroke);
+}
+.saju-button:active {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 var(--saju-stroke);
+}
+.saju-bar {
+  border: 2px solid var(--saju-stroke);
+  border-radius: 999px 900px 999px 880px / 880px 999px 900px 999px;
+  background: var(--saju-surface);
+}
+@keyframes saju-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+@keyframes saju-twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+.saju-breathe {
+  transform-origin: center;
+  animation: saju-breathe 4.2s ease-in-out infinite;
+}
+.saju-twinkle {
+  transform-origin: center;
+  animation: saju-twinkle 2.8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
